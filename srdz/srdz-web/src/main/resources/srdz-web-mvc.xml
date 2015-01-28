@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+						http://www.springframework.org/schema/context   
+					    http://www.springframework.org/schema/context/spring-context-3.1.xsd
+					    http://www.springframework.org/schema/mvc
+                        http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd"
+	default-autowire="byName">
+
+	<!-- 加载配置文件 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:srdz-web.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 自动扫描注解包 -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.zw.srdz.controller" />
+	
+	<!-- 加载组件配置 -->
+	<import resource="classpath*:srdz-service.xml"/> 
+	<import resource="classpath*:srdz-dao.xml"/>
+
+	<!-- 静态资源映射 加入缓存默认缓存有效期1年 -->
+	<mvc:annotation-driven />
+	<mvc:resources location="/WEB-INF/statics/" mapping="/resource/**" cache-period="31536000"/>
+
+	<!-- 拦截器配置 -->
+	<bean id="authorIntercept" class="com.zw.srdz.interceptor.AuthorIntercept"></bean>
+
+	<!-- 配置MVC拦截器 -->
+	<mvc:interceptors>
+		<ref bean="authorIntercept" />
+	</mvc:interceptors>
+
+	<!-- 配置Spring MVC试图 采用Velocity作为展现层 -->
+	<bean id="velocityCfg"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<!-- 模板文件存放路径 -->
+		<property name="resourceLoaderPath" value="/WEB-INF/template/"></property>
+		<!-- Velocity配置信息 导入外部文件 -->
+		<property name="configLocation" value="classpath:velocity.properties"></property>
+	</bean>
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+		<property name="suffix" value=".vm" />
+		<property name="contentType" value="text/html;charset=UTF-8" />
+	</bean>
+	<!-- 配置全局异常处理拦截器 -->
+	<bean id="globerrorResolver" class="com.zw.srdz.interceptor.ExceptionIntercept"></bean>
+	<!-- 配置文件上传控制器 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+   </bean>  
+</beans>

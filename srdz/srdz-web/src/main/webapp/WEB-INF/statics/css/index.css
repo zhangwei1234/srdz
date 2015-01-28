@@ -1,0 +1,98 @@
+body{font-size: 13px;}
+
+.type-icon{
+	max-width: 100px;	
+}
+
+.share-icon{
+	max-width: 60px;	
+}
+.inex-share{
+	width:100%;
+	height:200px;
+	z-index:9999;
+	bottom:-2px;
+	position:fixed;
+	background-color:#ddd;
+}
+.goods_wall{position:relative;}
+.goods_wall .corner_notic{opacity:0}
+.goods_wall .corner_notic[status='show']{opacity:1}
+.goods_wall .poster_grid figure{margin-left:2.5px;margin-right:2.5px;height:100%;-webkit-border-radius:7px;border-radius:7px;box-sizing:border-box;background:#fff;border:1px solid #d2cfcd}
+.goods_wall .poster_grid figure .pic_load{display:block;-webkit-border-top-right-radius:6px;border-top-right-radius:6px;-webkit-border-top-left-radius:6px;border-top-left-radius:6px;overflow:hidden;position:relative;background:#fff url("../img/loading.gif") no-repeat;background-size:32px 32px;background-position:center center}
+.goods_wall .poster_grid figure .pic_load img{-webkit-border-top-right-radius:6px;border-top-right-radius:6px;-webkit-border-top-left-radius:6px;border-top-left-radius:6px;position:absolute;top:0;width:100%}.colFlag{position:absolute}
+.goods_wall{margin-left:auto;margin-right:auto;padding-bottom:10px}
+.goods_wall .pic_load img{height:100%}
+.goods_wall figcaption{font-size:1.4rem}
+.goods_wall figcaption .price{color:#00bd9b;margin-left:2px;font-size:9px;}
+.goods_wall figcaption .like{color:#666;margin-right:5px;font-size: 9px;cursor:pointer;}
+.goods_wall .corner_notic{position:absolute}
+.goods_wall .poster_grid{position:absolute}
+.goods_wall_box{position:relative}@media all and (min-width:1244px){.colFlag{z-index:7}}@media all and (max-width:1244px){.colFlag{z-index:6}}@media all and (max-width:1036.6666666666667px){.colFlag{z-index:5}}@media all and (max-width:829.3333333333334px){.colFlag{z-index:4}}@media all and (max-width:622px){.colFlag{z-index:3}}@media all and (max-width:414.6666666666667px){.colFlag{z-index:2}}
+.goods_wall figcaption{height:22px;padding-top:8px}
+.goods_wall figcaption .price{float:left}
+.goods_wall figcaption .like{float:right}
+.goods_wall figcaption .icon-heart{position:relative}
+.goods_wall figcaption .icon-heart:before{content:"";position:absolute;left:-20px;height:14px;width:16.799999999999997px;background:url("../img/icon3.png") no-repeat;background-size:168px 182px;background-position:-19.599999999999998px -133px}
+
+/******topic item******/
+.device {
+  /**padding-top:30px;
+  padding-bottom:20px;**/
+  background-color: #333;
+  padding-left:30px;
+  padding-right:30px;
+  background: #111;
+  margin: 0px auto;
+  position: relative;
+  box-shadow: 0px 0px 5px #000;
+}
+
+.arrow-back{
+  position: absolute;
+  left: 30px;
+  top: 0px;
+}
+.device .arrow-left {
+  background: url(../img/arrows.png) no-repeat left top;
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  margin-top: -15px;
+  width: 17px;
+  height: 30px;
+}
+.device .arrow-right {
+  background: url(../img/arrows.png) no-repeat left bottom;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  margin-top: -15px;
+  width: 17px;
+  height: 30px;
+}
+.content-slide {
+	background:#fff;
+	width: 100%;
+	height: 95%;
+}
+.pagination {
+  position: absolute;
+  left: 10;
+  text-align: center;
+  bottom:5px;
+  width: 100%;
+}
+.swiper-pagination-switch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background: #999;
+  box-shadow: 0px 1px 2px #555 inset;
+  margin: 0 3px;
+  cursor: pointer;
+}
+.swiper-active-switch {
+  background: #fff;
+}

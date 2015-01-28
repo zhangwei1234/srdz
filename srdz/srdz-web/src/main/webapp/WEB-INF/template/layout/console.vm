@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.5" />
+        <title>topic</title>
+        <link href="http://www.360buy.com/favicon.ico" rel="shortcut icon" />
+        <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/bootstrap.min.css?v=$!{v}" />
+        <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/font-awesome.min.css?v=$!{v}" />
+        <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/ace.min.css?v=$!{v}" />
+        <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/ace-skins.min.css?v=$!{v}" />
+        <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/ace-rtl.min.css?v=$!{v}" />
+        
+        <!--[if IE 7]>
+		  <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/font-awesome-ie7.min.css?v=$!{v}" />
+		<![endif]-->
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/ace-ie.min.css?v=$!{v}" />
+		<![endif]-->
+		<link rel="stylesheet" type="text/css" href="$!{base_static_url}/css/console.css?v=$!{v}" />
+		<link rel="stylesheet" type="text/css" href="$!{base_static_url}/css/button.css?v=$!{v}" />
+    </head>
+    <body>
+    	##title ---->begin
+    	<div class="navbar navbar-default" id="navbar">
+    		<div class="navbar-container" id="navbar-container">
+	    		<div class="navbar-header pull-left">
+					<a href="#" class="navbar-brand">
+						<small>
+							<i class="icon-leaf"></i>
+							Topic后台管理系统
+						</small>
+					</a>
+				</div>
+				## user info------->begin
+				<div class="navbar-header pull-right" role="navigation">
+						<ul class="nav ace-nav">
+						<li class="grey">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<i class="icon-tasks"></i>
+								<span class="badge badge-grey">4</span>
+							</a>
+
+							<ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+								<li class="dropdown-header">
+									<i class="icon-ok"></i>
+									还有4个任务完成
+								</li>
+
+								<li>
+									<a href="#">
+										<div class="clearfix">
+											<span class="pull-left">软件更新</span>
+											<span class="pull-right">65%</span>
+										</div>
+
+										<div class="progress progress-mini ">
+											<div style="width:65%" class="progress-bar "></div>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<div class="clearfix">
+											<span class="pull-left">硬件更新</span>
+											<span class="pull-right">35%</span>
+										</div>
+
+										<div class="progress progress-mini ">
+											<div style="width:35%" class="progress-bar progress-bar-danger"></div>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<div class="clearfix">
+											<span class="pull-left">单元测试</span>
+											<span class="pull-right">15%</span>
+										</div>
+
+										<div class="progress progress-mini ">
+											<div style="width:15%" class="progress-bar progress-bar-warning"></div>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<div class="clearfix">
+											<span class="pull-left">错误修复</span>
+											<span class="pull-right">90%</span>
+										</div>
+
+										<div class="progress progress-mini progress-striped active">
+											<div style="width:90%" class="progress-bar progress-bar-success"></div>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										查看任务详情
+										<i class="icon-arrow-right"></i>
+									</a>
+								</li>
+							</ul>
+						</li>
+
+						<li class="purple">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<i class="icon-bell-alt icon-animated-bell"></i>
+								<span class="badge badge-important">8</span>
+							</a>
+
+							<ul class="pull-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+								<li class="dropdown-header">
+									<i class="icon-warning-sign"></i>
+									8条通知
+								</li>
+
+								<li>
+									<a href="#">
+										<div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-pink icon-comment"></i>
+												新闻评论
+											</span>
+											<span class="pull-right badge badge-info">+12</span>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<i class="btn btn-xs btn-primary icon-user"></i>
+										切换为编辑登录..
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-success icon-shopping-cart"></i>
+												新订单
+											</span>
+											<span class="pull-right badge badge-success">+8</span>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-info icon-twitter"></i>
+												粉丝
+											</span>
+											<span class="pull-right badge badge-info">+11</span>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										查看所有通知
+										<i class="icon-arrow-right"></i>
+									</a>
+								</li>
+							</ul>
+						</li>
+
+						<li class="green">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<i class="icon-envelope icon-animated-vertical"></i>
+								<span class="badge badge-success">5</span>
+							</a>
+
+							<ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+								<li class="dropdown-header">
+									<i class="icon-envelope-alt"></i>
+									5条消息
+								</li>
+
+								<li>
+									<a href="#">
+										<img src="$!{base_static_url}/img/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+										<span class="msg-body">
+											<span class="msg-title">
+												<span class="blue">Alex:</span>
+												不知道写啥 ...
+											</span>
+
+											<span class="msg-time">
+												<i class="icon-time"></i>
+												<span>1分钟以前</span>
+											</span>
+										</span>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<img src="$!{base_static_url}/img/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+										<span class="msg-body">
+											<span class="msg-title">
+												<span class="blue">Susan:</span>
+												不知道翻译...
+											</span>
+
+											<span class="msg-time">
+												<i class="icon-time"></i>
+												<span>20分钟以前</span>
+											</span>
+										</span>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<img src="$!{base_static_url}/img/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+										<span class="msg-body">
+											<span class="msg-title">
+												<span class="blue">Bob:</span>
+												到底是不是英文 ...
+											</span>
+
+											<span class="msg-time">
+												<i class="icon-time"></i>
+												<span>下午3:15</span>
+											</span>
+										</span>
+									</a>
+								</li>
+
+								<li>
+									<a href="inbox.html">
+										查看所有消息
+										<i class="icon-arrow-right"></i>
+									</a>
+								</li>
+							</ul>
+						</li>
+
+						<li class="light-blue">
+							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+								<img class="nav-user-photo" src="$!{base_static_url}/img/avatars/user.jpg" alt="Jason's Photo" />
+								<span class="user-info">
+									<small>欢迎光临,</small>
+									管理员
+								</span>
+
+								<i class="icon-caret-down"></i>
+							</a>
+
+							<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+								<li>
+									<a href="#">
+										<i class="icon-cog"></i>
+										设置
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<i class="icon-user"></i>
+										个人资料
+									</a>
+								</li>
+
+								<li class="divider"></li>
+
+								<li>
+									<a href="${base_url}console/user/logout">
+										<i class="icon-off"></i>
+										退出
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul><!-- /.ace-nav -->
+				</div>
+			  ## user info------>end
+		    </div>
+	    </div>
+	    ##title----->end
+	    ## main container ------->begin
+	    <div class="main-container" id="main-container">
+	    	<div class="main-container-inner">
+	    		##menu container --------->begin
+	    		<div class="sidebar" id="sidebar">
+	    			<ul class="nav nav-list">
+	    				<li class="active menu"><a href="#"><i class="icon-globe"></i><span class="menu-text"> home </span></a></li>
+	    				##topic 管理
+	    				<li>
+	    					<a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> Topic Manager </span><b class="arrow icon-angle-down"></b></a>
+	    					<ul class="submenu">
+	    						##<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="" ><i class="icon-double-angle-right"></i>Topic Group</a></li>
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/topic/index"><i class="icon-double-angle-right"></i>Topic Item</a></li>
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>Topic Label</a></li>
+					    	</ul>
+				    	</li>
+				    	
+				    	##商品管理
+				    	<li>
+	    					<a href="#" class="dropdown-toggle"><i class="icon-food"></i><span class="menu-text"> Commodity </span><b class="arrow icon-angle-down"></b></a>
+	    					<ul class="submenu">
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/commodity"><i class="icon-double-angle-right"></i>Commodity Item</a></li>
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>Commodity Label</a></li>
+					    	</ul>
+				    	</li>
+				    	
+				    	##数据分析
+				    	<li>
+	    					<a href="#" class="dropdown-toggle"><i class="icon-bar-chart"></i><span class="menu-text"> data analysis </span><b class="arrow icon-angle-down"></b></a>
+	    					<ul class="submenu">
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>Topic Analysis</a></li>
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>Commodity Analysis</a></li>
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>Label Analysis</a></li>
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>Page Analysis</a></li>
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>User Analysis</a></li>
+					    	</ul>
+				    	</li>
+				    	
+				    	##系统设置
+				    	<li>
+	    					<a href="#" class="dropdown-toggle"><i class="icon-cogs"></i><span class="menu-text"> System </span><b class="arrow icon-angle-down"></b></a>
+	    					<ul class="submenu">
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>Home Layout</a></li>
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>Top100</a></li>
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/user/loadUserVm"><i class="icon-double-angle-right"></i>Users</a></li>
+					    	</ul>
+				    	</li>
+			    	</ul>
+	    		</div>
+	    		##menu container --------->end
+	    		
+	    		##console container ---------->begin
+	    		<div class="main-content" id="console_container">
+	    			$!{screen_content}
+	    		</div>
+	    		##console container ---------->end
+	    	</div>
+    	</div>
+	    ## main container -------> end 
+    </body>
+</html>
+<script type="text/javascript" src="$!{base_static_url}/js/jquery-1.8.3.min.js?v=$!{v}"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="$!{base_static_url}/plugin/ace/html5shiv.js?v=$!{v}"></script>
+<script type="text/javascript" src="$!{base_static_url}/plugin/ace/respond.min.js?v=$!{v}"></script>
+<![endif]-->
+<script type="text/javascript" src="$!{base_static_url}/plugin/ace/bootstrap.min.js?v=$!{v}"></script>
+<script type="text/javascript" src="$!{base_static_url}/plugin/ace/typeahead-bs2.min.js?v=$!{v}"></script>
+<script type="text/javascript" src="$!{base_static_url}/plugin/ace/ace-elements.min.js?v=$!{v}"></script>
+<script type="text/javascript" src="$!{base_static_url}/plugin/ace/ace.min.js?v=$!{v}"></script>
+<script type="text/javascript" src="$!{base_static_url}/plugin/ace/jquery.slimscroll.min.js?v=$!{v}"></script>
+<script type="text/javascript" src="$!{base_static_url}/js/base.js?v=$!{v}"></script>
+<script type="text/javascript" src="$!{base_static_url}/js/console.js?v=$!{v}"></script>
+<script type="text/javascript">
+	Topic.rootUrl="$!{base_url}";
+	Topic.staticUrl="$!{base_static_url}";
+</script>

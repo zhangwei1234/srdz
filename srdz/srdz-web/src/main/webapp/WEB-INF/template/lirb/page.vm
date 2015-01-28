@@ -1,0 +1,37 @@
+##自定义类库,table 的分页标签
+#macro(showPage $page $pageURL $container $form $pageSize)
+	<div class="pagebar" d-container="$!container" d-url="$!pageURL" d-currentpage="$page.currentPage" d-form="$!form" d-pagesize="$!pageSize">
+		<ul class="pagination" style="margin:1px 0; float:right;">
+			##是否允许前翻页
+			<li #if($page.currentPage==1) class="disabled" #end><a href="javascript:void(0);" onclick="Topic.Table.Page('$!container','$!pageURL','$page.previousPage','$!form','$!pageSize');"><i class="icon-double-angle-left"></i></a></li>
+			#foreach($i in $page.pagebars)
+				<li #if($page.currentPage == $i) class="active" #end ><a href="javascript:void(0);" onclick="Topic.Table.Page('$!container','$!pageURL','$!{i}','$!form','$!pageSize');">$!{i}</a></li>
+			#end
+			<li #if($page.currentPage==$page.allPage) class="disabled" #end><a href="javascript:void(0);" onclick="Topic.Table.Page('$!container','$!pageURL','$page.nextPage','$!form','$!pageSize');"><i class="icon-double-angle-right"></i></a></li>
+		</ul>
+	</div>
+#end
+
+#macro(footer)
+	<div data-role="footer" data-theme="a" data-position="fixed">
+		<a href="#" class="btn btn-success btn-app btn-xs pull-left" style="width:40px;line-height:10px;padding-bottom: 2px;font-size:10px;margin-right:25px;">
+			<i class="icon-desktop bigger-40" style="font-size:16px;line-height:16px;"></i>
+			首页
+		</a>
+		<a href="#" class="btn btn-undo btn-app btn-xs pull-left" style="width:40px;line-height:10px;padding-bottom: 2px;font-size:10px;">
+			<i class=" icon-hand-up bigger-40" style="font-size:16px;line-height:16px;"></i>
+			推荐
+			<span class="badge badge-pink">+3</span>
+		</a>
+		<a href="#" class="btn btn-purple btn-app btn-xs pull-right" style="width:40px;line-height:10px;padding-bottom: 2px;font-size:10px;">
+			<i class="icon-user bigger-40" style="font-size:16px;line-height:16px;"></i>
+			我的
+			<span class="badge badge-warning badge-left">+1</span>
+		</a>
+		<a href="#" class="btn btn-inverse btn-app btn-xs pull-right" style="width:40px;line-height:10px;padding-bottom: 2px;font-size:10px;margin-right:25px;">
+			<i class="icon-group bigger-40" style="font-size:16px;line-height:16px;"></i>
+			分享
+			<span class="badge badge-warning badge-left">5</span>
+		</a>
+	</div>
+#end

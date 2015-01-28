@@ -1,0 +1,56 @@
+##导航条
+<div class="breadcrumbs" id="breadcrumbs">
+	<ul class="breadcrumb">
+		<li><i class="icon-globe"></i><a href="#">user</a></li>
+		<li class="active"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/topic/index">topic item</a></li>
+	</ul>
+</div>
+## content
+<div class="page-content">
+	 <input type="hidden" id="topicId" value=""> 
+	##<form id="f_topic_new">
+		<div class="input-group fl x1">
+		  <span class="input-group-addon">title</span>
+		  <input type="text" class="form-control" name="title" id="topic_title">
+		</div>
+		<div class="input-group fl x1">
+		 <span class="input-group-addon">group</span>
+		 <select class="form-control" id="topic_group">
+			  <option value="1" selected="selected" >校园</option>
+			  <option value="2">清纯</option>
+			  <option value="3">气质</option>
+			  <option value="4">首页</option>
+		 </select>
+		</div>
+		##上传图片区域
+		<div class="input-group fl x1" id="topic_imgs_container">
+			<a id="topic_imgs_click" href="javascript:void(0);" class="button button-pill button-primary" style="margin-right: 10px;">选择文件</a>
+		</div>
+		<div >
+			<table class="table">
+				<thead>
+					<td style="width:20%;">文件Id</td>
+					<td style="width:20%;">文件名</td>
+					<td style="width:10%;">文件大小</td>
+					<td style="width:10%;">上传进度</td>
+					<td style="width:20%;">缩略图</td>
+					<td style="width:10%;">操作</td>
+				</thead>
+				<tbody id="filelist">
+					
+				</tbody>
+			</table>
+		</div>
+		
+		##button
+		<div class="input-group fl x1">
+		  <a id="topic_item_save" href="javascript:void(0);" class="button button-pill button-primary" style="margin-right: 10px;">保存</a>
+		  <a href="javascript:void(0);" class="button button-pill button-flat-caution" onclick="Topic.clickMenu(this);" data-url="console/topic/index">取消</a>
+		  <a href="javascript:void(0);" class="button button-pill button-flat-primary" onclick="Topic.clickMenu(this);" data-url="console/topic/index"><i class="icon-reply"></i>返回</a>
+		</div>
+	##</form>>
+</div>
+<link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/plupload/jquery.plupload.queue/css/jquery.plupload.queue.css?v=$!{v}" />
+<script type="text/javascript" src="$!{base_static_url}/plugin/plupload/plupload.full.min.js?v=$!{v}"></script>
+<script type="text/javascript" src="$!{base_static_url}/plugin/plupload/jquery.plupload.queue/jquery.plupload.queue.js?v=$!{v}"></script>
+<SPAN class="script" page-load="Topic.Console.initUpload()"> </SPAN>

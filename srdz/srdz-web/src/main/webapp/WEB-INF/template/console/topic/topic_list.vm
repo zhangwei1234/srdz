@@ -1,0 +1,43 @@
+<table id="topic_table" class="table table-striped table-bordered table-hover" style="margin-bottom:0px;">
+	<thead>
+		<tr>
+			<th class="center" style="width:5%">
+				<label>
+					<input type="checkbox" class="ace topic_check" onclick="Topic.Table.checkbox('topic_check');"/>
+					<span class="lbl"></span>
+				</label>
+			</th>
+			<th class="center" style="width:10%">topic</th>
+			<th class="center" style="width:30%">标题</th>
+			<th class="center" style="width:10%">点赞次数</th>
+			<th class="center" style="width:10%">点击次数</th>
+			<th class="center" style="width:7%">图片数</th>
+			<th class="center" style="width:35%">操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		#foreach($topic in $page.items)
+			<tr>
+			<td class="center">
+				<label>
+					<input type="checkbox" class="ace topic_check_item" data-id="$!topic.id"/>
+					<span class="lbl"></span>
+				</label>
+			</td>
+			<td class="center">#if($topic.group == 1) 校园 #elseif($topic.group == 2)清纯 #elseif($topic.group == 3) 气质 #elseif($topic.group == 4)首页 #else 未知 #end </td>
+			<td class="center">$!{topic.title}</td>
+			<td class="center">$!{topic.praiseCount}</td>
+			<td class="center">$!{topic.clickCount}</td>
+			<td class="center">$!{topic.imgCount}</td>
+			<td class="center">
+				<button class='btn btn-xs btn-success'><i class='icon-ok bigger-120' onclick="Topic.Console.setTopicIndex('$!{topic.id}');">首页</i></button>
+				<button class='btn btn-xs btn-info'><i class='icon-edit bigger-120'  onclick="Topic.Console.loadTopicCommodity('$!{topic.id}');">设置商品</i></button>
+				<button class='btn btn-xs btn-info'><i class='icon-edit bigger-120'  onclick="Topic.Console.loadModify('$!{topic.id}');">编辑</i></button>
+				<button class='btn btn-xs btn-danger'><i class='icon-trash bigger-120'  onclick="Topic.Console.removeTopic('$!{topic.id}');">删除</i></button>
+			</td>
+		</tr>
+		#end
+	</tbody>
+</table>
+##分页组件
+#showPage($page 'console/topic/findtopic' 'topic_grid_container' '' ${page.pageSize})

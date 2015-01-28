@@ -1,0 +1,22 @@
+ ## err info message
+ <div class="page-error-infos">
+ 	
+ 	#if($!{level} == "warn" )
+ 	<div class="alert alert-warning" role="alert">
+        <dl>
+            <dt><i class="icon-warning-sign"></i></dt>
+            <dd><a href="javascript:void(0);" class="alert-link"><b style="font-size:30px">警告</b><br/></br.>$!{msg}</a></dd>
+			<dd>&nbsp;</dd>
+			
+        </dl>
+    </div>
+ 	#elseif($!{level} == "error" )
+ 	<div class="alert alert-danger" role="alert">
+        <dl>
+            <dt><i class="icon-remove-sign"></i></dt>
+            <dd><a href="javascript:void(0);" class="alert-link"><b style="font-size:30px">错误</b><br/></br.>$!{msg}</a></dd>
+			<dd>&nbsp;</dd>
+        </dl>
+    </div>
+	#end
+</div>

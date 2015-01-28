@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>私人定制（SRDZ360.CN）-婴幼儿、童年时代、小学时代、初中时代、高中时代、大学时代、梦想、现实、责任、妈妈、生活、私人定制)</title>
+        <meta name="keywords" content="SRDZ、SRDZ360、srdz、srdz360、婴幼儿、童年、小学、初中、高中、大学、梦想、现实、责任、妈妈、生活、私人定制、宝宝">
+		<meta name="description" content="srdz（srdz360.cn）私人定制最懂您的它,全新的生活,私人定制不一样的人生,我的生活由我定制">
+        <link href="$!{base_static_url}/img/favicon.jpg" rel="shortcut icon">
+        <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/bootstrap.min.css?v=$!{v}" />
+        <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/ace.min.css?v=$!{v}" />
+        <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/font-awesome.min.css?v=$!{v}" />
+        <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/jquerymobile/jquery.mobile-1.4.5.min.css?v=$!{v}" />
+        <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/jquerymobile/jquery.mobile.theme-1.4.5.min.css?v=$!{v}" />
+        <link rel="stylesheet" type="text/css" href="$!{base_static_url}/css/index.css?v=$!{v}" />
+    </head>
+    <body>
+    	<script type="text/javascript">
+			var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+			document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fefac472bb428f45970a8f6eb3421379b' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		
+    	<div data-role="page" id="index" data-fullscreen="true">
+    		##head
+    		<div data-role="header" data-theme="b" data-position="fixed">
+    			<h1>私人定制</h1>
+    		</div>
+    		
+    		##content
+    		<div data-role="content">
+    			##row 1 start---------------------------------------------------->
+				<div class="row">
+					<div class="col-xs-6" style="border-right:1px dotted #d0d8e0;">
+						<div class="profile-activity clearfix">
+							<div>
+								<div style="width:100%;float:left;">
+									<a>
+										<img class="pull-left type-icon" alt="Alex Doe's avatar" src="$!{base_static_url}/img/index/icon1.jpg" />
+									</a>
+								</div>
+								<div style="width:100%;float:left;">
+									<span style="margin-left:25px;margin-top:5px;">
+										幼儿族
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="profile-activity clearfix">
+							<div>
+								<div style="width:100%;float:left;">
+									<a>
+										<img class="pull-left type-icon" alt="Alex Doe's avatar" src="$!{base_static_url}/img/index/icon2.jpg" />
+									</a>
+								</div>
+								<div style="width:100%;float:left;">
+									<span style="margin-left:25px;margin-top:5px;">
+										儿童族
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				##row 1 end---------------------------------------------------->
+				##row2 start--------------------------------------------------->
+				<div class="row">
+					<div class="col-xs-6" style="border-right:1px dotted #d0d8e0;">
+						<div class="profile-activity clearfix">
+							<div>
+								<div style="width:100%;float:left;">
+									<a>
+										<img class="pull-left type-icon" alt="Alex Doe's avatar" src="$!{base_static_url}/img/index/icon6.jpg" />
+									</a>
+								</div>
+								<div style="width:100%;float:left;">
+									<span style="margin-left:25px;margin-top:5px;">
+										学生族
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="profile-activity clearfix">
+							<div>
+								<div style="width:100%;float:left;">
+									<a>
+										<img class="pull-left type-icon" alt="Alex Doe's avatar" src="$!{base_static_url}/img/index/icon7.jpg" />
+									</a>
+								</div>
+								<div style="width:100%;float:left;">
+									<span style="margin-left:25px;margin-top:5px;">
+										单身族
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				##row2 end--------------------------------------------------->
+				##row3 start------------------------------------------------->
+				<div class="row">
+					<div class="col-xs-6" style="border-right:1px dotted #d0d8e0;">
+						<div class="profile-activity clearfix">
+							<div>
+								<div style="width:100%;float:left;">
+									<a>
+										<img class="pull-left type-icon" alt="Alex Doe's avatar" src="$!{base_static_url}/img/index/icon9.jpg" />
+									</a>
+								</div>
+								<div style="width:100%;float:left;">
+									<span style="margin-left:25px;margin-top:5px;">
+										家庭族
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="profile-activity clearfix">
+							<div>
+								<div style="width:100%;float:left;">
+									<a>
+										<img class="pull-left type-icon" alt="Alex Doe's avatar" src="$!{base_static_url}/img/index/icon10.jpg" />
+									</a>
+								</div>
+								<div style="width:100%;float:left;">
+									<span style="margin-left:25px;margin-top:5px;">
+										退休族
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				##row3 end------------------------------------------------->
+    		</div>
+    		
+    		##footer
+    		#footer()
+	    </div>
+	    
+ 	</body>
+</html>
+<script type="text/javascript" src="$!{base_static_url}/js/jquery-1.8.3.min.js?v=${v}"></script>
+<script type="text/javascript" src="$!{base_static_url}/plugin/jquerymobile/jquery.mobile-1.4.5.min.js?v=${v}"></script>
