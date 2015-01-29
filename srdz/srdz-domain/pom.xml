@@ -34,10 +34,7 @@
 				<artifactId>srdz-common</artifactId>
 				<version>${project.parent.version}</version>
 			</dependency>
-			<dependency>
-			    <groupId>org.springframework.data</groupId>
-			    <artifactId>spring-data-mongodb</artifactId>
-			</dependency>
+			
 			<!-- Test -->
 			<dependency>
 				<groupId>junit</groupId>

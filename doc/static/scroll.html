@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.5" />
+        <title>test</title>
+		<link rel="stylesheet" type="text/css" href="test.css?v=$!{v}" />
+    </head>
+    <body>
+		<script type="text/html" id="template">
+			<div class="poster_grid poster_wall" twitter_id="<?=v.twitter_id?>" style="width:<?= fml.colWidth?>px;" poster_height="<?=v.pic_height+30 ?>">
+				<figure>
+					<a class="pic_load" href="<?= v.href ?>" style="height:<?=v.pic_height+30 ?>px;">
+						<img src="<?= v.pic_url ?>" alt="<?= v.title ?>" title="<?= v.title ?>"/>
+					</a>
+					<figcaption>
+						<span class="price"><?= v.price?></span>
+						<span class="like icon-heart"><?= v.count_like?></span>
+					</figcaption>
+				</figure></div>
+		</script>
+    	<div id="container" class="goods_wall" ></div>
+ 	</body>
+</html>
+
+<script type="text/javascript" src="jquery-1.8.3.min.js?v=$!{v}"></script>
+<script type="text/javascript" src="iscroll.js?v=$!{v}"></script>
+<script type="text/javascript" src="fml.js?v=$!{v}"></script>
+<script type="text/javascript" src="test.js?v=$!{v}"></script>

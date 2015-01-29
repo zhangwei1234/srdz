@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.zw.srdz.dao.UserDao">
+	<!-- 定义实体映射 -->
+	<resultMap type="user" id="userM">
+		<result property="id" column="id"/>
+		<result property="name" column="user_name"/>
+		<result property="account" column="account"/>
+		<result property="passwd" column="passwd"/>
+		<result property="sex" column="sex"/>
+		<result property="type" column="type"/>
+		<result property="email" column="email"/>
+		<result property="mobilePhone" column="mobile_phone"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="QUERY_ALL">
+		a.id,
+		a.user_name,
+		a.account,
+		a.passwd,
+		a.sex,
+		a.type,
+		a.email,
+		a.mobile_phone,
+		a.create_time,
+		a.update_time
+	</sql>
+	
+	<!-- 根据用户账号查询用户信息 -->
+	<select id="QUERY_BY_ACCOUNT" parameterType="java.lang.String" resultMap="userM">
+		select <include refid="QUERY_ALL"/> from web_user a where a.account=#{val}
+	</select>
+	
+	<!-- 新增用户信息 -->
+	<insert id="ADD_USER" parameterType="user" useGeneratedKeys="true" keyProperty="id">
+		insert into web_user(user_name,account,passwd,sex,type,email,mobile_phone,create_time)
+		values(
+		#{name},#{account},#{passwd},#{sex},#{type},#{email},#{mobilePhone},#{createTime}
+		)
+	</insert>
+	
+	<!-- 查询所有用户信息 -->
+	<select id="QUERY_USERS" resultMap="userM">
+		select <include refid="QUERY_ALL"/> from web_user a
+	</select>
+</mapper>

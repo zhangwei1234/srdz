@@ -12,13 +12,42 @@
     					http://www.springframework.org/schema/data/mongo
 						http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd"
 	default-autowire="byName">
-	
-	<mongo:db-factory username="${mongodb_user}" password="${mongodb_passwd}" host="${mongodb_host}" port="${mongodb_port}" dbname="${mongodb_dbname}"/>
-	
-	<bean id="mongoTemplete" class="org.springframework.data.mongodb.core.MongoTemplate">
-		<constructor-arg ref="mongoDbFactory"/>
+	<!-- 连接池使用BonCp -->
+	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close" >
+		<property name="driverClass" value="${jdbc.driverClass}" />
+		<property name="jdbcUrl" value="${jdbc.jdbcUrl}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="idleConnectionTestPeriodInMinutes" value="${jdbc.idleConnectionTestPeriod}" />
+		<property name="idleMaxAgeInMinutes" value="${jdbc.idleMaxAge}" />
+		<property name="maxConnectionsPerPartition" value="${jdbc.maxConnectionsPerPartition}" />
+		<property name="minConnectionsPerPartition" value="${jdbc.minConnectionsPerPartition}" />
+		<property name="partitionCount" value="${jdbc.partitionCount}" />
+		<property name="acquireIncrement" value="${jdbc.acquireIncrement}" />
+		<property name="statementsCacheSize" value="${jdbc.statementsCacheSize}" />
+		<property name="releaseHelperThreads" value="${jdbc.releaseHelperThreads}" />
+		<property name="connectionTimeoutInMs" value="5000" />
 	</bean>
 	
+	<!-- MyBits 的SessionFactory -->
+	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+	</bean>
+	
+	<!-- 开启spring的事物管理功能 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- 使用注解管理事物 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<!-- MyBits 的SqlTemplate -->
+	<bean id="sqlTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sessionFactory" />
+	</bean>
+	
+	<!-- 自动扫描 -->	
 	<context:component-scan base-package="com.zw.srdz.dao.impl" />
 	
 </beans>

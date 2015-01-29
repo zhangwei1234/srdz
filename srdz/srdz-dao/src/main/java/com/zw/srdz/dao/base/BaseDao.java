@@ -1,11 +1,18 @@
 package com.zw.srdz.dao.base;
 
 import javax.annotation.Resource;
-import org.springframework.data.mongodb.core.MongoOperations;
 
-public class BaseDao {
+import org.mybatis.spring.SqlSessionTemplate;
 
-	@Resource(name="mongoTemplete")
-	protected MongoOperations template; 
+public abstract class BaseDao {
 	
+	@Resource(name="sqlTemplate")
+	protected SqlSessionTemplate template;
+	
+	/**
+	 * 获取数据库访问空间
+	 * @param space
+	 * @return
+	 */
+	protected abstract String getNameSpace(String space);
 }

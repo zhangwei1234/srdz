@@ -29,30 +29,48 @@
 
 	<dependencies>
 	     <!-- 项目依赖 -->
-	        <dependency>
-				<groupId>com.zw.srdz</groupId>
-				<artifactId>srdz-domain</artifactId>
-				<version>${project.parent.version}</version>
-			</dependency>
-			
-			<!-- Test -->
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.8.2</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-test</artifactId>
-				<version>${spring.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.mockito</groupId>
-				<artifactId>mockito-all</artifactId>
-				<scope>test</scope>
-				<version>1.9.0</version>
-			</dependency>
+	     <dependency>
+			<groupId>com.zw.srdz</groupId>
+			<artifactId>srdz-common</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+        <dependency>
+			<groupId>com.zw.srdz</groupId>
+			<artifactId>srdz-domain</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+		<!-- driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.jolbox</groupId>
+			<artifactId>bonecp</artifactId>
+		</dependency>
+		<!-- test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>

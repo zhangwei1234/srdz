@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.zw.srdz.dao.GroupDao">
+	<!-- 定义实体映射 -->
+	<resultMap type="group" id="groupM">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="remark" column="remark"/>
+		<result property="orderNo" column="order_no"/>
+		<result property="iconUrl" column="icon_url"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="QUERY_ALL">
+		a.id,
+		a.name,
+		a.remark,
+		a.order_no,
+		a.icon_url,
+		a.create_time,
+		a.update_time
+	</sql>
+	
+	<!-- 根据ID查询分组信息 -->
+	<select id="QUERY_BY_ID" parameterType="int" resultMap="groupM">
+		select <include refid="QUERY_ALL"/> from web_group a where a.id=#{val}
+	</select>
+	
+	<!-- 新增分组信息 -->
+	<insert id="ADD_GROUP" parameterType="group" useGeneratedKeys="true" keyProperty="id">
+		insert into web_group(name,remark,order_no,icon_url,create_time)
+		values(
+		#{name},#{remark},#{orderNo},#{iconUrl},#{createTime}
+		)
+	</insert>
+	
+	<!-- 查询所有分组信息 -->
+	<select id="QUERY_GROUPS" resultMap="groupM">
+		select <include refid="QUERY_ALL"/> from web_group a
+	</select>
+	
+	<!-- 删除group -->
+	<delete id="DELETE_BY_ID" parameterType="int">
+		delete from web_group where id =#{val}
+	</delete>
+	
+	<!-- 修改group信息 -->
+	<update id="UPDATE_GROUP" parameterType="group">
+		update web_group a 
+		<set>
+			<if test="name != null and name != '' ">a.name=#{name},</if>
+			<if test="remark != null and remark != '' "> a.remark = #{remark},</if>
+			<if test="orderNo != null and orderNo != 0 "> a.order_no = #{orderNo},</if>
+			<if test="iconUrl != null and iconUrl != '' "> a.icon_url = #{iconUrl},</if>
+			<if test="updateTime != null"> a.update_time = #{updateTime},</if>
+		</set>
+		where a.id = #{id}
+	</update>
+</mapper>

@@ -10,13 +10,13 @@
 	<name>srdz</name>
 
 	<properties>
-		<spring.version>3.2.8.RELEASE</spring.version>
+		<spring.version>3.1.1.RELEASE</spring.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<modules>
 		<module>srdz-web</module>
-        	<module>srdz-service</module>
+        <module>srdz-service</module>
 		<module>srdz-dao</module>
 		<module>srdz-domain</module>
 		<module>srdz-common</module>
@@ -52,15 +52,22 @@
 				<artifactId>spring-webmvc</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			
+			<!--passport sso -->
 			<dependency>
-	            <groupId>org.springframework</groupId>
-	            <artifactId>spring-context-support</artifactId>
-	            <version>${spring.version}</version>
-	        </dependency>
+			    <groupId>com.jd.user.passport</groupId>
+			    <artifactId>passport-checkLogin</artifactId>
+			    <version>1.5.3.5-SNAPSHOT</version>
+			</dependency>
 			<dependency>
-			    <groupId>org.springframework.data</groupId>
-			    <artifactId>spring-data-mongodb</artifactId>
-			    <version>1.5.2.RELEASE</version>
+			    <groupId>com.sun</groupId>
+			    <artifactId>tools</artifactId>
+			    <version>1.5.0</version>
+			</dependency>
+			<dependency>
+			    <groupId>com.jd.common</groupId>
+			    <artifactId>jd-common-util</artifactId>
+			    <version>1.1.2</version>
 			</dependency>
 			
 			<!-- view -->
@@ -77,7 +84,7 @@
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
-				<version>14.0</version>
+				<version>12.0</version>
 			</dependency>
 			
 			<!-- container -->
@@ -86,11 +93,6 @@
 				<artifactId>servlet-api</artifactId>
 				<version>2.5</version>
 				<scope>provided</scope>
-			</dependency>
-			<dependency>
-			    <groupId>com.jcloud</groupId>
-			    <artifactId>jss-sdk-java</artifactId>
-			    <version>1.2.0-SNAPSHOT</version>
 			</dependency>
 			<!-- LOG -->
 			<dependency>
@@ -127,11 +129,48 @@
 			</dependency>
 			
 			<dependency>
+				<groupId>commons-httpclient</groupId>
+				<artifactId>commons-httpclient</artifactId>
+				<version>3.1</version>
+			</dependency>
+			<dependency>
 			    <groupId>commons-collections</groupId>
 			    <artifactId>commons-collections</artifactId>
 			    <version>3.2.1</version>
 			</dependency>
-				
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>12.0</version>
+			</dependency>
+			<dependency>
+			    <groupId>com.jcloud</groupId>
+			    <artifactId>jss-sdk-java</artifactId>
+			    <version>1.1.4</version>
+			</dependency>
+			
+			<!-- driver -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.19</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>3.1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>1.1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jolbox</groupId>
+				<artifactId>bonecp</artifactId>
+				<version>0.7.1.RELEASE</version>
+			</dependency>
+			
 			<!-- Test -->
 			<dependency>
 				<groupId>junit</groupId>

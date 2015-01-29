@@ -88,13 +88,6 @@ public class Page {
 			start = (end+1-start)<PAGEBAR_MAX_SIZE ? (start-(PAGEBAR_MAX_SIZE-(end+1-start))): start;
 			convertPagers(start, end);
 		}
-//		else if(currentPage <= PAGEBAR_MAX_SIZE){
-//			convertPagers(1, PAGEBAR_MAX_SIZE);
-//		}else{
-//			int start = (currentPage-PAGEBAR_MAX_SIZE)+1;//每次向前移动一位
-//			convertPagers(start, start+PAGEBAR_MAX_SIZE-1);
-//		}
-		
 		return pagebars;
 	}
 	

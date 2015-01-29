@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.zw.srdz.dao.ProductDao">
+	<!-- 定义实体映射 -->
+	<resultMap type="product" id="productM">
+		<result property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="remark" column="remark"/>
+		<result property="price" column="price"/>
+		<result property="imageUrl" column="image_url"/>
+		<result property="productUrl" column="product_url"/>
+		<result property="clickCount" column="click_count"/>
+		<result property="praiseCount" column="praise_count"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<resultMap type="attrType" id="attrTypeM">
+		<result property="id" column="id"/>
+		<result property="productId" column="product_id"/>
+		<result property="typeId" column="type_id"/>
+	</resultMap>
+	
+	<sql id="QUERY_ALL">
+		a.id,
+		a.title,
+		a.remark,
+		a.price,
+		a.image_url,
+		a.product_url,
+		a.click_count,
+		a.praise_count,
+		a.create_time,
+		a.update_time
+	</sql>
+	
+	<!-- 根据分类查询商品信息,按照创建时间排序,分页 -->
+	<select id="QUERY_BY_TYPE_DESC_TIME" parameterType="java.util.Map" resultMap="productM">
+		select <include refid="QUERY_ALL"/> from web_product a where 
+		exists(select 1 from web_product_type b where a.id=b.product_id and b.type_id=#{type})
+		order by a.create_time desc
+		limit #{start},#{length}
+	</select>
+	
+	<!-- 根据分类查询商品信息,按照点击量排序,分页 -->
+	<select id="QUERY_BY_TYPE_DESC_CLICK" parameterType="java.util.Map" resultMap="productM">
+		select <include refid="QUERY_ALL"/> from web_product a where 
+		exists(select 1 from web_product_type b where a.id=b.product_id and b.type_id=#{type})
+		order by a.click_count desc
+		limit #{start},#{length}
+	</select>
+	
+	<!-- 查询所有商品信息,按照创建时间排序，分页 -->
+	<select id="QUERY_PRODUCT" parameterMap="java.util.Map" resultMap="productM">
+		select <include refid="QUERY_ALL"/> from web_product a  
+		order by a.create_time desc
+		limit #{start},#{length}
+	</select>
+	
+	<!-- 根据分类查询商品数量 -->
+	<select id="QUERY_COUNT_BY_TYPE" parameterType="int" resultType="int" >
+		select count(id) from web_product a where 
+		exists(select 1 from web_product_type b where a.id=b.product_id and b.type_id=#{val})
+	</select>
+	
+	<!-- 查询所有商品数量 -->
+	<select id="QUERY_COUNT" resultType="int">
+		select count(id) from web_product a
+	</select>
+	
+	<!-- 获取单个商品信息 -->
+	<select id="QUERY_BY_ID" parameterType="int" resultMap="productM">
+		select <include refid="QUERY_ALL"/> from web_product a where a.id=#{val}
+	</select>
+	
+	<!-- 添加商品信息 -->
+	<insert id="ADD_PRODUCT" parameterType="product" useGeneratedKeys="true" keyProperty="id">
+		insert into web_product(title,remark,price,image_url,product_url,create_time)
+		values(
+			#{title},#{remark},#{price},#{imageUrl},#{productUrl},#{createTime}
+		)
+	</insert>
+	
+	<!-- 修改产品基本信息 -->
+	<update id="UPDATE_PRODUCT" parameterType="product">
+		update web_product a 
+		<set>
+			<if test="title != null and title != '' ">a.title=#{title},</if>
+			<if test="remark != null and remark != '' ">a.remark=#{remark},</if>
+			<if test="price != null and price != 0 ">a.price=#{price},</if>
+			<if test="imageUrl != null and imageUrl != '' ">a.image_url=#{imageUrl},</if>
+			<if test="productUrl != null and productUrl != '' ">a.product_url=#{productUrl},</if>
+			<if test="updateTime != null ">a.update_time=#{name},</if>
+		</set>
+	</update>
+	
+	<!-- 增加一次商品添加数 -->
+	<update id="ADD_PRODUCT_CLICK" parameterType="int">
+		update web_product a set a.click_count=a.click_count+1 where a.id=#{val} 
+	</update>
+	
+	<!-- 增加一次商品的点赞数 -->
+	<update id="ADD_PRODUCT_PRAISE" parameterType="int">
+		update web_product a set a.praise_count=a.praise_count+1 where a.id=#{val} 
+	</update>
+	
+	<!-- 删除一个商品 -->
+	<delete id="DELETE_PRODUCT" parameterType="int">
+		delete from web_product a where a.id=#{val}
+	</delete>
+	
+	<!-- 删除商品的所有分类信息 -->
+	<delete id="DELETE_PRODUCT_TYPE_ATTR" parameterType="int">
+		delete from web_product_type a where a.product_id = #{val}
+	</delete>
+	
+	<!-- 获取一个商品对应的所有分类信息 -->
+	<select id="QUERY_PRODUCT_TYPE_ATTR" parameterType="int" resultMap="attrTypeM">
+		select id,product_id,type_id from web_product_type a where a.product_id=#{val}
+	</select>
+	
+	<!-- 批量增加商品对应的分类信息 -->
+	<insert id="BATCH_ADD_PRODUCT_TYPE_ATTR" parameterType="java.util.List">
+		insert into web_product_type(product_id,type_id)
+		values
+		<foreach collection="list" separator="," item="item" index="index">
+			(#{productId},#{typeId})
+		</foreach>
+	</insert>
+</mapper>
