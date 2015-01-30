@@ -7,7 +7,7 @@ create table web_user (
 	id		int(11) not null AUTO_INCREMENT,
 	user_name	varchar(40)	 null comment '用户名称',
 	account		varchar(50)	not null comment '登陆账号',
-	passwd		varchar(20)	not null comment '登陆密码',
+	passwd		varchar(32)	not null comment '登陆密码',
 	sex			int(1)		null	comment	 '性别(1:男,-1:女)',
 	type		int(2)		not null	comment '用户类型(1:管理类用户,2:普通用户)',
 	email		varchar(40)	null	comment	 '邮箱',
@@ -72,4 +72,6 @@ create table web_product_type(
 CREATE INDEX ik_product_type_pctid ON web_product_type(product_id);
 CREATE INDEX ik_product_type_typeid ON web_product_type(type_id);
 
+####初始化管理用户数据
+insert into web_user(user_name,account,passwd,sex,type,email,mobile_phone,create_time) values('超级管理员','zhangwei_2943@163.com','686aeb560c684f3f07c45e4089153a24',1,1,'zhangwei_2943@163.com','15328007301',now());
 

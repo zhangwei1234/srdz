@@ -39,7 +39,7 @@
 	
 	<!-- 查询所有分组信息 -->
 	<select id="QUERY_GROUPS" resultMap="groupM">
-		select <include refid="QUERY_ALL"/> from web_group a
+		select <include refid="QUERY_ALL"/> from web_group a order by a.order_no desc
 	</select>
 	
 	<!-- 删除group -->

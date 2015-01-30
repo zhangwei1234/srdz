@@ -53,7 +53,7 @@
 	</select>
 	
 	<!-- 查询所有商品信息,按照创建时间排序，分页 -->
-	<select id="QUERY_PRODUCT" parameterMap="java.util.Map" resultMap="productM">
+	<select id="QUERY_PRODUCT" parameterType="java.util.Map" resultMap="productM">
 		select <include refid="QUERY_ALL"/> from web_product a  
 		order by a.create_time desc
 		limit #{start},#{length}

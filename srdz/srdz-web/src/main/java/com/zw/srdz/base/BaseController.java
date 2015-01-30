@@ -22,6 +22,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.zw.srdz.common.Constants;
 import com.zw.srdz.common.util.VelocityTools;
 import com.zw.srdz.domain.Page;
+import com.zw.srdz.domain.author.AuthorContext;
 
 
 /**
@@ -44,6 +45,7 @@ public class BaseController {
 	
 	//基础属性
 	@Resource protected VelocityConfigurer velocityCfg;
+	@Resource private AuthorContext authorLocal;
 	
 	/**
 	 * 获取Velocity模板引擎
@@ -101,7 +103,7 @@ public class BaseController {
 		context.put(Constants.BASE_STATIC_URL_NAME, base_static_url);
 		context.put("tool", VelocityTools.class);
 		context.put("v", Constants.static_v);
-		
+		context.put("user", authorLocal.getLocal().get());
 		return context;
 	}
 	

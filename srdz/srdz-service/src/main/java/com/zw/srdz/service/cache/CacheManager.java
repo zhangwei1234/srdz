@@ -27,7 +27,6 @@ public class CacheManager {
 	private CacheManager(){
 		this.groups = Lists.newArrayList();
 		this.types = Maps.newHashMap();
-		System.out.println("cache manager init");
 		log.info("cache manager init");
 	}
 	

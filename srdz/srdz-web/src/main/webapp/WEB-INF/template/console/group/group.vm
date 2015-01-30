@@ -1,0 +1,94 @@
+##导航条
+<div class="breadcrumbs" id="breadcrumbs">
+	<ul class="breadcrumb">
+		<li><i class="icon-globe"></i><a href="#">group</a></li>
+		<li class="active">home</li>
+	</ul>
+</div>
+## content
+<div class="page-content">
+	<div>
+		<button class="btn btn-app btn-success btn-xs radius-3" onclick="Topic.Console.loadNewGroup()">
+			<i class="icon-save bigger-160"></i>
+			新增
+		</button>
+		
+		<button class="btn btn-app btn-primary btn-xs radius-3">
+			<i class="icon-edit bigger-160"></i>
+			修改
+		</button>
+		
+		<button class="btn btn-app btn-danger btn-xs radius-3" onclick="Topic.Console.removeGroup();">
+			<i class="icon-trash bigger-160"></i>
+			删除
+		</button>
+		
+	</div>
+	<div id="user_grid_container">
+		<table id="sample-table-1" class="table table-striped table-bordered table-hover" style="margin-bottom:0px;">
+		<thead>
+			<tr>
+				<th class="center" width="50px;">
+					<label>
+						<input type="checkbox" class="ace" />
+						<span class="lbl"></span>
+					</label>
+				</th>
+				<th class="center">icon</th>
+				<th class="center">名称</th>
+				<th class="center">描述</th>
+				<th class="center">排序号</th>
+				<th class="center">创建时间</th>
+				<th class="center">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			#set( $before = "")
+			#foreach($group in $groups)
+				<tr>
+				<td class="center">
+					<label>
+						<input type="checkbox" class="ace" id="index-$!{velocityCount}" gid="$!{group.id}"/>
+						<span class="lbl"></span>
+					</label>
+				</td>
+				<td class="center" >
+					<div class="profile-activity clearfix">
+						<div>
+							<div>
+								<a>
+									<img style="max-width:100px;" alt="$!{group.remark}" src="$!{group.iconUrl}" />
+								</a>
+							</div>
+						</div>
+					</div>
+				</td>
+				<td class="center">$!{group.name}</td>
+				<td class="center">$!{group.remark}</td>
+				<td class="center">$!{group.orderNo}</td>
+				<td class="center">$tool.dateFormat($!{group.createTime})</td>
+				<td class="center">
+					<button class="btn btn-primary btn-xs" onclick="Topic.Console.loadUpdateGroup('$!{group.id}');">
+						<i class="icon-edit bigger-100"></i>
+						修改
+					</button>
+					<button class="btn btn-inverse btn-xs" onclick="Topic.Console.ascTdesc($!{velocityCount},1);">
+						<i class="icon-chevron-up bigger-100"></i>
+						升序
+					</button>
+					<button class="btn btn-purple btn-xs" onclick="Topic.Console.ascTdesc($!{velocityCount},-1);">
+						<i class="icon-chevron-down bigger-100"></i>
+						降序
+					</button>
+					<button class="btn btn-danger btn-xs" onclick="Topic.Console.removeGroup('$!{group.id}');">
+						<i class="icon-trash bigger-100"></i>
+						删除
+					</button>
+				</td>
+			</tr>
+			#set( $before = "$!{group.id}")
+			#end
+		</tbody>
+	</table>
+	</div>
+</div>

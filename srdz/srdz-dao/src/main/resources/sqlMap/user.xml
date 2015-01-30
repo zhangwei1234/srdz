@@ -47,4 +47,10 @@
 	<select id="QUERY_USERS" resultMap="userM">
 		select <include refid="QUERY_ALL"/> from web_user a
 	</select>
+	
+	<!-- 删除用户信息 -->
+	<delete id="DELETE_USER" parameterType="int">
+		delete from web_user a where a.id=#{val}
+	</delete>
+	
 </mapper>

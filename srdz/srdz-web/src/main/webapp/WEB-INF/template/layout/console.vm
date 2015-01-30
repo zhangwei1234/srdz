@@ -28,7 +28,7 @@
 					<a href="#" class="navbar-brand">
 						<small>
 							<i class="icon-leaf"></i>
-							Topic后台管理系统
+							秀美丽后台管理系统
 						</small>
 					</a>
 				</div>
@@ -249,7 +249,7 @@
 								<img class="nav-user-photo" src="$!{base_static_url}/img/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>欢迎光临,</small>
-									管理员
+									$!{user.name}
 								</span>
 
 								<i class="icon-caret-down"></i>
@@ -295,42 +295,19 @@
 	    				<li class="active menu"><a href="#"><i class="icon-globe"></i><span class="menu-text"> home </span></a></li>
 	    				##topic 管理
 	    				<li>
-	    					<a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> Topic Manager </span><b class="arrow icon-angle-down"></b></a>
+	    					<a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 系统管理 </span><b class="arrow icon-angle-down"></b></a>
 	    					<ul class="submenu">
-	    						##<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="" ><i class="icon-double-angle-right"></i>Topic Group</a></li>
-	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/topic/index"><i class="icon-double-angle-right"></i>Topic Item</a></li>
-	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>Topic Label</a></li>
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/user/loadUser"><i class="icon-double-angle-right"></i>用户管理</a></li>
 					    	</ul>
 				    	</li>
 				    	
 				    	##商品管理
 				    	<li>
-	    					<a href="#" class="dropdown-toggle"><i class="icon-food"></i><span class="menu-text"> Commodity </span><b class="arrow icon-angle-down"></b></a>
+	    					<a href="#" class="dropdown-toggle"><i class="icon-food"></i><span class="menu-text"> 商品管理 </span><b class="arrow icon-angle-down"></b></a>
 	    					<ul class="submenu">
-	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/commodity"><i class="icon-double-angle-right"></i>Commodity Item</a></li>
-	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>Commodity Label</a></li>
-					    	</ul>
-				    	</li>
-				    	
-				    	##数据分析
-				    	<li>
-	    					<a href="#" class="dropdown-toggle"><i class="icon-bar-chart"></i><span class="menu-text"> data analysis </span><b class="arrow icon-angle-down"></b></a>
-	    					<ul class="submenu">
-	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>Topic Analysis</a></li>
-	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>Commodity Analysis</a></li>
-	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>Label Analysis</a></li>
-	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>Page Analysis</a></li>
-	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>User Analysis</a></li>
-					    	</ul>
-				    	</li>
-				    	
-				    	##系统设置
-				    	<li>
-	    					<a href="#" class="dropdown-toggle"><i class="icon-cogs"></i><span class="menu-text"> System </span><b class="arrow icon-angle-down"></b></a>
-	    					<ul class="submenu">
-	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>Home Layout</a></li>
-	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url=""><i class="icon-double-angle-right"></i>Top100</a></li>
-	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/user/loadUserVm"><i class="icon-double-angle-right"></i>Users</a></li>
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/group/load"><i class="icon-double-angle-right"></i>分组管理</a></li>
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/commodity"><i class="icon-double-angle-right"></i>分类管理</a></li>
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/commodity"><i class="icon-double-angle-right"></i>商品管理</a></li>
 					    	</ul>
 				    	</li>
 			    	</ul>

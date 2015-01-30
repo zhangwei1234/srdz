@@ -94,4 +94,8 @@ public class User {
 	public boolean isManager(){
 		return TYPE_MANAGER == this.type;
 	}
+	
+	public String convSex(){
+		return this.sex == 1? "男" :"女";
+	}
 }
