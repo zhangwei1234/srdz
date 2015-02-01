@@ -245,7 +245,12 @@ public class BaseController {
 	}
 	
 	protected final Page convertPage(HttpServletRequest req) {
-		Page page = new Page(Integer.parseInt(req.getParameter("currentPage")));
+		Page page = null;
+		try {
+			page = new Page(Integer.parseInt(req.getParameter("currentPage")));
+		} catch (Exception e) {
+			page = new Page(1);
+		}
 		return page;
 	}
 }

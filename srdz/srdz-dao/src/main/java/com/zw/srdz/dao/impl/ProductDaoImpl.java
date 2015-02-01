@@ -4,12 +4,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import com.google.common.collect.Maps;
 import com.zw.srdz.dao.ProductDao;
 import com.zw.srdz.dao.base.BaseDao;
 import com.zw.srdz.domain.Product;
 import com.zw.srdz.domain.ProductTypeAttr;
 
+@Repository("productDao")
 public class ProductDaoImpl extends BaseDao implements ProductDao{
 
 	private final String base = "com.zw.srdz.dao.ProductDao.";

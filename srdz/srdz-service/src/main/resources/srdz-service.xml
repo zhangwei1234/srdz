@@ -12,6 +12,10 @@
 	
 	<!-- author context -->
 	<bean id="localAuthor" class="com.zw.srdz.domain.author.AuthorContext"></bean>
+	
+	<!-- task service -->
+	<bean id="taskService" class="com.zw.srdz.service.task.TaskManager"></bean>
+	
 	<!-- 系统初始化 -->
 	<bean id="initServer" class="com.zw.srdz.service.IndexService" init-method="init"></bean>
 	<!-- 自动扫描 -->

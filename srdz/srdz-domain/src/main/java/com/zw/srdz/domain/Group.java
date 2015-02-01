@@ -1,6 +1,7 @@
 package com.zw.srdz.domain;
 
 import java.util.Date;
+import java.util.List;
 
 /**
 * 项目名称：srdz-domain   
@@ -24,6 +25,7 @@ public class Group {
 	private String iconUrl;
 	private Date createTime;
 	private Date updateTime;
+	private List<Type> types;
 	
 	public int getId() {
 		return id;
@@ -66,6 +68,14 @@ public class Group {
 	}
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+	
+	public List<Type> getTypes() {
+		return types;
+	}
+	
+	public void setTypes(List<Type> types) {
+		this.types = types;
 	}
 	
 }

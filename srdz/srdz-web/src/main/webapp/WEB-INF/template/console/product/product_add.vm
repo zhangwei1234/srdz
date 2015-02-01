@@ -1,0 +1,113 @@
+##导航条
+<div class="breadcrumbs" id="breadcrumbs">
+	<ul class="breadcrumb">
+		<li><i class="icon-globe"></i><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/product/">商品管理</a></li>
+		<li class="active">新增</li>
+	</ul>
+</div>
+## content
+<div class="page-content">
+	<form action="console/product/save" method="POST" name="PRODUCT_ADD" class="form-horizontal">
+		<input type="hidden" id="type_ids" value="" name="type_ids"/>
+		<div class="form-group" style="height:30px;">
+			<label class="col-sm-2 control-label no-padding-right" for="form-field-1">商品title </label>
+			<div class="col-sm-10">
+				<input type="text" id="form-field-1" placeholder="分类名称,0-50个字符" class="col-xs-10 col-sm-12" name="title"/>
+			</div>
+		</div>
+		
+		<div class="form-group" style="height:30px;">
+			<label class="col-sm-2 control-label no-padding-right" for="form-field-1">商品描述 </label>
+			<div class="col-sm-10">
+				<input type="text" id="form-field-1" placeholder="分类描述,0-100个字符" class="col-xs-10 col-sm-12" name="remark"/>
+			</div>
+		</div>
+		
+		<div class="form-group" style="height:30px;">
+			<label class="col-sm-2 control-label no-padding-right" for="form-field-1">商品图片 </label>
+			<div class="col-sm-10">
+				<div class="input-group">
+					<input type="text" id="product_image" placeholder="图标url地址" class="col-xs-10 col-sm-12 form-control search-query" name="imageUrl"/>
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-purple btn-sm" onclick="Topic.Console.imageSize();">
+							获取图片尺寸
+							<i class="icon-search icon-on-right bigger-110"></i>
+						</button>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="form-group" style="height:30px;">
+			<label class="col-sm-2 control-label no-padding-right" for="form-field-1">图片高度 </label>
+			<div class="col-sm-10">
+				<input type="text" readonly id="product_image_height" placeholder="图标高度自动获取" class="col-xs-10 col-sm-12" name="imageHeight"/>
+			</div>
+		</div>
+		<div class="form-group" style="height:30px;">
+			<label class="col-sm-2 control-label no-padding-right" for="form-field-1">图片宽度 </label>
+			<div class="col-sm-10">
+				<input type="text" readonly id="product_image_width" placeholder="图标宽度自动获取" class="col-xs-10 col-sm-12" name="imageWidth"/>
+			</div>
+		</div>
+		<div class="form-group" style="height:30px;">
+			<label class="col-sm-2 control-label no-padding-right" for="form-field-1">商品链接 </label>
+			<div class="col-sm-10">
+				<input type="text" id="form-field-1" placeholder="商品链接地址" class="col-xs-10 col-sm-12" name="productUrl"/>
+			</div>
+		</div>
+		
+		<div class="form-group" style="height:30px;">
+			<label class="col-sm-2 control-label no-padding-right" for="form-field-1">商品价格 </label>
+			<div class="col-sm-10">
+				<input type="text" id="form-field-1" placeholder="商品价格,只能填写数字或小数" class="col-xs-10 col-sm-12" name="price"/>
+			</div>
+		</div>
+		
+		##所属分类
+		<div class="form-group">
+			<div class="col-sm-12">
+				##分类列表=========================
+				#foreach($group in $groups)
+					<div class="widget-box">
+						<div class="widget-header widget-header-flat widget-header-small">
+							<h5>
+								<i class="icon-group"></i>
+								<label>
+									<input name="form-field-checkbox" type="checkbox" class="ace type_checked_$!{group.id}" onclick="Topic.Table.checkbox('type_checked_$!{group.id}');"/>
+									<span class="lbl">$!{type.name}</span>
+								</label>
+								$!{group.name}($!{group.remark})
+							</h5>
+						</div>
+						<div class="widget-body">
+							<div class="widget-main">
+								<div class="checkbox">
+									#foreach($type in $!{group.types})
+										<label>
+											<input name="form-field-checkbox" type="checkbox" class="ace type_checked type_checked_$!{group.id}_item" data-id="$!{type.id}" title="$!{type.remark}"/>
+											<span class="lbl">$!{type.name}</span>
+										</label>
+									#end
+								</div>
+							</div>
+						</div>
+					</div>
+				#end
+				##分类列表=============================
+			</div>
+		</div>
+	</form>
+	##button
+		<div class="clearfix form-actions" >
+			<div class="col-md-offset-3 col-md-9" >
+				<button class="btn btn-success" onclick="Topic.Console.saveProduct();">
+					<i class="icon-save align-top bigger-125"></i>
+					保存
+				</button>
+				<button class="btn btn-danger" onclick="Topic.Console.loadProduct();">
+					<i class="icon-reply align-top bigger-125"></i>
+					取消
+				</button>
+			</div>
+		</div>
+</div>

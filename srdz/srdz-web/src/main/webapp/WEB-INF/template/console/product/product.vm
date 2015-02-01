@@ -1,0 +1,85 @@
+##导航条
+<div class="breadcrumbs" id="breadcrumbs">
+	<ul class="breadcrumb">
+		<li><i class="icon-globe"></i><a href="#">product</a></li>
+		<li class="active">home</li>
+	</ul>
+</div>
+## content
+<div class="page-content">
+	<div>
+		<div class="row" style="height:50px;">
+			<div class="col-xs-2">
+				<button class="btn btn-app btn-success btn-xs radius-3" onclick="Topic.Console.loadNewProduct()">
+					<i class="icon-save bigger-160"></i>
+					新增
+				</button>
+				
+				<button class="btn btn-app btn-danger btn-xs radius-3" onclick="Topic.Console.batchDelProduct('');">
+					<i class="icon-trash bigger-160"></i>
+					删除
+				</button>
+		
+			</div>
+			<div class="col-xs-10">
+				<div class="input-group">
+					<form method="POST" name="PRODUCT_SEARCH" class="form-horizontal">
+						<div class="row">
+							<div class="col-xs-5">
+								<label class="col-sm-3 control-label no-padding-right">所属分组:</label>
+								<div class="col-sm-9">
+									<select class="form-control search-query" id="group" onchange="Topic.Console.reloadType();" name="groupId">
+										#foreach($gp in $groups)
+											<option value="$!{gp.id}">$!{gp.name}($!{gp.remark})</option>
+										#end
+									</select>
+								</div>
+							</div>
+							<div class="col-xs-5">
+								<label class="col-sm-3 control-label no-padding-right">所属分类:</label>
+								<div class="col-sm-9">
+									<select class="form-control search-query" id="type" name="typeId" onchange="Topic.Table.reload('product_grid_container');"></select>
+								</div>
+							</div>
+							<div class="col-xs-2">
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-purple btn-sm" onclick="Topic.Table.reload('product_grid_container');">
+										查询
+										<i class="icon-search icon-on-right bigger-110"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="product_grid_container">
+		<table id="sample-table-1" class="table table-striped table-bordered table-hover" style="margin-bottom:0px;">
+			<thead>
+				<tr>
+					<th class="center" width="50px;">
+						<label>
+							<input type="checkbox" class="ace" />
+							<span class="lbl"></span>
+						</label>
+					</th>
+					<th class="center" width="150px;">产品</th>
+					<th class="center" width="150px;">title</th>
+					<th class="center" width="150px;">描述</th>
+					<th class="center" width="80px;">价格</th>
+					<th class="center" width="80px;">点击数</th>
+					<th class="center" width="80px;">点赞数</th>
+					<th class="center" width="180px;">创建时间</th>
+					<th class="center">操作</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+		##分页组件
+		#showPage($page 'console/product/list' 'product_grid_container' 'PRODUCT_SEARCH' ${page.pageSize})
+	</div>
+</div>
+##初始化函数
+<SPAN class="script" page-load="Topic.Console.reloadType();" />

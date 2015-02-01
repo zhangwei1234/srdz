@@ -18,7 +18,7 @@
 			修改
 		</button>
 		
-		<button class="btn btn-app btn-danger btn-xs radius-3" onclick="Topic.Console.removeGroup();">
+		<button class="btn btn-app btn-danger btn-xs radius-3">
 			<i class="icon-trash bigger-160"></i>
 			删除
 		</button>
@@ -34,11 +34,11 @@
 						<span class="lbl"></span>
 					</label>
 				</th>
-				<th class="center">icon</th>
-				<th class="center">名称</th>
+				<th class="center" width="150px;">icon</th>
+				<th class="center" width="100px;">名称</th>
 				<th class="center">描述</th>
-				<th class="center">排序号</th>
-				<th class="center">创建时间</th>
+				<th class="center" width="50px;">排序号</th>
+				<th class="center" width="150px;">创建时间</th>
 				<th class="center">操作</th>
 			</tr>
 		</thead>

@@ -26,10 +26,15 @@
     		<div class="navbar-container" id="navbar-container">
 	    		<div class="navbar-header pull-left">
 					<a href="#" class="navbar-brand">
-						<small>
-							<i class="icon-leaf"></i>
-							秀美丽后台管理系统
-						</small>
+						##<small>
+						##	<i class="icon-leaf"></i>
+						##	秀美丽后台管理系统
+						##</small>
+						##<h1>
+							<i class="icon-leaf green"></i>
+							<span class="red">秀美丽</span>
+							<span class="white">管理控制台</span>
+						##</h1>
 					</a>
 				</div>
 				## user info------->begin
@@ -292,7 +297,7 @@
 	    		##menu container --------->begin
 	    		<div class="sidebar" id="sidebar">
 	    			<ul class="nav nav-list">
-	    				<li class="active menu"><a href="#"><i class="icon-globe"></i><span class="menu-text"> home </span></a></li>
+	    				<li class="active menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/" ><i class="icon-globe"></i><span class="menu-text"> home </span></a></li>
 	    				##topic 管理
 	    				<li>
 	    					<a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 系统管理 </span><b class="arrow icon-angle-down"></b></a>
@@ -306,8 +311,8 @@
 	    					<a href="#" class="dropdown-toggle"><i class="icon-food"></i><span class="menu-text"> 商品管理 </span><b class="arrow icon-angle-down"></b></a>
 	    					<ul class="submenu">
 	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/group/load"><i class="icon-double-angle-right"></i>分组管理</a></li>
-	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/commodity"><i class="icon-double-angle-right"></i>分类管理</a></li>
-	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/commodity"><i class="icon-double-angle-right"></i>商品管理</a></li>
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/type/"><i class="icon-double-angle-right"></i>分类管理</a></li>
+	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/product/"><i class="icon-double-angle-right"></i>商品管理</a></li>
 					    	</ul>
 				    	</li>
 			    	</ul>

@@ -1,6 +1,7 @@
 ##自定义类库,table 的分页标签
 #macro(showPage $page $pageURL $container $form $pageSize)
 	<div class="pagebar" d-container="$!container" d-url="$!pageURL" d-currentpage="$page.currentPage" d-form="$!form" d-pagesize="$!pageSize">
+		总共:($!{page.allCount})条,总共($!{page.allPage})页,当前显示($!{page.currentPage})页,每页显示($!{page.pageSize})条,当前显示($!{page.start}-$!{page.end})条
 		<ul class="pagination" style="margin:1px 0; float:right;">
 			##是否允许前翻页
 			<li #if($page.currentPage==1) class="disabled" #end><a href="javascript:void(0);" onclick="Topic.Table.Page('$!container','$!pageURL','$page.previousPage','$!form','$!pageSize');"><i class="icon-double-angle-left"></i></a></li>
@@ -9,6 +10,87 @@
 			#end
 			<li #if($page.currentPage==$page.allPage) class="disabled" #end><a href="javascript:void(0);" onclick="Topic.Table.Page('$!container','$!pageURL','$page.nextPage','$!form','$!pageSize');"><i class="icon-double-angle-right"></i></a></li>
 		</ul>
+	</div>
+#end
+
+##百度统计js代码
+#macro(jsCount)
+	<script type="text/javascript">
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fefac472bb428f45970a8f6eb3421379b' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+#end
+
+##分享
+#macro(jiathis $url $title)
+	<div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+	    <div role="main" class="ui-content" style="padding-top:0px; padding-bottom:0px;">
+	        <div class="row">
+				<div class="col-xs-4" style="padding-left:2px;padding-right:2px; margin-bottom:10px;">
+					<a target="_blank" href="http://www.jiathis.com/send/?webid=qzone&url=$!url&title=$!title&uid=2006831" class="btn btn-app btn-light no-radius btn-sm" title="分析到QQ空间" style="margin-bottom:2px;padding-top:2px;padding-bottom:2px;">
+						<div>
+							<image src="$!{base_static_url}/jiathis/qzone.gif" class="img-circle" style="width:50px;height:50px;"></image>
+						</div>
+ 						<div>
+ 							<span class="">QQ空间</span>
+					    </div>
+					</a>
+				</div>
+				<div class="col-xs-4" style="padding-left:2px;padding-right:2px;">
+					<a target="_blank"  href="http://www.jiathis.com/send/?webid=tqq&url=$!url&title=$!title&uid=2006831" class="btn btn-app btn-light no-radius btn-sm" title="分析到QQ空间" style="margin-bottom:2px;padding-top:2px;padding-bottom:2px;">
+						<div>
+							<image src="$!{base_static_url}/jiathis/qqmb.gif" class="img-circle" style="width:50px;height:50px;"></image>
+						</div>
+ 						<div>
+ 							<span class="">腾讯微博</span>
+					    </div>
+					</a>
+				</div>
+				<div class="col-xs-4" style="padding-left:2px;padding-right:2px;">
+					<a target="_blank"  href="http://www.jiathis.com/send/?webid=tsina&url=$!url&title=$!title&uid=2006831" class="btn btn-app btn-light no-radius btn-sm" title="分析到QQ空间" style="margin-bottom:2px;padding-top:2px;padding-bottom:2px;">
+						<div>
+							<image src="$!{base_static_url}/jiathis/sinaminiblog.gif" class="img-circle" style="width:50px;height:50px;"></image>
+						</div>
+ 						<div>
+ 							<span class="">新浪微博</span>
+					    </div>
+					</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4" style="padding-left:2px;padding-right:2px;">
+					<a target="_blank"  href="http://www.jiathis.com/send/?webid=renren&url=$!url&title=$!title&uid=2006831" class="btn btn-app btn-light no-radius btn-sm" title="分析到QQ空间" style="margin-bottom:2px;padding-top:2px;padding-bottom:2px;">
+						<div>
+							<image src="$!{base_static_url}/jiathis/renren.gif" class="img-circle" style="width:50px;height:50px;"></image>
+						</div>
+ 						<div>
+ 							<span class="">人人网</span>
+					    </div>
+					</a>
+				</div>
+				<div class="col-xs-4" style="padding-left:2px;padding-right:2px;">
+					<a target="_blank"  href="http://www.jiathis.com/send/?webid=douban&url=$!url&title=$!title&uid=2006831" class="btn btn-app btn-light no-radius btn-sm" title="分析到QQ空间" style="margin-bottom:2px;padding-top:2px;padding-bottom:2px;">
+						<div>
+							<image src="$!{base_static_url}/jiathis/douban.gif" class="img-circle" style="width:50px;height:50px;"></image>
+						</div>
+ 						<div>
+ 							<span class="">豆瓣</span>
+					    </div>
+					</a>
+				</div>
+				<div class="col-xs-4" style="padding-left:2px;padding-right:2px;">
+					<a target="_blank"  href="http://www.jiathis.com/send/?webid=xiaoyou&url=$!url&title=$!title&uid=2006831" class="btn btn-app btn-light no-radius btn-sm" title="分析到QQ空间" style="margin-bottom:2px;padding-top:2px;padding-bottom:2px;">
+						<div>
+							<image src="$!{base_static_url}/jiathis/qqxiaoyou.gif" class="img-circle" style="width:50px;height:50px;"></image>
+						</div>
+ 						<div>
+ 							<span class="">朋友网</span>
+					    </div>
+					</a>
+				</div>
+			</div>
+	        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">取消</a>
+	    </div>
 	</div>
 #end
 

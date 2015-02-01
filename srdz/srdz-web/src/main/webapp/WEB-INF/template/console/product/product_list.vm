@@ -1,0 +1,62 @@
+##产品列表信息
+<table id="sample-table-1" class="table table-striped table-bordered table-hover" style="margin-bottom:0px;">
+	<thead>
+		<tr>
+			<th class="center" width="50px;">
+				<label>
+					<input type="checkbox" class="ace product_check" onclick="Topic.Table.checkbox('product_check');"/>
+					<span class="lbl"></span>
+				</label>
+			</th>
+			<th class="center" width="150px;">产品</th>
+			<th class="center" width="150px;">title</th>
+			<th class="center" width="150px;">描述</th>
+			<th class="center" width="80px;">价格</th>
+			<th class="center" width="80px;">点击数</th>
+			<th class="center" width="80px;">点赞数</th>
+			<th class="center" width="180px;">创建时间</th>
+			<th class="center">操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		#foreach($p in $page.items)
+			<tr>
+				<td class="center">
+					<label>
+						<input type="checkbox" class="ace product_check_item" data-id="$!p.id"/>
+						<span class="lbl"></span>
+					</label>
+				</td>
+				<td class="center" >
+					<div class="profile-activity clearfix">
+						<div>
+							<div>
+								<a href="$!{p.productUrl}" target="_blank">
+									<img style="max-width:100px;" alt="$!{p.title}($!{p.remark})" src="$!{p.imageUrl}" />
+								</a>
+							</div>
+						</div>
+					</div>
+				</td>
+				<td class="center">$!{p.title}</td>
+				<td class="center">$!{p.remark}</td>
+				<td class="center">￥$!{p.price}</td>
+				<td class="center">$!{p.clickCount}</td>
+				<td class="center">$!{p.praiseCount}</td>
+				<td class="center">$tool.dateFormat($!{p.createTime})</td>
+				<td class="center">
+					<button class="btn btn-primary btn-xs" onclick="Topic.Console.loadUpdateProduct('$!{p.id}');">
+						<i class="icon-edit bigger-100"></i>
+						修改
+					</button>
+					<button class="btn btn-danger btn-xs" onclick="Topic.Console.delProduct('$!{p.id}');">
+						<i class="icon-trash bigger-100"></i>
+						删除
+					</button>
+				</td>
+			</tr>
+		#end
+	</tbody>
+</table>
+##分页组件
+#showPage($page 'console/product/list' 'product_grid_container' 'PRODUCT_SEARCH' ${page.pageSize})

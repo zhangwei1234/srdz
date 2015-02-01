@@ -1,0 +1,105 @@
+##导航条
+<div class="breadcrumbs" id="breadcrumbs">
+	<ul class="breadcrumb">
+		<li><i class="icon-globe"></i><a href="#">type</a></li>
+		<li class="active">home</li>
+	</ul>
+</div>
+## content
+<div class="page-content">
+	<div>
+		<div class="row" style="height:50px;">
+			<div class="col-xs-4">
+				<button class="btn btn-app btn-success btn-xs radius-3" onclick="Topic.Console.loadNewType()">
+					<i class="icon-save bigger-160"></i>
+					新增
+				</button>
+			</div>
+			<div class="col-xs-8">
+				<div class="input-group">
+					<select class="form-control search-query" id="group">
+						#foreach($gp in $groups)
+							<option value="$!{gp.id}" #if($!group==$!{gp.id})selected="true" #end >$!{gp.name}($!{gp.remark})</option>
+						#end
+					</select>
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-purple btn-sm" onclick="Topic.Console.loadType();">
+							查询
+							<i class="icon-search icon-on-right bigger-110"></i>
+						</button>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="user_grid_container">
+		<table id="sample-table-1" class="table table-striped table-bordered table-hover" style="margin-bottom:0px;">
+		<thead>
+			<tr>
+				<th class="center" width="50px;">
+					<label>
+						<input type="checkbox" class="ace" />
+						<span class="lbl"></span>
+					</label>
+				</th>
+				<th class="center" width="110px;">icon</th>
+				<th class="center" width="100px;">名称</th>
+				<th class="center" width="150px;">描述</th>
+				<th class="center" width="80px;">所属分类</th>
+				<th class="center" width="80px;">显示方式</th>
+				<th class="center" width="80px;">排序号</th>
+				<th class="center" width="180px;">创建时间</th>
+				<th class="center">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			#foreach($type in $types)
+				<tr>
+				<td class="center">
+					<label>
+						<input type="checkbox" class="ace" id="index-$!{velocityCount}" gid="$!{type.id}"/>
+						<span class="lbl"></span>
+					</label>
+				</td>
+				<td class="center" >
+					<div class="profile-activity clearfix">
+						<div>
+							<div>
+								<a>
+									<img style="max-width:100px;" alt="$!{type.remark}" src="$!{type.iconUrl}" />
+								</a>
+							</div>
+						</div>
+					</div>
+				</td>
+				<td class="center">$!{type.name}</td>
+				<td class="center">$!{type.remark}</td>
+				<td class="center">$!{type.groupId}</td>
+				<td class="center">#if($!type.displayType==1) 图标展现 #elseif($!type.displayType==2) 列表展现 #end</td>
+				<td class="center">$!{type.orderNo}</td>
+				<td class="center">$tool.dateFormat($!{type.createTime})</td>
+				<td class="center">
+					<button class="btn btn-primary btn-xs" onclick="Topic.Console.loadTypeUpdate('$!{type.id}');">
+						<i class="icon-edit bigger-100"></i>
+						修改
+					</button>
+					<button class="btn btn-inverse btn-xs" onclick="Topic.Console.ascTdescType($!{velocityCount},1);">
+						<i class="icon-chevron-up bigger-100"></i>
+						升序
+					</button>
+					<button class="btn btn-purple btn-xs" onclick="Topic.Console.ascTdescType($!{velocityCount},-1);">
+						<i class="icon-chevron-down bigger-100"></i>
+						降序
+					</button>
+					<button class="btn btn-danger btn-xs" onclick="Topic.Console.removeType('$!{type.id}');">
+						<i class="icon-trash bigger-100"></i>
+						删除
+					</button>
+				</td>
+			</tr>
+			#set( $before = "$!{group.id}")
+			#end
+		</tbody>
+	</table>
+	</div>
+</div>

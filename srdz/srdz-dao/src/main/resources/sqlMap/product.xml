@@ -10,6 +10,8 @@
 		<result property="remark" column="remark"/>
 		<result property="price" column="price"/>
 		<result property="imageUrl" column="image_url"/>
+		<result property="imageWidth" column="image_width"/>
+		<result property="imageHeight" column="image_height"/>
 		<result property="productUrl" column="product_url"/>
 		<result property="clickCount" column="click_count"/>
 		<result property="praiseCount" column="praise_count"/>
@@ -29,6 +31,8 @@
 		a.remark,
 		a.price,
 		a.image_url,
+		a.image_width,
+		a.image_height,
 		a.product_url,
 		a.click_count,
 		a.praise_count,
@@ -77,9 +81,9 @@
 	
 	<!-- 添加商品信息 -->
 	<insert id="ADD_PRODUCT" parameterType="product" useGeneratedKeys="true" keyProperty="id">
-		insert into web_product(title,remark,price,image_url,product_url,create_time)
+		insert into web_product(title,remark,price,image_url,image_width,image_height,product_url,create_time)
 		values(
-			#{title},#{remark},#{price},#{imageUrl},#{productUrl},#{createTime}
+			#{title},#{remark},#{price},#{imageUrl},#{imageWidth},#{imageHeight},#{productUrl},#{createTime}
 		)
 	</insert>
 	
@@ -91,9 +95,12 @@
 			<if test="remark != null and remark != '' ">a.remark=#{remark},</if>
 			<if test="price != null and price != 0 ">a.price=#{price},</if>
 			<if test="imageUrl != null and imageUrl != '' ">a.image_url=#{imageUrl},</if>
+			<if test="imageWidth != null and imageWidth != 0 ">a.image_width=#{imageWidth},</if>
+			<if test="imageHeight != null and imageHeight != 0 ">a.image_height=#{imageHeight},</if>
 			<if test="productUrl != null and productUrl != '' ">a.product_url=#{productUrl},</if>
-			<if test="updateTime != null ">a.update_time=#{name},</if>
+			<if test="updateTime != null ">a.update_time=#{updateTime},</if>
 		</set>
+		where a.id = #{id}
 	</update>
 	
 	<!-- 增加一次商品添加数 -->
@@ -108,12 +115,12 @@
 	
 	<!-- 删除一个商品 -->
 	<delete id="DELETE_PRODUCT" parameterType="int">
-		delete from web_product a where a.id=#{val}
+		delete from web_product where id=#{val}
 	</delete>
 	
 	<!-- 删除商品的所有分类信息 -->
 	<delete id="DELETE_PRODUCT_TYPE_ATTR" parameterType="int">
-		delete from web_product_type a where a.product_id = #{val}
+		delete from web_product_type  where product_id = #{val}
 	</delete>
 	
 	<!-- 获取一个商品对应的所有分类信息 -->
@@ -126,7 +133,7 @@
 		insert into web_product_type(product_id,type_id)
 		values
 		<foreach collection="list" separator="," item="item" index="index">
-			(#{productId},#{typeId})
+			(#{item.productId},#{item.typeId})
 		</foreach>
 	</insert>
 </mapper>

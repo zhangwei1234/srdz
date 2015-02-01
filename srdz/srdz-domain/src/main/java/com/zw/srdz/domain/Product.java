@@ -22,6 +22,8 @@ public class Product {
 	private String remark;
 	private double price;
 	private String imageUrl;
+	private double imageWidth;
+	private double imageHeight;
 	private String productUrl;
 	private int clickCount;
 	private int praiseCount;
@@ -87,6 +89,18 @@ public class Product {
 	}
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+	public double getImageWidth() {
+		return imageWidth;
+	}
+	public void setImageWidth(double imageWidth) {
+		this.imageWidth = imageWidth;
+	}
+	public double getImageHeight() {
+		return imageHeight;
+	}
+	public void setImageHeight(double imageHeight) {
+		this.imageHeight = imageHeight;
 	}
 	
 }

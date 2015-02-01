@@ -6,11 +6,17 @@ Namespace.register("Topic.Table");
 		if(container == null || container == ""){alert("参数不合法,container不能为空");return;}
 		if(url == null || url == ""){alert("参数不合法,url不能为空");return;}
 		if(currentPage == null || currentPage == ""){alert("参数不合法,currentPage不能为空");return;}
-		if(pageSize == null || pageSize == ""){alert("参数不合法,container不能为空");return;}
+		if(pageSize == null || pageSize == ""){alert("参数不合法,pageSize不能为空");return;}
 		var param = {};
-		if(form !=null && form !=""){param = $('form[name='+form+']').serialize();}
-		param["currentPage"] = currentPage;
-		param["pageSize"] = pageSize;
+		if(form !=null && form !=""){
+			param = $('form[name='+form+']').serialize();
+			param+="&currentPage="+currentPage;
+			param+="&pageSize="+pageSize;
+		}else{
+			param["currentPage"] = currentPage;
+			param["pageSize"] = pageSize;
+		}
+		
 		Topic.loadContainer(container,true,url,param,null);
 	};
 	//重新加载当前页
@@ -45,6 +51,15 @@ Namespace.register("Topic.Table");
 })();
 Namespace.register("Topic.Console");
 (function(){
+	Topic.Console.getCheckAll = function(cls){
+		var str = "";
+		var array = $("."+cls+":checked");
+		for(var i=0;i<array.length; i++){
+			str += $(array[i]).attr("data-id")+",";
+		}
+		return str;
+	};
+	
 	Topic.Console.loadNewGroup = function(){
 		Topic.toPage(true,"console/group/loadNew",{},null);
 	};
@@ -90,5 +105,146 @@ Namespace.register("Topic.Console");
 			alert(msg);
 			Topic.goBack('console/group/load');
 		},null);
+	};
+	
+	Topic.Console.loadType = function (){
+		var groupId = $("#group").val();
+		if(groupId == "" || typeof(groupId) == "undefined"){
+			Topic.goBack('console/type/');
+		}else{
+			Topic.goBack('console/type/'+groupId);
+		}
+	};
+	
+	Topic.Console.loadNewType = function(){
+		Topic.toPage(true,"console/type/loadNew",{},null);
+	};
+	
+	Topic.Console.loadTypeUpdate = function(typeId){
+		Topic.toPage(true,"console/type/"+typeId+"/loadUpdate",{},null);
+	};
+	
+	Topic.Console.removeType = function(id){
+		Topic.DeleteAjax("console/type/"+id,{},true,function(msg){
+			alert(msg);
+			Topic.Console.loadType();
+		},null);
+	};
+	
+	Topic.Console.ascTdescType = function(index,flag){
+		var desc = "";
+		var asc = "";
+		if(flag == 1){//升序
+			asc = $("#index-"+index).attr("gid");
+			desc = $("#index-"+(index-1)).attr("gid");
+		}else{//降序
+			asc = $("#index-"+(index+1)).attr("gid");
+			desc = $("#index-"+index).attr("gid");
+		}
+		if(desc == "" || typeof(desc) == "undefined"){alert("已经最高了,不能再升了");return;}
+		if(asc == "" || typeof(asc) == "undefined"){alert("已经最低了,不能再降了");return;}
+		
+		Topic.PutAjax("console/type/"+asc+"/"+desc, {}, true, function(msg){
+			alert(msg);
+			Topic.Console.loadType();
+		},null);
+	};
+	
+	Topic.Console.saveType = function(){
+		Topic.PostAjaxForm("TYPE_ADD",function(msg){
+			alert(msg);
+			Topic.Console.loadType();
+		},function(msg){
+			alert(msg);
+		});
+	};
+	Topic.Console.updateType = function(){
+		Topic.PostAjaxForm("TYPE_UPDATE",function(msg){
+			alert(msg);
+			Topic.Console.loadType();
+		},function(msg){
+			alert(msg);
+		});
+	};
+	
+	Topic.Console.reloadType = function(){
+		$("#type").empty();
+		var groupId = $("#group").val();
+		Topic.GetAjax("console/type/"+groupId,{},false,function(msg,response){
+			var types = response["types"];
+			for(var i=0;i<types.length;i++){
+				var type = types[i];
+				$("#type").append("<option value='"+type.id+"'>"+type.name+"("+type.remark+")</option>");
+			}
+			//刷新数据列表
+			Topic.Table.reload("product_grid_container");
+		},null);
+	};
+	
+	Topic.Console.loadProduct = function(){
+		Topic.goBack('console/product/');
+	};
+	
+	Topic.Console.loadNewProduct = function(){
+		Topic.toPage(true,"console/product/loadNew",{},null);
+	};
+	
+	//获取图片的真是size
+	Topic.Console.imageSize = function (){
+		$("<img/>").attr("src", $("#product_image").val()).load(function() {
+			$("#product_image_height").val(this.height);
+			$("#product_image_width").val(this.width);
+		});
+	};
+	
+	Topic.Console.saveProduct = function(){
+		//获取所有属性信息
+		var types = Topic.Console.getCheckAll("type_checked");
+		if (types == ""){alert("请选择商品所属的分类");return;}
+		if($("#product_image_height").val() == ""){alert("请先获取图片尺寸");return;};
+		if($("#product_image_width").val() == ""){alert("请先获取图片尺寸");return;};
+		$("#type_ids").val(types);
+		Topic.PostAjaxForm("PRODUCT_ADD",function(msg){
+			alert(msg);
+			Topic.Console.loadProduct();
+		},function(msg){
+			alert(msg);
+		});
+	};
+	
+	Topic.Console.loadUpdateProduct = function(id){
+		Topic.toPage(true,"console/product/"+id+"/loadUpdate",{},null);
+	};
+	
+	Topic.Console.updateProduct = function(){
+		//获取所有属性信息
+		var types = Topic.Console.getCheckAll("type_checked");
+		if (types == ""){alert("请选择商品所属的分类");return;}
+		if($("#product_image_height").val() == ""){alert("请先获取图片尺寸");return;};
+		if($("#product_image_width").val() == ""){alert("请先获取图片尺寸");return;};
+		$("#type_ids").val(types);
+		Topic.PostAjaxForm("PRODUCT_UPDATE",function(msg){
+			alert(msg);
+			Topic.Console.loadProduct();
+		},function(msg){
+			alert(msg);
+		});
+	};
+	
+	Topic.Console.batchDelProduct = function(ids){
+		if(ids == ""){//批量删除
+			ids = Topic.Table.getCheckAll("product_check");
+		}
+		
+		if(ids == ""){alert("请选择要删除的商品数据");return;}
+		
+		Topic.DeleteAjax("console/product/"+ids,{},true,function(msg){
+			alert(msg);
+			Topic.Table.reload('product_grid_container');
+		},null);
+	};
+	
+	Topic.Console.delProduct = function(id){
+		Topic.Console.batchDelProduct(id+",");
 	};
 })();

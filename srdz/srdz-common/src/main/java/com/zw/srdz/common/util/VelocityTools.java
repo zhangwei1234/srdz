@@ -30,7 +30,7 @@ public class VelocityTools {
 	 * @return
 	 */
 	@SuppressWarnings("all")
-	public static String isExists(Map data,String key){
+	public static String isExists(Map data,Object key){
 		if(data == null){
 			return "false";
 		}

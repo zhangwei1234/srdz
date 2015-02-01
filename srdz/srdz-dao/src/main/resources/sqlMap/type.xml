@@ -10,6 +10,7 @@
 		<result property="remark" column="remark"/>
 		<result property="groupId" column="group_id"/>
 		<result property="orderNo" column="order_no"/>
+		<result property="displayType" column="display_type"/>
 		<result property="iconUrl" column="icon_url"/>
 		<result property="createTime" column="create_time"/>
 		<result property="updateTime" column="update_time"/>
@@ -21,6 +22,7 @@
 		a.remark,
 		a.group_id,
 		a.order_no,
+		a.display_type,
 		a.icon_url,
 		a.create_time,
 		a.update_time
@@ -33,20 +35,20 @@
 	
 	<!-- 新增分类信息 -->
 	<insert id="ADD_TYPE" parameterType="type" useGeneratedKeys="true" keyProperty="id">
-		insert into web_type(name,remark,group_id,order_no,icon_url,create_time)
+		insert into web_type(name,remark,group_id,order_no,display_type,icon_url,create_time)
 		values(
-		#{name},#{remark},#{groupId},#{orderNo},#{iconUrl},#{createTime}
+		#{name},#{remark},#{groupId},#{orderNo},#{displayType},#{iconUrl},#{createTime}
 		)
 	</insert>
 	
 	<!-- 查询所有分类信息 -->
 	<select id="QUERY_TYPES" resultMap="typeM">
-		select <include refid="QUERY_ALL"/> from web_type a
+		select <include refid="QUERY_ALL"/> from web_type a order by a.order_no desc
 	</select>
 	
 	<!-- 根据分组查询分类信息 -->
 	<select id="QUERY_TYPES_BY_GROUP" parameterType="int" resultMap="typeM">
-		select <include refid="QUERY_ALL"/> from web_type a where a.group_id=#{val}
+		select <include refid="QUERY_ALL"/> from web_type a where a.group_id=#{val} order by a.order_no desc
 	</select>
 	
 	<!-- 删除type -->
@@ -62,6 +64,7 @@
 			<if test="remark != null and remark != '' "> a.remark = #{remark},</if>
 			<if test="groupId != null and groupId != 0 "> a.group_id = #{groupId},</if>
 			<if test="orderNo != null and orderNo != 0 "> a.order_no = #{orderNo},</if>
+			<if test="displayType != null and displayType != 0 "> a.display_type = #{displayType},</if>
 			<if test="iconUrl != null and iconUrl != '' "> a.icon_url = #{iconUrl},</if>
 			<if test="updateTime != null"> a.update_time = #{updateTime},</if>
 		</set>

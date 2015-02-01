@@ -12,7 +12,7 @@ import com.google.common.collect.Lists;
 @SuppressWarnings("unused")
 public class Page {
 
-	private final static int PAGEBAR_MAX_SIZE = 5;//最多显示多少个分页按钮
+	private final static int PAGEBAR_MAX_SIZE = 10;//最多显示多少个分页按钮
 	private int previousPage;//前一页
 	private int nextPage;//下一页
 	private int allCount;//总条数
@@ -41,7 +41,7 @@ public class Page {
 	
 	public Page(int currentPage){
 		this.currentPage = currentPage;
-		this.pageSize = 10;
+		this.pageSize = 20;
 	}
 	
 	public int getPageSize() {
@@ -67,7 +67,7 @@ public class Page {
 		return (currentPage-1)*pageSize;
 	}
 	public int getEnd() {
-		return currentPage*10;
+		return currentPage*pageSize;
 	}
 	
 	public int getAllCount() {

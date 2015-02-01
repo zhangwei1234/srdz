@@ -1,6 +1,7 @@
 package com.zw.srdz.domain;
 
 import java.util.Date;
+import java.util.List;
 
 /**
 * 项目名称：srdz-domain   
@@ -22,6 +23,7 @@ public class Type {
 	private String remark;
 	private int groupId;
 	private int orderNo;
+	private int displayType;
 	private String iconUrl;
 	private Date createTime;
 	private Date updateTime;
@@ -75,4 +77,22 @@ public class Type {
 		this.updateTime = updateTime;
 	}
 	
+	public int getDisplayType() {
+		return displayType;
+	}
+	
+	public void setDisplayType(int displayType) {
+		this.displayType = displayType;
+	}
+	
+	public boolean isChecked(List<ProductTypeAttr> attrs){
+		if(null != attrs){
+			for(ProductTypeAttr attr: attrs){
+				if(attr.getTypeId() == this.id){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }

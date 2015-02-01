@@ -1,0 +1,75 @@
+##导航条
+<div class="breadcrumbs" id="breadcrumbs">
+	<ul class="breadcrumb">
+		<li><i class="icon-globe"></i><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/type/">分类管理</a></li>
+		<li class="active">修改</li>
+	</ul>
+</div>
+## content
+<div class="page-content">
+	<form action="console/type/update" method="POST" name="TYPE_UPDATE" class="form-horizontal">
+		<input type="hidden" name="id" value="$!{type.id}"/>
+		<div class="form-group" style="height:30px;">
+			<label class="col-sm-2 control-label no-padding-right" for="form-field-1">分类名称 </label>
+			<div class="col-sm-10">
+				<input type="text" id="form-field-1" placeholder="分类名称,0-10个字符" class="col-xs-10 col-sm-12" name="name" value="$!{type.name}"/>
+			</div>
+		</div>
+		<div class="form-group" style="height:30px;">
+			<label class="col-sm-2 control-label no-padding-right" for="form-field-1">分类描述 </label>
+			<div class="col-sm-10">
+				<input type="text" id="form-field-1" placeholder="分类描述,0-50个字符" class="col-xs-10 col-sm-12" name="remark" value="$!{type.remark}"/>
+			</div>
+		</div>
+		<div class="form-group" style="height:30px;">
+			<label class="col-sm-2 control-label no-padding-right" for="form-field-1">所属分组 </label>
+			<div class="col-sm-10">
+				<select class="col-xs-10 col-sm-12" id="group" name="groupId">
+					#foreach($gp in $groups)
+						<option value="$!{gp.id}" #if($!type.groupId==$!gp.id) selected="true" #end>$!{gp.name}($!{gp.remark})</option>
+					#end
+				</select>
+			</div>
+		</div>
+		<div class="form-group" style="height:30px;">
+			<label class="col-sm-2 control-label no-padding-right" for="form-field-1">显示方式 </label>
+			<div class="col-sm-10">
+				<div class="radio">
+					<label>
+						<input name="displayType" type="radio" class="ace" value="1" #if($!{type.displayType}==1) checked="true" #end/>
+						<span class="lbl">图标显示</span>
+					</label>
+					<label>
+						<input name="displayType" type="radio" class="ace" value="2" #if($!{type.displayType}==2) checked="true" #end/>
+						<span class="lbl">列表显示</span>
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-group" style="height:30px;">
+			<label class="col-sm-2 control-label no-padding-right" for="form-field-1">排序号 </label>
+			<div class="col-sm-10">
+				<input type="text" id="form-field-1" placeholder="排序号,数字越大排序越靠前" class="col-xs-10 col-sm-12" name="orderNo" value="$!{type.orderNo}"/>
+			</div>
+		</div>
+		<div class="form-group" style="height:30px;">
+			<label class="col-sm-2 control-label no-padding-right" for="form-field-1">icon </label>
+			<div class="col-sm-10">
+				<input type="text" id="form-field-1" placeholder="图标url地址" class="col-xs-10 col-sm-12" name="iconUrl" value="$!{type.iconUrl}"/>
+			</div>
+		</div>
+	</form>
+	##button
+		<div class="clearfix form-actions" >
+			<div class="col-md-offset-3 col-md-9" >
+				<button class="btn btn-success" onclick="Topic.Console.updateType();">
+					<i class="icon-save align-top bigger-125"></i>
+					保存
+				</button>
+				<button class="btn btn-danger" onclick="Topic.Console.loadType();">
+					<i class="icon-reply align-top bigger-125"></i>
+					取消
+				</button>
+			</div>
+		</div>
+</div>
