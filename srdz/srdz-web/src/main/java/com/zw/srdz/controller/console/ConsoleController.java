@@ -28,4 +28,9 @@ public class ConsoleController extends BaseController{
 	public ModelAndView index(HttpServletRequest req, HttpServletResponse res) throws Exception{
 		return toVmConsole("console/home", null);
 	}
+	
+	@RequestMapping(value="/home", method={RequestMethod.POST})
+	public ModelAndView home(HttpServletRequest req, HttpServletResponse res) throws Exception{
+		return toVm("console/home", null);
+	}
 }

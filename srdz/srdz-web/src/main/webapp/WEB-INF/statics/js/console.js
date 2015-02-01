@@ -191,10 +191,14 @@ Namespace.register("Topic.Console");
 	
 	//获取图片的真是size
 	Topic.Console.imageSize = function (){
-		$("<img/>").attr("src", $("#product_image").val()).load(function() {
-			$("#product_image_height").val(this.height);
-			$("#product_image_width").val(this.width);
-		});
+		try{
+			$("<img/>").attr("src", $("#product_image").val()).load(function() {
+				$("#product_image_height").val(this.height);
+				$("#product_image_width").val(this.width);
+			});
+		}catch(e){
+			alert("获取图片尺寸失败");
+		}
 	};
 	
 	Topic.Console.saveProduct = function(){
