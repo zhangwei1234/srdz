@@ -10,6 +10,7 @@
 		<result property="remark" column="remark"/>
 		<result property="orderNo" column="order_no"/>
 		<result property="iconUrl" column="icon_url"/>
+		<result property="label" column="label"/>
 		<result property="createTime" column="create_time"/>
 		<result property="updateTime" column="update_time"/>
 	</resultMap>
@@ -20,6 +21,7 @@
 		a.remark,
 		a.order_no,
 		a.icon_url,
+		a.label,
 		a.create_time,
 		a.update_time
 	</sql>
@@ -31,9 +33,9 @@
 	
 	<!-- 新增分组信息 -->
 	<insert id="ADD_GROUP" parameterType="group" useGeneratedKeys="true" keyProperty="id">
-		insert into web_group(name,remark,order_no,icon_url,create_time)
+		insert into web_group(name,remark,order_no,icon_url,label,create_time)
 		values(
-		#{name},#{remark},#{orderNo},#{iconUrl},#{createTime}
+		#{name},#{remark},#{orderNo},#{iconUrl},#{label},#{createTime}
 		)
 	</insert>
 	
@@ -55,6 +57,7 @@
 			<if test="remark != null and remark != '' "> a.remark = #{remark},</if>
 			<if test="orderNo != null and orderNo != 0 "> a.order_no = #{orderNo},</if>
 			<if test="iconUrl != null and iconUrl != '' "> a.icon_url = #{iconUrl},</if>
+			<if test="label != null and label != '' "> a.label = #{label},</if>
 			<if test="updateTime != null"> a.update_time = #{updateTime},</if>
 		</set>
 		where a.id = #{id}

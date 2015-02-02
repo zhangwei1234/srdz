@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.zw.srdz.domain.Advertising;
 import com.zw.srdz.domain.Group;
 import com.zw.srdz.domain.Type;
 
@@ -21,12 +22,17 @@ public class CacheManager {
 	private static CacheManager instance;
 	private List<Group> groups;
 	private Map<Object, List<Type>> types;
+	private List<Advertising> advertising;
+	
 	private ReadWriteLock groupsLock = new ReentrantReadWriteLock();
 	private ReadWriteLock typesLock = new ReentrantReadWriteLock();
+	private ReadWriteLock advertisingLock = new ReentrantReadWriteLock();
 	
 	private CacheManager(){
 		this.groups = Lists.newArrayList();
 		this.types = Maps.newHashMap();
+		this.advertising = Lists.newArrayList();
+		
 		log.info("cache manager init");
 	}
 	
@@ -88,6 +94,22 @@ public class CacheManager {
 		try {
 			groupsLock.readLock().lock();
 			return this.groups;
+		} catch (Exception e) {
+			throw e;
+		}finally{
+			groupsLock.readLock().unlock();
+		}
+	}
+	
+	public Group getGroup(int groupId) throws Exception{
+		try {
+			groupsLock.readLock().lock();
+			for(Group gp : this.groups){
+				if(gp.getId() == groupId){
+					return gp;
+				}
+			}
+			return null;
 		} catch (Exception e) {
 			throw e;
 		}finally{
@@ -160,6 +182,44 @@ public class CacheManager {
 			throw e;
 		}finally{
 			typesLock.readLock().unlock();
+		}
+	}
+	
+	/**
+	 * 初始化广告数据到缓存
+	 * @param list
+	 * @throws Exception
+	 */
+	public void initAdvertising(List<Advertising> list) throws Exception{
+		try {
+			this.advertisingLock.writeLock().lock();
+			
+			this.advertising.clear();
+			this.advertising.addAll(list);
+			
+		} catch (Exception e) {
+			throw e;
+		}finally{
+			this.advertisingLock.writeLock().unlock();
+		}
+	}
+	
+	public List<Advertising> getAdvertising(int location) throws Exception{
+		try {
+			this.advertisingLock.readLock().lock();
+			
+			List<Advertising> list = Lists.newArrayList();
+			for(Advertising ad : this.advertising){
+				if(ad.getStatus() == Advertising.STATUS_ACTIVE && ad.getLocation() == location){
+					list.add(ad);
+				}
+			}
+			
+			return list;
+		} catch (Exception e) {
+			throw e;
+		}finally{
+			this.advertisingLock.readLock().unlock();
 		}
 	}
 }

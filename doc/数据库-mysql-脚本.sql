@@ -1,6 +1,22 @@
 ======================================================
 秀美丽网站数据库脚本
 ======================================================
+##广告系统
+create table web_advertising(
+	id int(11) not null AUTO_INCREMENT,
+	name		varchar(100)	not null 			comment '广告名称',
+	image_url	varchar(400)	not null			comment '广告图片地址',
+	link_url	varchar(400)	not null			comment '广告链接地址',
+	location	int(2)			not null default 1	comment	'广告展示位置(1:主页)',
+	display		int(2)			not null default 1	comment '广告展示方式(1:banner 图)',
+	start_time	datetime		not null			comment '广告生效开始时间',
+	end_time	datetime		not null			comment '广告生效结束时间',
+	status		int(1)			not null default 1	comment '广告状态(1:生效,-1:禁用)',
+	create_user	int(11)			not null			comment '广告录入用户',
+	create_time	datetime		not null			comment '创建时间',
+	primary key(id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE INDEX ik_advertising_location ON web_advertising(location);
 
 ### 用户表
 create table web_user (
@@ -25,6 +41,7 @@ create table web_group (
 	remark		varchar(50)	not null	comment	'分组描述',
 	order_no	int(2)		not null	comment '排序号',
 	icon_url	varchar(200) not null	comment	'icon地址',
+	label		varchar(5)	 not null	default '' comment '分组标签,如果为空则不显示',
 	create_time	datetime	not null	comment '创建时间',
 	update_time	datetime	null		comment '修改时间',
 	primary key (id)
@@ -37,7 +54,8 @@ create table web_type (
 	remark		varchar(50) not null	comment '分类描述',
 	group_id	int(11)		not null	comment	'所属主',
 	order_no	int(2)		not null	comment '排序号',
-	display_type	int(1)		not null	comment '显示方式(1:图标,2:列表)',
+	display_type	int(1)	not null	comment '显示方式(1:图标,2:列表)',
+	order_type	int(1)      not null	comment '商品排序方式(1:按照创建时间倒序,2:按照点击量倒序)',
 	icon_url	varchar(200) not null	comment	'icon地址',
 	create_time	datetime	not null	comment '创建时间',
 	update_time	datetime	null		comment '修改时间',

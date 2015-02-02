@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.zw.srdz.dao.AdvertisingDao">
+	<!-- 定义实体映射 -->
+	<resultMap type="advertising" id="advertisingM">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="imageUrl" column="image_url"/>
+		<result property="linkUrl" column="link_url"/>
+		<result property="location" column="location"/>
+		<result property="display" column="display"/>
+		<result property="startTime" column="start_time"/>
+		<result property="endTime" column="end_time"/>
+		<result property="status" column="status"/>
+		<result property="createUser" column="create_user"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="QUERY_ALL">
+		a.id,
+		a.name,
+		a.image_url,
+		a.link_url,
+		a.location,
+		a.display,
+		a.start_time,
+		a.end_time,
+		a.status,
+		a.create_user,
+		a.create_time
+	</sql>
+	
+	<!-- 根据id查询广告信息 -->
+	<select id="QUERY_BY_ID" parameterType="int" resultMap="advertisingM">
+		select <include refid="QUERY_ALL"/> from web_advertising a where a.id=#{val}
+	</select>
+	
+	<!-- 新增广告信息 -->
+	<insert id="ADD_ADVERTISING" parameterType="advertising" useGeneratedKeys="true" keyProperty="id">
+		insert into web_advertising(name,image_url,link_url,location,display,start_time,end_time,status,create_user,create_time)
+		values(
+		#{name},#{imageUrl},#{linkUrl},#{location},#{display},#{startTime},#{endTime},#{status},#{createUser},#{createTime}
+		)
+	</insert>
+	
+	<!-- 修改一个广告数据信息 -->
+	<update id="UPDATE_ADVERTISING" parameterType="advertising">
+		update web_advertising a 
+		<set>
+			<if test="name !=null and name != '' ">a.name=#{name}</if>
+			<if test="imageUrl !=null and imageUrl != '' ">a.image_url=#{imageUrl}</if>
+			<if test="linkUrl !=null and linkUrl != '' ">a.link_url=#{linkUrl}</if>
+			<if test="location !=null and location != 0 ">a.location=#{location}</if>
+			<if test="display !=null and display != 0 ">a.display=#{display}</if>
+			<if test="startTime !=null ">a.start_time=#{name}</if>
+			<if test="endTime !=null ">a.end_time=#{endTime}</if>
+		</set>
+		where a.id = #{id}
+	</update>
+	
+	<!-- 查询所有广告信息 -->
+	<select id="QUERY_ADVERTISING" resultMap="advertisingM">
+		select <include refid="QUERY_ALL"/> from web_advertising a where a.status=1
+	</select>
+	
+	<!-- 批量删除广告信息-->
+	<delete id="DELETE_ADVERTISING" parameterType="java.util.List">
+		delete from web_advertising where id in
+		<foreach collection="list" open="(" separator="," close=")" item="item" index="index" >
+			#{item}
+		</foreach>
+	</delete>
+	
+	<!-- 批量启用 -->
+	<update id="UPDATE_ADVERTISING_ACTIVE" parameterType="java.util.List">
+		update web_advertising a set a.status=1 where a.id in
+		<foreach collection="list" open="(" separator="," close=")" item="item" index="index" >
+			#{item}
+		</foreach>
+	</update>
+	
+	<!-- 批量禁用 -->
+	<update id="UPDATE_ADVERTISING_DISABLED" parameterType="java.util.List">
+		update web_advertising a set a.status=-1 where a.id in
+		<foreach collection="list" open="(" separator="," close=")" item="item" index="index" >
+			#{item}
+		</foreach>
+	</update>
+	
+</mapper>

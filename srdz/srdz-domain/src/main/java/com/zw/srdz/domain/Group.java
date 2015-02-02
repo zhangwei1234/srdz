@@ -23,6 +23,7 @@ public class Group {
 	private String remark;
 	private int orderNo;
 	private String iconUrl;
+	private String label;
 	private Date createTime;
 	private Date updateTime;
 	private List<Type> types;
@@ -68,6 +69,13 @@ public class Group {
 	}
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+	
+	public String getLabel() {
+		return null == label ? "" : label;
+	}
+	public void setLabel(String label) {
+		this.label = label;
 	}
 	
 	public List<Type> getTypes() {

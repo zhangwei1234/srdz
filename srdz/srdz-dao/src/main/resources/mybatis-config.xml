@@ -21,6 +21,7 @@
 		<typeAlias type="com.zw.srdz.domain.Type" alias="type"/>
 		<typeAlias type="com.zw.srdz.domain.Product" alias="product"/>
 		<typeAlias type="com.zw.srdz.domain.ProductTypeAttr" alias="attrType" />
+		<typeAlias type="com.zw.srdz.domain.Advertising" alias="advertising" />
 	</typeAliases>
 
 	<!-- 映射文件路径 -->
@@ -29,6 +30,7 @@
 		<mapper resource="sqlMap/group.xml" />
 		<mapper resource="sqlMap/type.xml" />
 		<mapper resource="sqlMap/product.xml" />
+		<mapper resource="sqlMap/advertising.xml" />
 	</mappers>
 	
 </configuration>

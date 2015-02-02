@@ -18,12 +18,18 @@ import java.util.List;
  */
 public class Type {
 
+	public static final int DISPLAY_ICON = 1;//图标的方式展现该分类下商品信息
+	public static final int DISPLAY_LIST = 2;//列表的方式展现该分类下商品信息
+	public static final int ORDER_TIME = 1;//按照商品创建时间对商品进行倒序展现
+	public static final int ORDER_CLICK = 2;//按照商品点击量对商品进行倒序展现
+	
 	private int id;
 	private String name;
 	private String remark;
 	private int groupId;
 	private int orderNo;
 	private int displayType;
+	private int orderType;
 	private String iconUrl;
 	private Date createTime;
 	private Date updateTime;
@@ -83,6 +89,13 @@ public class Type {
 	
 	public void setDisplayType(int displayType) {
 		this.displayType = displayType;
+	}
+	
+	public void setOrderType(int orderType) {
+		this.orderType = orderType;
+	}
+	public int getOrderType() {
+		return orderType;
 	}
 	
 	public boolean isChecked(List<ProductTypeAttr> attrs){

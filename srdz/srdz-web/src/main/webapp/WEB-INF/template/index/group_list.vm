@@ -1,0 +1,18 @@
+##首页
+##百度统计代码
+#jsCount()
+<div data-role="page" id="group" data-fullscreen="true">
+	##head
+	<div data-role="header" data-theme="b" data-position="fixed" data-backbtn="false">
+		<h1 style="font-size:1.3em;padding-bottom: 4px;padding-top: 5px;">$!{group.name}</h1>
+		<a href="#group-list-popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" title="分享" class="ui-btn-right ui-btn ui-shadow ui-corner-all ui-icon-action ui-btn-icon-notext">分享</a> 
+	</div>
+	
+	##content
+	<div data-role="content" style="max-width:740px;margin-right:auto;margin-left:auto;">
+		dfads
+	</div>
+	
+	##分享组件
+    #jiathis("group-list-popupDialog" "$!{base_url}group/$!{group.id}" "$!{group.name}" "")
+</div>

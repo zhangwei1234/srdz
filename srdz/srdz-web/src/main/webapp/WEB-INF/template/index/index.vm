@@ -1,1 +1,42 @@
 ##首页
+##百度统计代码
+#jsCount()
+<div data-role="page" id="index" data-fullscreen="true">
+	##head
+	<div data-role="header" data-theme="b" data-position="fixed" data-backbtn="false">
+		<h1 style="font-size:1.3em;padding-bottom: 5px;padding-top: 5px;">美女秀吧</h1>
+		<a href="#index-popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" title="分享" class="ui-btn-right ui-btn ui-shadow ui-corner-all ui-icon-action ui-btn-icon-notext">分享</a> 
+	</div>
+	
+	##content
+	<div data-role="content" style="max-width:740px;margin-right:auto;margin-left:auto;">
+		
+		#foreach($group in $groups)
+			#if($!{velocityCount} % 3 ==1)
+				<div class="row">
+		    #end
+			    <div class="col-xs-4" style="padding-left:2px;padding-right:2px;">
+					<a href="$!{base_url}group/$!{group.id}" class="btn btn-app btn-primary btn-sm btn-topic" title="$!{group.remark}" style="margin-bottom:10px;padding-top:2px;padding-bottom:4px;background:#f69!important;">
+						<div>
+							<image src="$!{group.iconUrl}" class="img-circle" style="width:50px;height:50px;"></image>
+						</div>
+ 						<div>
+ 							<span class="">$!{group.name}</span>
+					    </div>
+					    #if($!{group.label} != '')
+					    	<span class="badge badge-warning badge-left">$!{group.label}</span>
+						#end
+					</a>
+				</div>
+		    #if($!{velocityCount} % 3 ==0)
+		    	</div>
+		    #end
+	    #end
+	    #if($groups.size() % 3 !=0)
+	    	</div>
+		#end
+	</div>
+	
+	##分享组件
+    #jiathis("index-popupDialog" "$!{base_url}" "美女秀吧" "")
+</div>

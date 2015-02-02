@@ -15,45 +15,7 @@
         <link rel="stylesheet" type="text/css" href="$!{base_static_url}/css/index.css?v=$!{v}" />
     </head>
     <body>
-    	##百度统计代码
-		#jsCount()
-    	<div data-role="page" id="index" data-fullscreen="true">
-    		##head
-    		<div data-role="header" data-theme="b" data-position="fixed" data-backbtn="false">
-    			<h1 style="font-size:1.3em;">美女秀吧</h1>
-    			<a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" title="分享" class="ui-btn-right ui-btn ui-shadow ui-corner-all ui-icon-action ui-btn-icon-notext">分享</a> 
-    		</div>
-    		
-    		##content
-    		<div data-role="content">
-    			
-    			#foreach($group in $groups)
-    				#if($!{velocityCount} % 3 ==1)
-    					<div class="row">
-				    #end
-					    <div class="col-xs-4" style="padding-left:2px;padding-right:2px;">
-							<a href="#" class="btn btn-app btn-primary btn-sm" title="$!{group.remark}" style="margin-bottom:10px;padding-top:2px;padding-bottom:4px;">
-								<div>
-									<image src="$!{group.iconUrl}" class="img-circle" style="width:50px;height:50px;"></image>
-								</div>
-	     						<div>
-	     							<span class="">$!{group.name}</span>
-							    </div>
-							    <span class="badge badge-warning badge-left">new</span>
-							</a>
-						</div>
-				    #if($!{velocityCount} % 3 ==0)
-				    	</div>
-				    #end
-			    #end
-			    #if($groups.size % 3 !=0)
-			    	</div>
-    			#end
-    		</div>
-    		
-    		##分享组件
-		    #jiathis("$!{base_url}" "美女秀吧")
-	    </div>
+    	$!{screen_content}
  	</body>
 </html>
 <script type="text/javascript" src="$!{base_static_url}/js/jquery-1.8.3.min.js?v=${v}"></script>
