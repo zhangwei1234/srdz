@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import org.slf4j.Logger;
@@ -204,18 +205,44 @@ public class CacheManager {
 		}
 	}
 	
-	public List<Advertising> getAdvertising(int location) throws Exception{
+	public List<Advertising> getAdvertisingList(int location) throws Exception{
 		try {
 			this.advertisingLock.readLock().lock();
-			
+			long time = System.currentTimeMillis();
 			List<Advertising> list = Lists.newArrayList();
 			for(Advertising ad : this.advertising){
-				if(ad.getStatus() == Advertising.STATUS_ACTIVE && ad.getLocation() == location){
+				if(ad.getStatus() == Advertising.STATUS_ACTIVE && ad.getLocation() == location && ad.getStartTime().getTime() >= time && ad.getEndTime().getTime() <= time){
 					list.add(ad);
 				}
 			}
-			
 			return list;
+		} catch (Exception e) {
+			throw e;
+		}finally{
+			this.advertisingLock.readLock().unlock();
+		}
+	}
+	
+	/**
+	 * 随机获取一个广告数据
+	 * @param location
+	 * @return
+	 * @throws Exception
+	 */
+	public Advertising getAdvertising(int location) throws Exception{
+		try {
+			this.advertisingLock.readLock().lock();
+			long time = System.currentTimeMillis();
+			List<Advertising> list = Lists.newArrayList();
+			for(Advertising ad : this.advertising){
+				if(ad.getStatus() == Advertising.STATUS_ACTIVE && ad.getLocation() == location && ad.getStartTime().getTime() >= time && ad.getEndTime().getTime() <= time){
+					list.add(ad);
+				}
+			}
+			if(list.isEmpty()){
+				return null;
+			}
+			return list.get(new Random().nextInt(list.size()));
 		} catch (Exception e) {
 			throw e;
 		}finally{

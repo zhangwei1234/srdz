@@ -49,20 +49,20 @@
 	<update id="UPDATE_ADVERTISING" parameterType="advertising">
 		update web_advertising a 
 		<set>
-			<if test="name !=null and name != '' ">a.name=#{name}</if>
-			<if test="imageUrl !=null and imageUrl != '' ">a.image_url=#{imageUrl}</if>
-			<if test="linkUrl !=null and linkUrl != '' ">a.link_url=#{linkUrl}</if>
-			<if test="location !=null and location != 0 ">a.location=#{location}</if>
-			<if test="display !=null and display != 0 ">a.display=#{display}</if>
-			<if test="startTime !=null ">a.start_time=#{name}</if>
-			<if test="endTime !=null ">a.end_time=#{endTime}</if>
+			<if test="name !=null and name != '' ">a.name=#{name},</if>
+			<if test="imageUrl !=null and imageUrl != '' ">a.image_url=#{imageUrl},</if>
+			<if test="linkUrl !=null and linkUrl != '' ">a.link_url=#{linkUrl},</if>
+			<if test="location !=null and location != 0 ">a.location=#{location},</if>
+			<if test="display !=null and display != 0 ">a.display=#{display},</if>
+			<if test="startTime !=null ">a.start_time=#{startTime},</if>
+			<if test="endTime !=null ">a.end_time=#{endTime},</if>
 		</set>
 		where a.id = #{id}
 	</update>
 	
 	<!-- 查询所有广告信息 -->
 	<select id="QUERY_ADVERTISING" resultMap="advertisingM">
-		select <include refid="QUERY_ALL"/> from web_advertising a where a.status=1
+		select <include refid="QUERY_ALL"/> from web_advertising a
 	</select>
 	
 	<!-- 批量删除广告信息-->

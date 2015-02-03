@@ -14,6 +14,7 @@ import com.google.common.collect.Maps;
 import com.zw.srdz.author.Author;
 import com.zw.srdz.author.AuthorType;
 import com.zw.srdz.base.BaseController;
+import com.zw.srdz.domain.Advertising;
 import com.zw.srdz.domain.Type;
 import com.zw.srdz.service.HomeService;
 import com.zw.srdz.service.cache.CacheManager;
@@ -30,6 +31,7 @@ public class IndexController extends BaseController{
 		Map<String, Object> data = Maps.newHashMap();
 		
 		data.put("groups", CacheManager.getInstance().getGroups());
+		data.put("advertisings", CacheManager.getInstance().getAdvertisingList(Advertising.LOCATION_HOME));
 		return toVmIndex("index/index", data);
 	}
 	

@@ -251,4 +251,71 @@ Namespace.register("Topic.Console");
 	Topic.Console.delProduct = function(id){
 		Topic.Console.batchDelProduct(id+",");
 	};
+	
+	Topic.Console.loadAdvertising = function(){
+		Topic.goBack('console/advertising');
+	};
+	
+	Topic.Console.loadNewAdvertising = function (){
+		Topic.goBack('console/advertising/loadNew');
+	};
+	
+	Topic.Console.saveAdvertising = function (){
+		Topic.PostAjaxForm("ADVERTISING_ADD",function(msg){
+			alert(msg);
+			Topic.Console.loadAdvertising();
+		},function(msg){
+			alert(msg);
+		});
+	};
+	
+	Topic.Console.loadUpdateAdvertising = function (id){
+		Topic.goBack('console/advertising/'+id+'/loadUpdate');
+	};
+	
+	Topic.Console.updateAdvertising = function (){
+		Topic.PostAjaxForm("ADVERTISING_UPDATE",function(msg){
+			alert(msg);
+			Topic.Console.loadAdvertising();
+		},function(msg){
+			alert(msg);
+		});
+	};
+	
+	Topic.Console.batchDelAdvertising = function(ids){
+		if(ids == ""){//批量删除
+			ids = Topic.Table.getCheckAll("advertising");
+		}
+		
+		if(ids == ""){alert("轻选择要删除的广告数据");return;}
+		
+		Topic.DeleteAjax("console/advertising/"+ids,{},true,function(msg){
+			alert(msg);
+			Topic.Console.loadAdvertising();
+		},null);
+	};
+	
+	Topic.Console.batchActiveAdvertising = function (){
+		var ids = Topic.Table.getCheckAll("advertising");
+		if(ids == ""){alert("请选择要启用的广告数据");return;}
+		Topic.PutAjax("console/advertising/"+ids+"/active",{},true,function(msg){
+			alert(msg);
+			Topic.Console.loadAdvertising();
+		},null);
+	};
+	
+	Topic.Console.batchDisabledAdvertising = function (){
+		var ids = Topic.Table.getCheckAll("advertising");
+		if(ids == ""){alert("请选择要禁用的广告数据");return;}
+		Topic.PutAjax("console/advertising/"+ids+"/disabled",{},true,function(msg){
+			alert(msg);
+			Topic.Console.loadAdvertising();
+		},null);
+	};
+	
+	Topic.Console.initAdvertising = function (){
+		$('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
+			$(this).prev().focus();
+		});
+	};
 })();

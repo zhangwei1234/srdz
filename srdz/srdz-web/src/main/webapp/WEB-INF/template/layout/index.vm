@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,3 +20,4 @@
 </html>
 <script type="text/javascript" src="$!{base_static_url}/js/jquery-1.8.3.min.js?v=${v}"></script>
 <script type="text/javascript" src="$!{base_static_url}/plugin/jquerymobile/jquery.mobile-1.4.5.min.js?v=${v}"></script>
+<script type="text/javascript" src="$!{base_static_url}/plugin/ace/bootstrap.min.js?v=${v}"></script>

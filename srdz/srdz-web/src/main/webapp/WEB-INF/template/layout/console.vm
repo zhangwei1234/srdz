@@ -10,6 +10,9 @@
         <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/ace.min.css?v=$!{v}" />
         <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/ace-skins.min.css?v=$!{v}" />
         <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/ace-rtl.min.css?v=$!{v}" />
+        <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/daterangepicker.css?v=$!{v}" />
+        <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/bootstrap-timepicker.css?v=$!{v}" />
+        <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/datepicker.css?v=$!{v}" />
         
         <!--[if IE 7]>
 		  <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/font-awesome-ie7.min.css?v=$!{v}" />
@@ -317,7 +320,7 @@
 				    	</li>
 				    	##广告管理
 				    	<li>
-	    					<a href="#" class="dropdown-toggle"><i class="icon-food"></i><span class="menu-text"> 广告管理 </span><b class="arrow icon-angle-down"></b></a>
+	    					<a href="#" class="dropdown-toggle"><i class="icon-trophy"></i><span class="menu-text"> 广告管理 </span><b class="arrow icon-angle-down"></b></a>
 	    					<ul class="submenu">
 	    						<li class="menu"><a href="javascript:void(0);" onclick="Topic.clickMenu(this);" data-url="console/advertising"><i class="icon-double-angle-right"></i>分组管理</a></li>
 					    	</ul>
@@ -346,6 +349,9 @@
 <script type="text/javascript" src="$!{base_static_url}/plugin/ace/ace-elements.min.js?v=$!{v}"></script>
 <script type="text/javascript" src="$!{base_static_url}/plugin/ace/ace.min.js?v=$!{v}"></script>
 <script type="text/javascript" src="$!{base_static_url}/plugin/ace/jquery.slimscroll.min.js?v=$!{v}"></script>
+<script type="text/javascript" src="$!{base_static_url}/plugin/ace/bootstrap-datepicker.min.js?v=$!{v}"></script>
+<script type="text/javascript" src="$!{base_static_url}/plugin/ace/bootstrap-timepicker.min.js?v=$!{v}"></script>
+<script type="text/javascript" src="$!{base_static_url}/plugin/ace/daterangepicker.min.js?v=$!{v}"></script>
 <script type="text/javascript" src="$!{base_static_url}/js/base.js?v=$!{v}"></script>
 <script type="text/javascript" src="$!{base_static_url}/js/console.js?v=$!{v}"></script>
 <script type="text/javascript">

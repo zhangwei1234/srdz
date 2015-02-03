@@ -9,19 +9,53 @@
 	</div>
 	
 	##content
-	<div data-role="content" style="max-width:740px;margin-right:auto;margin-left:auto;">
+	<div data-role="content" style="max-width:800px;min-width:240px;margin-right:auto;margin-left:auto;padding:5px;" class="container-fluid " >
+		##广告轮播图
+		<div class="row" style="margin-bottom:10px;">
+			<div id="hone-carousel" class="carousel slide" data-ride="carousel" data-interval="2000" style="height:120px;">
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+				  #foreach($a in $!advertisings)
+				  	<li data-target="#hone-carousel" data-slide-to="0" class="active"></li>
+  				  #end
+				</ol>
+				<!-- Wrapper for slides -->
+				  <div class="carousel-inner" role="listbox">
+				    <div class="item active">
+				      <img src="" alt="" style="height:120px;widht:100%;">
+				    </div>
+				    <div class="item">
+				      <img src="" alt="" style="height:120px;width:100%;">
+				    </div>
+				    <div class="item">
+				      <img src="" alt="" style="height:120px;width:100%;">
+				    </div>
+				  </div>
+			  <!-- Controls -->
+				  <a class="left carousel-control" href="#hone-carousel" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="false"></span>
+				    <span class="sr-only">Previous</span>
+				  </a>
+				  <a class="right carousel-control" href="#hone-carousel" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="false"></span>
+				    <span class="sr-only">Next</span>
+				  </a>
+			</div>
+		</div>
 		
+		##分类
+		<div class="row-fluid">
 		#foreach($group in $groups)
 			#if($!{velocityCount} % 3 ==1)
-				<div class="row">
+				##<div class="row">
 		    #end
-			    <div class="col-xs-4" style="padding-left:2px;padding-right:2px;">
-					<a href="$!{base_url}group/$!{group.id}" class="btn btn-app btn-primary btn-sm btn-topic" title="$!{group.remark}" style="margin-bottom:10px;padding-top:2px;padding-bottom:4px;background:#f69!important;">
+			    <div class="col-xs-3 col-sm-2 col-md-2" style="padding-left:2px;padding-right:2px;">
+					<a href="$!{base_url}group/$!{group.id}" class="btn btn-app btn-primary btn-sm btn-topic" title="$!{group.remark}" style="margin-bottom:10px;padding-top:2px;padding-bottom:4px;background:#fff!important;">
 						<div>
 							<image src="$!{group.iconUrl}" class="img-circle" style="width:50px;height:50px;"></image>
 						</div>
  						<div>
- 							<span class="">$!{group.name}</span>
+ 							<span style="color:#707070;font-size:14px;font-weight:normal;" >$!{group.name}</span>
 					    </div>
 					    #if($!{group.label} != '')
 					    	<span class="badge badge-warning badge-left">$!{group.label}</span>
@@ -29,14 +63,17 @@
 					</a>
 				</div>
 		    #if($!{velocityCount} % 3 ==0)
-		    	</div>
+		    	##</div>
 		    #end
 	    #end
 	    #if($groups.size() % 3 !=0)
-	    	</div>
+	    	##</div>
 		#end
+		</div>
 	</div>
 	
 	##分享组件
     #jiathis("index-popupDialog" "$!{base_url}" "美女秀吧" "")
 </div>
+##初始化函数
+<SPAN class="script" page-load=""/>

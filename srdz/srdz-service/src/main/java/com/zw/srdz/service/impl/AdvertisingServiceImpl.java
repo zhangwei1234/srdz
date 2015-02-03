@@ -20,6 +20,7 @@ public class AdvertisingServiceImpl extends BaseService implements AdvertisingSe
 	
 	@Override
 	public boolean add(Advertising advertising) throws Exception {
+		advertising.setStatus(Advertising.STATUS_ACTIVE);
 		advertisingDao.add(advertising);
 		//更新缓存
 		CacheManager.getInstance().initAdvertising(list());

@@ -15,6 +15,7 @@ import com.google.common.collect.Maps;
 import com.zw.srdz.author.Author;
 import com.zw.srdz.author.AuthorType;
 import com.zw.srdz.base.BaseController;
+import com.zw.srdz.common.util.DateUtil;
 import com.zw.srdz.domain.Advertising;
 import com.zw.srdz.service.AdvertisingService;
 
@@ -29,7 +30,7 @@ public class AdvertisingController extends BaseController{
 	public ModelAndView index(HttpServletRequest req, HttpServletResponse res) throws Exception{
 		
 		Map<String, Object> data = Maps.newHashMap();
-		data.put("advertising", advertisingService.list());
+		data.put("advertisings", advertisingService.list());
 		
 		return toVm("console/advertising/advertising", data);
 	}
@@ -45,12 +46,13 @@ public class AdvertisingController extends BaseController{
 	public ModelAndView loadUpdate(HttpServletRequest req, HttpServletResponse res, @PathVariable int id) throws Exception{
 		Map<String, Object> data = Maps.newHashMap();
 		data.put("advertising", advertisingService.get(id));
-		return toVm("console/advertising/advertising_update", null);
+		return toVm("console/advertising/advertising_update", data);
 	}
 	
 	@RequestMapping(value="/advertising/add", method={RequestMethod.POST})
 	public ModelAndView save(HttpServletRequest req, HttpServletResponse res, @ModelAttribute Advertising advertising) throws Exception{
-		
+		advertising.setStartTime(DateUtil.dateFormatyMd(req.getParameter("startTime1")));
+		advertising.setEndTime(DateUtil.dateFormatyMd(req.getParameter("endTime1")));
 		boolean flag = advertisingService.add(advertising);
 		
 		if (flag){
@@ -61,7 +63,8 @@ public class AdvertisingController extends BaseController{
 	
 	@RequestMapping(value="/advertising/update", method={RequestMethod.POST})
 	public ModelAndView update(HttpServletRequest req, HttpServletResponse res, @ModelAttribute Advertising advertising) throws Exception{
-		
+		advertising.setStartTime(DateUtil.dateFormatyMd(req.getParameter("startTime1")));
+		advertising.setEndTime(DateUtil.dateFormatyMd(req.getParameter("endTime1")));
 		boolean flag = advertisingService.update(advertising);
 		
 		if (flag){

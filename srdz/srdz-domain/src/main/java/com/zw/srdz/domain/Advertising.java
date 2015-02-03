@@ -20,7 +20,9 @@ import java.util.Date;
 public class Advertising {
 
 	public static final int LOCATION_HOME = 1;//首页显示
+	public static final int LOCATION_PRODUCT_LIST = 2; //商品列表页feed模式
 	public static final int DISPLAY_BANNER = 1;//banner 图显示
+	public static final int DISPLAY_FEED= 2;// feed模式
 	public static final int STATUS_ACTIVE = 1;//激活
 	public static final int STATUS_DISABLED = -1; //注销
 	

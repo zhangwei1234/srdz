@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.zw.srdz.dao.AdvertisingDao;
 import com.zw.srdz.dao.GroupDao;
 import com.zw.srdz.dao.TypeDao;
 import com.zw.srdz.service.base.BaseService;
@@ -31,6 +32,7 @@ public class IndexService extends BaseService{
 	@Resource private TaskManager taskManager;
 	@Resource private GroupDao groupDao;
 	@Resource private TypeDao typeDao;
+	@Resource private AdvertisingDao advertisingDao;
 	
 	/**
 	 * 系统初始化
@@ -41,7 +43,29 @@ public class IndexService extends BaseService{
 			CacheManager.getInstance();
 			CacheManager.getInstance().initGroups(groupDao.queryGroups());
 			CacheManager.getInstance().initTypes(typeDao.queryTypes());
+			CacheManager.getInstance().initAdvertising(advertisingDao.list());
 			taskManager.start();
+			
+			//启动线程每隔10秒钟从数据库跟新一次缓存数据
+			Thread thd = new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					while(true){
+						log.info("----------------->begin refresh db data to cache");
+						try {
+							CacheManager.getInstance().initGroups(groupDao.queryGroups());
+							CacheManager.getInstance().initTypes(typeDao.queryTypes());
+							CacheManager.getInstance().initAdvertising(advertisingDao.list());
+							Thread.sleep(1000*60);
+						} catch (Exception e) {
+							log.error("跟新缓存数据失败.", e);
+						}
+					}
+				}
+			});
+			
+			thd.start();
 		} catch (Exception e) {
 			log.error("系统初始化失败.", e);
 			System.exit(0);
