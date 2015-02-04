@@ -64,7 +64,7 @@ public interface ProductService {
 	 * @return
 	 * @throws Exception
 	 */
-	public void addClick(int id) throws Exception;
+	public void addClick(int id);
 	
 	/**
 	 * 记录商品的一次点赞数
@@ -72,7 +72,7 @@ public interface ProductService {
 	 * @return
 	 * @throws Exception
 	 */
-	public void addParise(int id) throws Exception;
+	public void addParise(int id);
 	
 	/**
 	 * 加载新增产品所需的数据信息

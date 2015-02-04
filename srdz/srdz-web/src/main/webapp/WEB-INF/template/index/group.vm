@@ -1,35 +1,44 @@
 ##首页
 ##百度统计代码
 #jsCount()
-<div data-role="page" id="group" data-fullscreen="true">
+<div data-role="page" id="group-icon" data-fullscreen="true" style="background-color:#F5EDF0;">
 	##head
-	##<div data-role="header" data-theme="topic" data-position="fixed" data-backbtn="false">
-		##<a title="分享" class="ui-btn-left ui-btn ui-shadow ui-corner-all ui-icon-action ui-btn-icon-notext">分享</a>
-		##<h1 style="font-size:1.3em;padding-bottom: 4px;padding-top: 5px;">$!{group.name}</h1>
-	##	<div id='head-title' style='' class='swipe head-swipe'>
-	##		 <div class='swipe-wrap'>
-	##		 	<a class="#if($group ==4) active #else link #end" href="$!{base_url}4" data-ajax="false">首页</a>
-	##		 	<a class="#if($group ==1) active #else link #end" href="$!{base_url}1" data-ajax="false">校园</a>
-	##		 	<a class="#if($group ==2) active #else link #end" href="$!{base_url}2" data-ajax="false">清纯</a>
-	##		 	<a class="#if($group ==5) active #else link #end" href="$!{base_url}5" data-ajax="false">推荐</a>
-	##		 	<a class="#if($group ==3) active #else link #end" href="$!{base_url}3" data-ajax="false">气质</a>
-	##		 </div>
-	##	</div>
-		##<a href="#group-popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" title="分享" class="ui-btn-right ui-btn ui-shadow ui-corner-all ui-icon-action ui-btn-icon-notext">分享</a> 
-	##</div>
-	<div data-role="header" data-theme="b" role="banner">
-		<a href="#" class="ui-btn-left ui-btn ui-btn-icon-left ui-btn-corner-all ui-shadow ui-btn-up-b" data-rel="back" data-icon="arrow-l" data-theme="b">
-			<span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Back</span><span class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span></span>
-		</a>
-		<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">Methods</h1>
-		<a href="../../" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home ui-btn ui-btn-up-b ui-btn-icon-notext ui-btn-corner-all ui-shadow" title="Home" data-theme="b"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home ui-icon-shadow"></span></span></a>
+	<div data-role="header" data-theme="b" data-position="fixed" data-backbtn="false">
+		<a title="返回" class="ui-btn-left ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext" data-rel="back" data-transition="slide" >返回</a>
+		<h1 style="font-size:1.3em;padding-bottom: 4px;padding-top: 5px;">$!{group.name}</h1>
+		<a href="#group-popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" title="分享" class="ui-btn-right ui-btn ui-shadow ui-corner-all ui-icon-action ui-btn-icon-notext">分享</a> 
 	</div>
-	
 	##content
-	<div data-role="content">
-		dfads
+	##<div data-role="content" style="padding:2px;">
+	##分类导航菜单
+	<div class="row-fluid nvl-top">
+		#foreach($type in $!types)
+			<div class="col-xs-3 col-sm-2 col-md-2 menu-type #if($!{velocityCount} == 1) menu-type-active #end" data-type="$!{type.id}" data-display="$!{type.displayType}" data-order="$!{type.orderType}" onclick="Topic.index.click(this,'container',$!{type.displayType})">
+				<span> $!{type.name} </span>
+			</div>
+		#end
 	</div>
-	
+	##图片墙
+	<div id="container" class="goods_wall" style="padding-top:10px;overflow:hidden;"></div>
+	##</div>
+	<script type="text/javascript">
+		fml.data = $!{json};
+	</script>
+	##定义模板数据
+	<script type="text/html" id="template">
+		<div class="poster_grid poster_wall" twitter_id="<?=v.id?>" style="width:<?= fml.colWidth?>px;" poster_height="<?=v.imageHeight?>">
+			<figure>
+				<a class="pic_load" href="<?= v.productUrl ?>" style="height:<?=v.imageHeight ?>px;" target='_blank' onclick="Topic.index.clickProduct('<?=v.id?>');return true;">
+					<img src="<?= v.imageUrl ?>" alt="<?= v.title ?>" title="<?= v.remark ?>"/>
+				</a>
+				<figcaption>
+					<span class="price">￥<?= v.price?></span>
+					<span class="like i-heart" onclick="Topic.index.pariseProduct('<?=v.id?>');" id='heart-<?=v.id?>'><?= v.praiseCount?></span>
+				</figcaption>
+			</figure>
+		</div>
+	</script>
+		
 	##分享组件
     #jiathis("group-popupDialog" "$!{base_url}group/$!{group.id}" "$!{group.name}" "")
 </div>

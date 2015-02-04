@@ -38,4 +38,16 @@ public interface HomeService {
 	 * @throws Exception
 	 */
 	public Map<String, Object> loadList(int type,int display,int order,int start) throws Exception;
+	
+	/**
+	 * 记录一次商品点击
+	 * @param id
+	 */
+	public void clickProduct(int id);
+	
+	/**
+	 * 记录一次商品点赞
+	 * @param id
+	 */
+	public void pariseProduct(int id);
 }

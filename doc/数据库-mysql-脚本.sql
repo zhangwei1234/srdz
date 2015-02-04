@@ -73,8 +73,8 @@ create table web_product(
 	image_width	double		not null	comment '图片宽度',
 	image_height	double		not null	comment	'图片高度',
 	product_url	varchar(400)	not null	comment '商品链接',
-	click_count	int(11)			null		comment '点击次数',
-	praise_count int(11)		null		comment '点赞次数',
+	click_count	int(11)			not null default 0		comment '点击次数',
+	praise_count int(11)		not null default 0		comment '点赞次数',
 	create_time		datetime	not null	comment '创建时间',
 	update_time		datetime	null		comment	'修改时间',
 	primary key (id)

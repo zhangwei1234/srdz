@@ -211,7 +211,7 @@ public class CacheManager {
 			long time = System.currentTimeMillis();
 			List<Advertising> list = Lists.newArrayList();
 			for(Advertising ad : this.advertising){
-				if(ad.getStatus() == Advertising.STATUS_ACTIVE && ad.getLocation() == location && ad.getStartTime().getTime() >= time && ad.getEndTime().getTime() <= time){
+				if(ad.getStatus() == Advertising.STATUS_ACTIVE && ad.getLocation() == location && ad.getStartTime().getTime() <= time && ad.getEndTime().getTime() >= time){
 					list.add(ad);
 				}
 			}
@@ -235,7 +235,7 @@ public class CacheManager {
 			long time = System.currentTimeMillis();
 			List<Advertising> list = Lists.newArrayList();
 			for(Advertising ad : this.advertising){
-				if(ad.getStatus() == Advertising.STATUS_ACTIVE && ad.getLocation() == location && ad.getStartTime().getTime() >= time && ad.getEndTime().getTime() <= time){
+				if(ad.getStatus() == Advertising.STATUS_ACTIVE && ad.getLocation() == location && ad.getStartTime().getTime() <= time && ad.getEndTime().getTime() >= time){
 					list.add(ad);
 				}
 			}

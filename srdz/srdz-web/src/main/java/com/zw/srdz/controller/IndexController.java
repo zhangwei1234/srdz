@@ -58,7 +58,7 @@ public class IndexController extends BaseController{
 		
 	}
 	
-	@RequestMapping(value="/type/{type}/{display}/{start}/{ordertype}", method={RequestMethod.POST})
+	@RequestMapping(value="/type/list/{type}/{display}/{start}/{ordertype}", method={RequestMethod.POST})
 	public ModelAndView list(HttpServletRequest req, HttpServletResponse res,@PathVariable int start,
 			@PathVariable int type, @PathVariable int display, @PathVariable int ordertype) throws Exception{
 		
@@ -70,4 +70,17 @@ public class IndexController extends BaseController{
 			return toVm("index/list", data);
 		}
 	}
+	
+	@RequestMapping(value="/product/click/{id}", method={RequestMethod.PUT})
+	public ModelAndView clickProduct(HttpServletRequest req, HttpServletResponse res,@PathVariable int id) throws Exception{
+		homeService.clickProduct(id);
+		return toJson(res, null, true, "");
+	}
+	
+	@RequestMapping(value="/product/parise/{id}", method={RequestMethod.PUT})
+	public ModelAndView pariseProduct(HttpServletRequest req, HttpServletResponse res, @PathVariable int id) throws Exception{
+		homeService.pariseProduct(id);
+		return toJson(res, null, true, "");
+	}
+	
 }

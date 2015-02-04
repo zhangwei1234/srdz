@@ -112,7 +112,7 @@ public class ProductServiceImpl extends BaseService implements ProductService{
 	}
 	
 	@Override
-	public void addClick(int id) throws Exception {
+	public void addClick(int id) {
 		
 		ClickProductTask task = new ClickProductTask(productDao, id);
 		boolean flag = taskManager.addTask(task);
@@ -122,7 +122,7 @@ public class ProductServiceImpl extends BaseService implements ProductService{
 	}
 
 	@Override
-	public void addParise(int id) throws Exception {
+	public void addParise(int id) {
 		PraiseProductTask task = new PraiseProductTask(productDao, id);
 		boolean flag = taskManager.addTask(task);
 		if(!flag){

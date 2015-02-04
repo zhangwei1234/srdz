@@ -222,7 +222,7 @@ public class BaseController {
 		context.put(Constants.RESPONSE_JSON_STATUS_KEY, flag?Constants.RESPONSE_JSON_STATUS_OK:Constants.RESPONSE_JSON_STATUS_FAIL);
 		context.put(Constants.RESPONSE_JSON_MSG_KEY, msg);
 		
-		out.print(JSONObject.toJSONString(context,SerializerFeature.WriteDateUseDateFormat));
+		out.print(JSONObject.toJSONString(context));
 		
 		out.flush();
 		out.close();

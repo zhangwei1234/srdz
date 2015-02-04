@@ -8,12 +8,14 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.zw.srdz.dao.ProductDao;
 import com.zw.srdz.domain.Group;
 import com.zw.srdz.domain.Product;
 import com.zw.srdz.domain.Type;
 import com.zw.srdz.service.HomeService;
+import com.zw.srdz.service.ProductService;
 import com.zw.srdz.service.base.BaseService;
 import com.zw.srdz.service.cache.CacheManager;
 
@@ -21,6 +23,8 @@ import com.zw.srdz.service.cache.CacheManager;
 public class HomeServiceImpl extends BaseService implements HomeService{
 
 	@Resource private ProductDao productDao;
+	@Resource private ProductService productService;
+	
 	@Value(value="${index.page.size}")
 	private int pageSize;
 	@Override
@@ -39,13 +43,12 @@ public class HomeServiceImpl extends BaseService implements HomeService{
 		
 		//判断显示方式, 如果是图标显示则转换成 json，否则不做任何转换
 		if(Type.DISPLAY_ICON == firstType.getDisplayType()){
-			data.put("products", JSONObject.toJSONString(products));
+			data.put("json", JSONObject.toJSONString(products));
 			data.put("display", "icon");
 		}else{
-			data.put("products", products);
 			data.put("display", "list");
 		}
-		
+		data.put("products", null == products ? Lists.newArrayList() : products);
 		data.put("types", types);
 		data.put("group", gp);
 		return data;
@@ -61,14 +64,21 @@ public class HomeServiceImpl extends BaseService implements HomeService{
 		}else{
 			products = productDao.queryByTypeTimeDesc(type, start, this.pageSize);
 		}
-		//判断显示方式, 如果是图标显示则转换成 json，否则不做任何转换
-		if(Type.DISPLAY_ICON == order){
-			data.put("products", JSONObject.toJSONString(products));
-			data.put("display", "icon");
-		}else{
-			data.put("products", products);
-			data.put("display", "list");
+		
+		if(products.isEmpty()){
+			data.put("isFinish", "true");
 		}
+		data.put("products", products);
 		return data;
+	}
+	
+	@Override
+	public void clickProduct(int id) {
+		productService.addClick(id);
+	}
+	
+	@Override
+	public void pariseProduct(int id) {
+		productService.addParise(id);
 	}
 }

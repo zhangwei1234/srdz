@@ -12,6 +12,7 @@ fml.init = function(){
 	colWidth = colWidth+((width % cols)- ((cols-1)* this.args.marginLeft))/cols;
 	this.colWidth = colWidth;
 	this.cols = cols;
+	//this.index = 1;
 	this.isinit = true;
 };
 
