@@ -75,6 +75,18 @@ Namespace.register("Topic");
 			Topic.initPage();
 		});
 	};
+	
+	//容器ID,是否开启遮罩,请求地址,请求参数,请求方法,回调函数
+	Topic.appendContainer = function(containerId,ismark,url,params,callback){
+		if(ismark){Topic.mask();}
+		jQuery.post(Topic.rootUrl+url,params,function(data){
+			try{callback();}catch(e){}
+			try{$("#"+containerId).append(data);$("#"+containerId).trigger('create');}catch(e){alert(e);}
+			if(ismark){Topic.unmask();}
+			Topic.initPage();
+		});
+	};
+	
 	//换页
 	Topic.toPage = function(ismark,url,params,callback){
 		Topic.loadContainer("console_container",ismark,url,params,callback);

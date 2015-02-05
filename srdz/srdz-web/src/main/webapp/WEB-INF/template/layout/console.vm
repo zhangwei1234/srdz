@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.5" />
         <title>topic</title>
-        <link href="http://www.360buy.com/favicon.ico" rel="shortcut icon" />
+        <link href="$!{base_static_url}/img/favicon.jpg" rel="shortcut icon">
         <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/bootstrap.min.css?v=$!{v}" />
         <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/font-awesome.min.css?v=$!{v}" />
         <link rel="stylesheet" type="text/css" href="$!{base_static_url}/plugin/ace/ace.min.css?v=$!{v}" />

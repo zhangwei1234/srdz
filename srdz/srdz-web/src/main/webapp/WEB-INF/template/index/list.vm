@@ -1,2 +1,34 @@
-##首页
-无任何数据
+##商品列表页数据显示模块
+#foreach($pd in $!products)
+	<div class="itemdiv dialogdiv product" style="min-height:100px;">
+		<div class="user" style="width:80px;">
+			<img alt="$!{pd.title}" src="$!{pd.imageUrl}" style="max-width:80px;height:80px;width: 84px;"/>
+		</div>
+		<div class="body" style="padding-left: 8px;margin-left: 87px;min-height:80px;">
+			<div class="time">
+				<i class="icon-time"></i>
+				<span class="green">$tool.dateFormat($!{pd.createTime})</span>
+			</div>
+			<div class="name">
+				<a href="$!{pd.productUrl}" target="_blank" onclick="Topic.index.clickProduct('$!{pd.id}');return true;">$!{pd.title}</a>
+			</div>
+			<div class="text" style="margin-top:8px;" >$!{pd.remark}</div>
+			<div class="tools" style="display:block">
+				<a href="$!{pd.productUrl}" target="_blank" onclick="Topic.index.clickProduct('$!{pd.id}');return true;" class="btn btn-minier btn-success">
+					<i class="icon-heart">&nbsp;详情</i>
+				</a>
+				<a href="$!{pd.productUrl}" target="_blank" onclick="Topic.index.clickProduct('$!{pd.id}');return true;" class="btn btn-minier btn-success">
+					<i class="">￥&nbsp;&nbsp;$!{pd.price}</i>
+				</a>
+				<a href="#" class="btn btn-minier btn-pink" onclick="Topic.index.pariseProduct('$!{pd.id}');">
+					<i class="icon-hand-up icon-share-alt" id='heart-$!{pd.id}'>&nbsp;$!{pd.praiseCount}</i>
+				</a>
+				<a href="#popupDialog-list-$!{pd.id}" class="btn btn-minier btn-inverse" data-rel="popup" data-position-to="window" data-transition="pop" title="分享">
+					<i class="icon-only icon-share-alt">&nbsp;分享</i>
+				</a>
+			</div>
+		</div>
+	</div>
+	##每个商品的分享组件
+	#jiathis("popupDialog-list-$!{pd.id}" "$!{pd.productUrl}" "$!{pd.title}($!{pd.remark})" "$!{pd.imageUrl}")
+#end

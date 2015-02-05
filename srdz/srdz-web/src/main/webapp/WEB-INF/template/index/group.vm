@@ -9,9 +9,8 @@
 		<a href="#group-popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" title="分享" class="ui-btn-right ui-btn ui-shadow ui-corner-all ui-icon-action ui-btn-icon-notext">分享</a> 
 	</div>
 	##content
-	##<div data-role="content" style="padding:2px;">
 	##分类导航菜单
-	<div class="row-fluid nvl-top">
+	<div class="row-fluid nvl-top" style="top: 32px;position: fixed;">
 		#foreach($type in $!types)
 			<div class="col-xs-3 col-sm-2 col-md-2 menu-type #if($!{velocityCount} == 1) menu-type-active #end" data-type="$!{type.id}" data-display="$!{type.displayType}" data-order="$!{type.orderType}" onclick="Topic.index.click(this,'container',$!{type.displayType})">
 				<span> $!{type.name} </span>

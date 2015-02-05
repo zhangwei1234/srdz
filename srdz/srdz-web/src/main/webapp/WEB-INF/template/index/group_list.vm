@@ -1,18 +1,75 @@
 ##首页
 ##百度统计代码
 #jsCount()
-<div data-role="page" id="group" data-fullscreen="true">
+<div data-role="page" id="group-list" data-fullscreen="true" style="background-color:#fff;">
 	##head
-	<div data-role="header" data-theme="b" data-position="fixed" data-backbtn="false">
+	<div data-role="header" data-theme="b" data-backbtn="false" data-position="fixed" data-backbtn="false" >
+		<a title="返回" class="ui-btn-left ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext" data-rel="back" data-transition="slide" >返回</a>
 		<h1 style="font-size:1.3em;padding-bottom: 4px;padding-top: 5px;">$!{group.name}</h1>
-		<a href="#group-list-popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" title="分享" class="ui-btn-right ui-btn ui-shadow ui-corner-all ui-icon-action ui-btn-icon-notext">分享</a> 
+		<a href="#list-popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" title="分享" class="ui-btn-right ui-btn ui-shadow ui-corner-all ui-icon-action ui-btn-icon-notext">分享</a> 
+	</div>
+	##content
+	##<div data-role="content" style="padding:2px;">
+	##分类导航菜单
+	<div class="row-fluid nvl-top" style="top: 32px;position: fixed;">
+		#foreach($type in $!types)
+			<div class="col-xs-3 col-sm-2 col-md-2 menu-type #if($!{velocityCount} == 1) menu-type-active #end" data-type="$!{type.id}" data-display="$!{type.displayType}" data-order="$!{type.orderType}" onclick="Topic.index.click(this,'container',$!{type.displayType})">
+				<span> $!{type.name} </span>
+			</div>
+		#end
+	</div>
+	##列表区域
+	<div class="dialogs goods_wall" id="container" style="margin-top:10px;overflow:hidden;">
+		#foreach($pd in $!products)
+		<div class="itemdiv dialogdiv product" style="min-height:100px;">
+			<div class="user" style="width:80px;">
+				<img alt="$!{pd.title}" src="$!{pd.imageUrl}" style="max-width:80px;height:80px;width: 84px;"/>
+			</div>
+			<div class="body" style="padding-left: 8px;margin-left: 87px;min-height:80px;">
+				<div class="time">
+					<i class="icon-time"></i>
+					<span class="green">$tool.dateFormat($!{pd.createTime})</span>
+				</div>
+				<div class="name">
+					<a href="$!{pd.productUrl}" target="_blank" onclick="Topic.index.clickProduct('$!{pd.id}');return true;">$!{pd.title}</a>
+				</div>
+				<div class="text" style="margin-top:8px;" >$!{pd.remark}</div>
+				<div class="tools" style="display:block">
+					<a href="$!{pd.productUrl}" target="_blank" onclick="Topic.index.clickProduct('$!{pd.id}');return true;" class="btn btn-minier btn-success">
+						<i class="icon-heart">&nbsp;详情</i>
+					</a>
+					<a href="$!{pd.productUrl}" target="_blank" onclick="Topic.index.clickProduct('$!{pd.id}');return true;" class="btn btn-minier btn-success">
+						<i class="">￥&nbsp;&nbsp;$!{pd.price}</i>
+					</a>
+					<a href="#" class="btn btn-minier btn-pink" onclick="Topic.index.pariseProduct('$!{pd.id}');">
+						<i class="icon-hand-up icon-share-alt" id='heart-$!{pd.id}'>&nbsp;$!{pd.praiseCount}</i>
+					</a>
+					<a href="#popupDialog-list-$!{pd.id}" class="btn btn-minier btn-inverse" data-rel="popup" data-position-to="window" data-transition="pop" title="分享">
+						<i class="icon-only icon-share-alt">&nbsp;分享</i>
+					</a>
+				</div>
+			</div>
+		</div>
+		##每个商品的分享组件
+		#jiathis("popupDialog-list-$!{pd.id}" "$!{pd.productUrl}" "$!{pd.title}($!{pd.remark})" "$!{pd.imageUrl}")
+		#end
 	</div>
 	
-	##content
-	<div data-role="content" style="max-width:740px;margin-right:auto;margin-left:auto;">
-		dfads
-	</div>
+	##定义模板数据
+	<script type="text/html" id="template">
+		<div class="poster_grid poster_wall" twitter_id="<?=v.id?>" style="width:<?= fml.colWidth?>px;" poster_height="<?=v.imageHeight?>">
+			<figure>
+				<a class="pic_load" href="<?= v.productUrl ?>" style="height:<?=v.imageHeight ?>px;" target='_blank' onclick="Topic.index.clickProduct('<?=v.id?>');return true;">
+					<img src="<?= v.imageUrl ?>" alt="<?= v.title ?>" title="<?= v.remark ?>"/>
+				</a>
+				<figcaption>
+					<span class="price">￥<?= v.price?></span>
+					<span class="like i-heart" onclick="Topic.index.pariseProduct('<?=v.id?>');" id='heart-<?=v.id?>'><?= v.praiseCount?></span>
+				</figcaption>
+			</figure>
+		</div>
+	</script>
 	
 	##分享组件
-    #jiathis("group-list-popupDialog" "$!{base_url}group/$!{group.id}" "$!{group.name}" "")
+    #jiathis("list-popupDialog" "$!{base_url}group/$!{group.id}" "$!{group.name}" "")
 </div>
