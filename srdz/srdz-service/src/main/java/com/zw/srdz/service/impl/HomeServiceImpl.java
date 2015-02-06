@@ -2,6 +2,7 @@ package com.zw.srdz.service.impl;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.annotation.Resource;
 
@@ -11,6 +12,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.zw.srdz.dao.ProductDao;
+import com.zw.srdz.domain.Advertising;
 import com.zw.srdz.domain.Group;
 import com.zw.srdz.domain.Product;
 import com.zw.srdz.domain.Type;
@@ -46,6 +48,8 @@ public class HomeServiceImpl extends BaseService implements HomeService{
 			data.put("json", JSONObject.toJSONString(products));
 			data.put("display", "icon");
 		}else{
+			data.put("advertising", CacheManager.getInstance().getAdvertising(Advertising.LOCATION_PRODUCT_LIST));//获取一个随机的列表广告
+			data.put("advertisingIndex", new Random().nextInt(products.size()));
 			data.put("display", "list");
 		}
 		data.put("products", null == products ? Lists.newArrayList() : products);
@@ -64,10 +68,13 @@ public class HomeServiceImpl extends BaseService implements HomeService{
 		}else{
 			products = productDao.queryByTypeTimeDesc(type, start, this.pageSize);
 		}
-		
+		if(Type.DISPLAY_LIST == display){
+			data.put("advertising", CacheManager.getInstance().getAdvertising(Advertising.LOCATION_PRODUCT_LIST));//获取一个随机的列表广告
+		}
 		if(products.isEmpty()){
 			data.put("isFinish", "true");
 		}
+		data.put("advertisingIndex", new Random().nextInt(products.size()));
 		data.put("products", products);
 		return data;
 	}

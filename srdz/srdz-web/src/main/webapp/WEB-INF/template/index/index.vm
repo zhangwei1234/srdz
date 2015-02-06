@@ -24,7 +24,7 @@
 				   #foreach($a in $!advertisings)
 				  	<div class="item #if($!{velocityCount} ==1) active #end">
 				  		<a href="$!{a.linkUrl}" target="_blank">
-				     	 <img src="$!{a.imageUrl}" alt="$!{a.name}" style="height:120px;widht:100%;">
+				     	 <img src="$!{a.imageUrl}" alt="$!{a.name}" style="height:120px;width:100%;">
 				     	</a>
 				    </div>
   				  #end

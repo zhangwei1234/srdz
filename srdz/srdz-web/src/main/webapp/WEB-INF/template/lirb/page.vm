@@ -28,10 +28,10 @@
 
 ##分享
 #macro(jiathis $id $url $title $pic)
-	<div data-role="popup" id="$!id" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+	<div data-role="popup" id="$!id" data-overlay-theme="a" data-theme="a" data-dismissible="false" style="width:100%;">
 	    <div role="main" class="ui-content" style="padding-top:0px; padding-bottom:0px;">
 	        <div class="row">
-				<div class="col-xs-4" style="padding-left:2px;padding-right:2px; margin-bottom:10px;">
+				<div class="col-xs-3 col-sm-2 col-md-2" style="padding-left:2px;padding-right:2px; margin-bottom:10px;">
 					<a target="_blank" href="http://www.jiathis.com/send/?webid=qzone&url=$!url&title=$!title&uid=2006831#if($!{pic} !='')&pic=$!pic #end" class="btn btn-app btn-light no-radius btn-sm" title="分析到QQ空间" style="margin-bottom:2px;padding-top:2px;padding-bottom:2px;">
 						<div>
 							<image src="$!{base_static_url}/jiathis/qzone.gif" class="img-circle" style="width:50px;height:50px;"></image>
@@ -41,7 +41,7 @@
 					    </div>
 					</a>
 				</div>
-				<div class="col-xs-4" style="padding-left:2px;padding-right:2px;">
+				<div class="col-xs-3 col-sm-2 col-md-2" style="padding-left:2px;padding-right:2px;">
 					<a target="_blank"  href="http://www.jiathis.com/send/?webid=tqq&url=$!url&title=$!title&uid=2006831#if($!{pic} !='')&pic=$!pic #end" class="btn btn-app btn-light no-radius btn-sm" title="分析到QQ空间" style="margin-bottom:2px;padding-top:2px;padding-bottom:2px;">
 						<div>
 							<image src="$!{base_static_url}/jiathis/qqmb.gif" class="img-circle" style="width:50px;height:50px;"></image>
@@ -51,7 +51,7 @@
 					    </div>
 					</a>
 				</div>
-				<div class="col-xs-4" style="padding-left:2px;padding-right:2px;">
+				<div class="col-xs-3 col-sm-2 col-md-2" style="padding-left:2px;padding-right:2px;">
 					<a target="_blank"  href="http://www.jiathis.com/send/?webid=tsina&url=$!url&title=$!title&uid=2006831#if($!{pic} !='')&pic=$!pic #end" class="btn btn-app btn-light no-radius btn-sm" title="分析到QQ空间" style="margin-bottom:2px;padding-top:2px;padding-bottom:2px;">
 						<div>
 							<image src="$!{base_static_url}/jiathis/sinaminiblog.gif" class="img-circle" style="width:50px;height:50px;"></image>
@@ -61,9 +61,9 @@
 					    </div>
 					</a>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-4" style="padding-left:2px;padding-right:2px;">
+			##</div>
+			##<div class="row">
+				<div class="col-xs-3 col-sm-2 col-md-2" style="padding-left:2px;padding-right:2px;">
 					<a target="_blank"  href="http://www.jiathis.com/send/?webid=renren&url=$!url&title=$!title&uid=2006831#if($!{pic} !='')&pic=$!pic #end" class="btn btn-app btn-light no-radius btn-sm" title="分析到QQ空间" style="margin-bottom:2px;padding-top:2px;padding-bottom:2px;">
 						<div>
 							<image src="$!{base_static_url}/jiathis/renren.gif" class="img-circle" style="width:50px;height:50px;"></image>
@@ -73,7 +73,7 @@
 					    </div>
 					</a>
 				</div>
-				<div class="col-xs-4" style="padding-left:2px;padding-right:2px;">
+				<div class="col-xs-3 col-sm-2 col-md-2" style="padding-left:2px;padding-right:2px;">
 					<a target="_blank"  href="http://www.jiathis.com/send/?webid=douban&url=$!url&title=$!title&uid=2006831#if($!{pic} !='')&pic=$!pic #end" class="btn btn-app btn-light no-radius btn-sm" title="分析到QQ空间" style="margin-bottom:2px;padding-top:2px;padding-bottom:2px;">
 						<div>
 							<image src="$!{base_static_url}/jiathis/douban.gif" class="img-circle" style="width:50px;height:50px;"></image>
@@ -83,7 +83,7 @@
 					    </div>
 					</a>
 				</div>
-				<div class="col-xs-4" style="padding-left:2px;padding-right:2px;">
+				<div class="col-xs-3 col-sm-2 col-md-2" style="padding-left:2px;padding-right:2px;">
 					<a target="_blank"  href="http://www.jiathis.com/send/?webid=xiaoyou&url=$!url&title=$!title&uid=2006831#if($!{pic} !='')&pic=$!pic #end" class="btn btn-app btn-light no-radius btn-sm" title="分析到QQ空间" style="margin-bottom:2px;padding-top:2px;padding-bottom:2px;">
 						<div>
 							<image src="$!{base_static_url}/jiathis/qqxiaoyou.gif" class="img-circle" style="width:50px;height:50px;"></image>
@@ -94,7 +94,7 @@
 					</a>
 				</div>
 			</div>
-	        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">取消</a>
+	        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a" data-rel="back">取消</a>
 	    </div>
 	</div>
 #end

@@ -18,7 +18,7 @@
 		#end
 	</div>
 	##图片墙
-	<div id="container" class="goods_wall" style="padding-top:10px;overflow:hidden;"></div>
+	<div id="container" class="dialogs goods_wall " style="padding-top:10px;overflow:hidden;"></div>
 	##</div>
 	<script type="text/javascript">
 		fml.data = $!{json};
