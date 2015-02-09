@@ -43,19 +43,19 @@
 				<div class="name">
 					<a href="$!{pd.productUrl}" target="_blank" onclick="Topic.index.clickProduct('$!{pd.id}');return true;">$!{pd.title}</a>
 				</div>
-				<div class="text" style="margin-top:8px;" >$!{pd.remark}</div>
-				<div class="tools" style="display:block">
+				<div class="text" style="margin-top:8px;margin-bottom:27px;" >$!{pd.remark}</div>
+				<div class="tools" style="display:block;">
 					<a href="$!{pd.productUrl}" target="_blank" onclick="Topic.index.clickProduct('$!{pd.id}');return true;" class="btn btn-minier btn-success">
-						<i class="icon-heart">&nbsp;详情</i>
+						<i class="icon-heart">详情</i>
 					</a>
 					<a href="$!{pd.productUrl}" target="_blank" onclick="Topic.index.clickProduct('$!{pd.id}');return true;" class="btn btn-minier btn-success">
-						<i class="">￥&nbsp;&nbsp;$!{pd.price}</i>
+						<i class="">￥&nbsp;$!{pd.price}</i>
 					</a>
 					<a href="#" class="btn btn-minier btn-pink" onclick="Topic.index.pariseProduct('$!{pd.id}');">
-						<i class="icon-hand-up icon-share-alt" id='heart-$!{pd.id}'>&nbsp;$!{pd.praiseCount}</i>
+						<i class="icon-hand-up icon-share-alt" id='heart-$!{pd.id}'>$!{pd.praiseCount}</i>
 					</a>
 					<a href="#popupDialog-list-$!{pd.id}" class="btn btn-minier btn-inverse" data-rel="popup" data-position-to="window" data-transition="pop" title="分享">
-						<i class="icon-only icon-share-alt">&nbsp;分享</i>
+						<i class="icon-only icon-share-alt">分享</i>
 					</a>
 				</div>
 			</div>
