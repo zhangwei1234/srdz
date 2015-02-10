@@ -3,7 +3,7 @@
 #jsCount()
 <div data-role="page" id="index" data-fullscreen="true" style="background:#fff!important;">
 	##head
-	<div data-role="header" data-theme="b" data-position="fixed" data-backbtn="false">
+	<div data-role="header" data-theme="b" data-position="fixed" data-backbtn="false" data-tap-toggle="false">
 		<h1 style="font-size:1.3em;padding-bottom: 5px;padding-top: 5px;">美丽秀吧</h1>
 		<a href="#index-popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" title="分享" class="ui-btn-right ui-btn ui-shadow ui-corner-all ui-icon-action ui-btn-icon-notext">分享</a> 
 	</div>

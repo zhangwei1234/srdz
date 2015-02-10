@@ -3,7 +3,7 @@
 #jsCount()
 <div data-role="page" id="group-icon" data-fullscreen="true" style="background-color:#F5EDF0;">
 	##head
-	<div data-role="header" data-theme="b" data-position="fixed" data-backbtn="false">
+	<div data-role="header" data-theme="b" data-position="fixed" data-backbtn="false" data-tap-toggle="false">
 		<a title="返回" class="ui-btn-left ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-notext" data-rel="back" data-transition="slide" >返回</a>
 		<h1 style="font-size:1.3em;padding-bottom: 4px;padding-top: 5px;">$!{group.name}</h1>
 		<a href="#group-popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" title="分享" class="ui-btn-right ui-btn ui-shadow ui-corner-all ui-icon-action ui-btn-icon-notext">分享</a> 
