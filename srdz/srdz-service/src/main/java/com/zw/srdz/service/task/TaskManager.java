@@ -40,7 +40,7 @@ public class TaskManager {
 	 */
 	public void stop() throws Exception{
 		if(null == this.pool){
-			log.warn("停止任务管理对象失败,fail:认为管理对象还未初始化");
+			log.warn("停止任务管理对象失败,fail:任务管理对象还未初始化");
 			return;
 		}
 		this.pool.shutdown();
