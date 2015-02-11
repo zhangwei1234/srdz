@@ -98,25 +98,30 @@
 #end
 
 #macro(footer)
-	<div data-role="footer" data-theme="a" data-position="fixed">
-		<a href="#" class="btn btn-success btn-app btn-xs pull-left" style="width:40px;line-height:10px;padding-bottom: 2px;font-size:10px;margin-right:25px;">
-			<i class="icon-desktop bigger-40" style="font-size:16px;line-height:16px;"></i>
-			首页
-		</a>
-		<a href="#" class="btn btn-undo btn-app btn-xs pull-left" style="width:40px;line-height:10px;padding-bottom: 2px;font-size:10px;">
-			<i class=" icon-hand-up bigger-40" style="font-size:16px;line-height:16px;"></i>
-			推荐
-			<span class="badge badge-pink">+3</span>
-		</a>
-		<a href="#" class="btn btn-purple btn-app btn-xs pull-right" style="width:40px;line-height:10px;padding-bottom: 2px;font-size:10px;">
-			<i class="icon-user bigger-40" style="font-size:16px;line-height:16px;"></i>
-			我的
-			<span class="badge badge-warning badge-left">+1</span>
-		</a>
-		<a href="#" class="btn btn-inverse btn-app btn-xs pull-right" style="width:40px;line-height:10px;padding-bottom: 2px;font-size:10px;margin-right:25px;">
-			<i class="icon-group bigger-40" style="font-size:16px;line-height:16px;"></i>
-			分享
-			<span class="badge badge-warning badge-left">5</span>
-		</a>
+	<div data-role="footer" data-position="fixed" data-tap-toggle="false" style="/*background:#fff!important;*/">
+		<div class="col-xs-3 " style="padding-left:2px;padding-right:2px;text-align:center;">
+			<a href="$!{base_url}" data-transition="slide" style="max-width:30px;height:30px;">
+				<i class="icon-home" style="font-size:18px;margin-top:0px;padding-top:0px;"></i>
+				<div style="font-size:8px;color:#707070;text-shadow:none;">秀吧</div>
+			</a>
+		</div>
+		<div class="col-xs-3 " style="padding-left:2px;padding-right:2px;text-align:center;">
+			<a href="#" data-transition="slide" style="max-width:30px;height:30px;">
+				<i class="icon-heart-empty" style="font-size:18px;margin-top:0px;padding-top:0px;"></i>
+				<div style="font-size:8px;color:#707070;">喜欢</div>
+			</a>
+		</div>
+		<div class="col-xs-3 " style="padding-left:2px;padding-right:2px;text-align:center;">
+			<a href="#" data-transition="slide" style="max-width:30px;height:30px;">
+				<i class="icon-comments-alt" style="font-size:18px;margin-top:0px;padding-top:0px;"></i>
+				<div style="font-size:8px;color:#707070;">吧台</div>
+			</a>
+		</div>
+		<div class="col-xs-3 " style="padding-left:2px;padding-right:2px;text-align:center;">
+			<a href="#" data-transition="slide" style="max-width:30px;height:30px;">
+				<i class="icon-user" style="font-size:18px;margin-top:0px;padding-top:0px;"></i>
+				<div style="font-size:8px;color:#707070;">我的</div>
+			</a>
+		</div>
 	</div>
 #end

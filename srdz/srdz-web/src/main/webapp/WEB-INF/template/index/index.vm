@@ -50,7 +50,7 @@
 							<image src="$!{group.iconUrl}" class="img-circle" style="width:50px;height:50px;"></image>
 						</div>
  						<div>
- 							<span style="color:#707070;font-size:14px;font-weight:normal;" >$!{group.name}</span>
+ 							<span style="color:#707070;font-size:14px;font-weight:normal;text-shadow:none;" >$!{group.name}</span>
 					    </div>
 					    #if($!{group.label} != '')
 					    	<span class="badge badge-warning badge-left">$!{group.label}</span>
@@ -60,6 +60,8 @@
 	    #end
 		</div>
 	</div>
+	## foot
+	#footer()
 	
 	##分享组件
     #jiathis("index-popupDialog" "$!{base_url}" "美女秀吧" "")

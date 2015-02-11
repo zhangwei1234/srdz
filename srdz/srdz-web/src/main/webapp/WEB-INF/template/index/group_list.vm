@@ -79,7 +79,8 @@
 			</figure>
 		</div>
 	</script>
-	
+	## foot
+	#footer()
 	##分享组件
     #jiathis("list-popupDialog" "$!{base_url}group/$!{group.id}" "$!{group.name}" "")
 </div>

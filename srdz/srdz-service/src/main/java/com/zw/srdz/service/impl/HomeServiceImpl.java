@@ -73,8 +73,10 @@ public class HomeServiceImpl extends BaseService implements HomeService{
 		}
 		if(products.isEmpty()){
 			data.put("isFinish", "true");
+		}else{
+			data.put("advertisingIndex", new Random().nextInt(products.size()));
 		}
-		data.put("advertisingIndex", new Random().nextInt(products.size()));
+		
 		data.put("products", products);
 		return data;
 	}
