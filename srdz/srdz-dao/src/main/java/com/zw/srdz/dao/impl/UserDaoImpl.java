@@ -31,6 +31,11 @@ public class UserDaoImpl extends BaseDao implements UserDao{
 	}
 	
 	@Override
+	public User getUserLike(String account) throws Exception {
+		return template.selectOne(getNameSpace("QUERY_BY_ACCOUNT_LIKE"), account);
+	}
+	
+	@Override
 	protected String getNameSpace(String space) {
 		return base + space;
 	}

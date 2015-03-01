@@ -68,6 +68,17 @@ public class AuthorIntercept extends HandlerInterceptorAdapter{
 			classTypes = classAuthor.type();
 		}
 		
+		//检查普通用户是否登陆
+		if((isAuthorType(methodTypes, AuthorType.LOGIN_CUSTOMER) || isAuthorType(classTypes, AuthorType.LOGIN_CUSTOMER)) && !isAuthorType(methodTypes, AuthorType.LOGIN_CUSTOMER_NOT)){
+			String cookie_value = CookieUtil.getCookie(request, cookie_name);
+			
+			if(!StringUtils.isEmpty(cookie_value)){
+				LoginContext context = LoginContextEncrypt.decodeContext(cookie_value);
+				CookieUtil.addCookie(response, cookie_name, LoginContextEncrypt.encodingContext(context));
+				authorLocal.getLocal().set(context);
+			}
+			
+		}
 		//检查用户是否登陆
 		if((isAuthorType(methodTypes, AuthorType.LOGIN_USER) || isAuthorType(classTypes, AuthorType.LOGIN_USER)) && !isAuthorType(methodTypes, AuthorType.LOGIN_USER_NOT)){
 			

@@ -18,6 +18,7 @@ import java.util.Date;
 public class User {
 
 	public final static int TYPE_MANAGER = 1;//管理类账号
+	public final static int TYPE_CUSTOMER = 2;//用户类账号
 	
 	private int id;
 	private String name;

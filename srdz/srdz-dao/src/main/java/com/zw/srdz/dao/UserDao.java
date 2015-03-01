@@ -7,6 +7,13 @@ import com.zw.srdz.domain.User;
 public interface UserDao {
 
 	/**
+	 * 查询用户信息
+	 * @param account 登陆账号/手机号/邮箱账号
+	 * @return
+	 * @throws Exception
+	 */
+	public User getUserLike(String account) throws Exception;
+	/**
 	 * 插入用户信息
 	 * @param user
 	 * @return

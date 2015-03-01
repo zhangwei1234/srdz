@@ -1,0 +1,39 @@
+##客户登陆界面
+##百度统计代码
+#jsCount()
+<div data-role="page" id="index" data-fullscreen="true" style="background:#fff!important;">
+	##head
+	<div data-role="header" data-theme="b" data-position="fixed" data-backbtn="false" data-tap-toggle="false">
+		<a title="返回" class="ui-btn-left ui-btn ui-shadow ui-btn-icon-left ui-icon-back" data-rel="back" data-transition="slideup" >返回</a>
+		<span class="ui-title" style="height:40px;"></span>
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+	        <a href="$!{base_url}cus/login" class="ui-btn ui-btn-icon-right ui-icon-user" data-transition="slideup">登陆</a>
+	        <a href="$!{base_url}cus/registry" class="ui-btn ui-btn-icon-right ui-icon-plus" data-transition="slideup">注册</a>
+	    </div>
+	</div>
+	##content
+	<div data-role="content" style="margin-right:auto;margin-left:auto;padding:10px;" class="container-fluid " >
+		##登陆异常信息提示
+		#if($msg)
+			<h4 class="lighter">
+				<i class="icon-hand-right icon-animated-hand-pointer blue"></i>
+				<a href="javascript:void(0);" data-toggle="modal" class="pink">$!{msg}</a>
+			</h4>
+		#end
+		
+		##登陆信息填写
+		<form action="$!{base_url}cus/dologin" method="post" id="CUSTOMER_DO_LOGIN" class="form-horizontal" data-ajax="false">
+			<div>
+				<div class="input-group" style="width:100%;">
+					<input class="form-control" style="width:100%;" id="account" type="text" name="account" style="width:100%;" placeholder="登陆账号/手机号/邮箱账号" value=""/>
+				</div>
+			</div>
+			<div>
+				<div class="input-group" style="width:100%;">
+					<input class="form-control" style="width:100%;" id="passwd" type="password" name="passwd" style="width:100%;" placeholder="密码" value=""/>
+				</div>
+			</div>
+		</form>
+		<button class="btn btn-danger btn-block" onclick="$('#CUSTOMER_DO_LOGIN').submit();" >登&nbsp;陆</button>
+	</div>
+</div>

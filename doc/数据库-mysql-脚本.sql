@@ -96,3 +96,13 @@ CREATE INDEX ik_product_type_typeid ON web_product_type(type_id);
 ####初始化管理用户数据
 insert into web_user(user_name,account,passwd,sex,type,email,mobile_phone,create_time) values('超级管理员','zhangwei_2943@163.com','686aeb560c684f3f07c45e4089153a24',1,1,'zhangwei_2943@163.com','15328007301',now());
 
+##修改用户表结构,增加唯一索引
+ALTER TABLE `web_user`
+ 
+ADD UNIQUE INDEX `account_UNIQUE` (`account` ASC),
+
+ ADD UNIQUE INDEX `email_UNIQUE` (`email` ASC),
+ 
+ADD UNIQUE INDEX `mobile_phone_UNIQUE` (`mobile_phone` ASC);
+
+

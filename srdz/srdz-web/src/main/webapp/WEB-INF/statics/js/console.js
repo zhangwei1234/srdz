@@ -193,7 +193,11 @@ Namespace.register("Topic.Console");
 	Topic.Console.imageSize = function (){
 		try{
 			$("<img/>").attr("src", $("#product_image").val()).load(function() {
-				$("#product_image_height").val(this.height);
+				var height = parseInt(this.height);
+				if(height > 230){
+					height = 230+Math.round(Math.random()*50);
+				}
+				$("#product_image_height").val(height);
 				$("#product_image_width").val(this.width);
 			});
 		}catch(e){

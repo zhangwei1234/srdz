@@ -100,6 +100,31 @@ Namespace.register("Topic.index");
 			o.html(parseInt(o.html())+1);
 		}catch(e){}
 	};
+	//用户注册
+	Topic.index.doRegistry = function(){
+		var account = $("#account").val();
+		var pwd 	= $("#password").val();
+		var pwd1    = $("#password1").val();
+		if(account == "" || account.length<4 || account.length>20 || !new RegExp("^[A-Za-z0-9_\\-\\u4e00-\\u9fa5]+$").test(account)){
+			$("#account").addClass("err").val('');
+			return;
+		}
+		if(pwd == "" ){
+			$("#password").addClass("err").val('');
+			return;
+		}
+		if(pwd1 == ""){
+			$("#password1").addClass("err").val('');
+			return;
+		}
+		if(pwd != pwd1){
+			$("#password").addClass("err").val('');
+			$("#password1").addClass("err").val('');
+			return;
+		}
+		$("#CUSTOMER_DO_REGISTRY").submit();
+	};
+	
 })();
 
 //定义列表组件
@@ -114,7 +139,7 @@ fmlList.clear = function(){
 };
 //定义图片墙加载框架
 (function(a,b){
-	a.fml = {version:"1.0",top:{},index:1,count:0,colWidth:0,cols:0,container:"",args:{marginTop:0,marginLeft:0,maxWidth:0,minCols:0},data:{},template:"",isInit:false};
+	a.fml = {version:"1.0",top:{},index:1,count:0,colWidth:0,cols:0,container:"",args:{marginTop:0,marginLeft:0,maxWidth:0,minCols:2},data:{},template:"",isInit:false};
 })(this);
 
 fml.clear = function(){
@@ -127,8 +152,8 @@ fml.clear = function(){
 fml.init = function(){
 	var width = parseInt($(window).width());
 	var cols = parseInt(width/this.args.maxWidth);
-	if(cols < this.minCols){
-		cols = this.minCols;
+	if(cols < this.args.minCols){
+		cols = this.args.minCols;
 	}
 	var colWidth = width/ cols;
 	colWidth = colWidth+((width % cols)- ((cols-1)* this.args.marginLeft))/cols;
