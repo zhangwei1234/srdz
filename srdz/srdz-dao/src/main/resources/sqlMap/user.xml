@@ -30,6 +30,20 @@
 		a.update_time
 	</sql>
 	
+	<!-- 修改用户信息 -->
+	<update id="UPDATE_USER" parameterType="user">
+		update web_user
+		<set>
+			<if test="name != null">user_name=#{name},</if>
+			<if test="sex != null"> sex = #{sex},</if>
+			<if test="email != null"> email=#{email},</if>
+			<if test="mobilePhone != null">mobile_phone=#{mobilePhone}, </if>
+			<if test="updateTime != null"> update_time=#{updateTime},</if>
+			<if test="passwd != null and passwd != '' ">passwd=#{passwd}, </if>
+		</set>
+		where id = #{id}
+	</update>
+	
 	<!-- 根据用户账号查询用户信息 -->
 	<select id="QUERY_BY_ACCOUNT" parameterType="java.lang.String" resultMap="userM">
 		select <include refid="QUERY_ALL"/> from web_user a where a.account=#{val}

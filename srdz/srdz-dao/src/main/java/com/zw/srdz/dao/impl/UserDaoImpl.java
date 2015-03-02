@@ -35,4 +35,10 @@ public class UserDaoImpl extends BaseDao implements UserDao{
 		return template.selectOne(getNameSpace(this.base, "QUERY_BY_ACCOUNT_LIKE"), account);
 	}
 	
+	@Override
+	public boolean updateUser(User user) throws Exception {
+		user.setUpdateTime(new Date());
+		
+		return template.update(getNameSpace(this.base, "UPDATE_USER"), user) >0;
+	}
 }

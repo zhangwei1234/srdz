@@ -35,4 +35,12 @@ public interface UserDao {
 	 * @throws Exception
 	 */
 	public List<User> queryUsers() throws Exception ;
+	
+	/**
+	 * 修改用户信息
+	 * @param user
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean updateUser(User user) throws Exception;
 }
