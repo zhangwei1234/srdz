@@ -22,6 +22,8 @@
 		<typeAlias type="com.zw.srdz.domain.Product" alias="product"/>
 		<typeAlias type="com.zw.srdz.domain.ProductTypeAttr" alias="attrType" />
 		<typeAlias type="com.zw.srdz.domain.Advertising" alias="advertising" />
+		<typeAlias type="com.zw.srdz.domain.UserFeedBack" alias="userFeedBack" />
+		<typeAlias type="com.zw.srdz.domain.UserMessage" alias="userMessage" />
 	</typeAliases>
 
 	<!-- 映射文件路径 -->
@@ -31,6 +33,8 @@
 		<mapper resource="sqlMap/type.xml" />
 		<mapper resource="sqlMap/product.xml" />
 		<mapper resource="sqlMap/advertising.xml" />
+		<mapper resource="sqlMap/userFeedBack.xml" />
+		<mapper resource="sqlMap/userMessage.xml" />
 	</mappers>
 	
 </configuration>

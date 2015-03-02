@@ -17,35 +17,29 @@ public class GroupDaoImpl extends BaseDao implements GroupDao {
 	@Override
 	public boolean addGroup(Group group) throws Exception {
 		group.setCreateTime(new Date());
-		return template.insert(getNameSpace("ADD_GROUP"), group) > 0;
+		return template.insert(getNameSpace(this.base, "ADD_GROUP"), group) > 0;
 	}
 
 	@Override
 	public Group getGroup(int id) throws Exception {
-		return template.selectOne(getNameSpace("QUERY_BY_ID"), id);
+		return template.selectOne(getNameSpace(this.base, "QUERY_BY_ID"), id);
 	}
 
 	@Override
 	public List<Group> queryGroups() throws Exception {
-		return template.selectList(getNameSpace("QUERY_GROUPS"));
+		return template.selectList(getNameSpace(this.base, "QUERY_GROUPS"));
 	}
 
 	@Override
 	public boolean deleteGroup(int id) throws Exception {
 		
-		return template.delete(getNameSpace("DELETE_BY_ID"), id) > 0;
+		return template.delete(getNameSpace(this.base, "DELETE_BY_ID"), id) > 0;
 	}
 
 	@Override
 	public boolean updateGroup(Group group) throws Exception {
 		group.setUpdateTime(new Date());
-		return template.update(getNameSpace("UPDATE_GROUP"), group) > 0;
+		return template.update(getNameSpace(this.base, "UPDATE_GROUP"), group) > 0;
 	}
-
-	@Override
-	protected String getNameSpace(String space) {
-		return base + space;
-	}
-
 	
 }

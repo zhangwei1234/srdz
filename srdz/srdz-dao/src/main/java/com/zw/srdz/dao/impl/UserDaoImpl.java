@@ -17,27 +17,22 @@ public class UserDaoImpl extends BaseDao implements UserDao{
 	@Override
 	public boolean addUser(User user) throws Exception {
 		user.setCreateTime(new Date());
-		return template.insert(getNameSpace("ADD_USER"), user) >0;
+		return template.insert(getNameSpace(this.base, "ADD_USER"), user) >0;
 	}
 	
 	@Override
 	public User getUser(String account) throws Exception {
-		return template.selectOne(getNameSpace("QUERY_BY_ACCOUNT"), account);
+		return template.selectOne(getNameSpace(this.base, "QUERY_BY_ACCOUNT"), account);
 	}
 	
 	@Override
 	public List<User> queryUsers() throws Exception {
-		return template.selectList(getNameSpace("QUERY_USERS"));
+		return template.selectList(getNameSpace(this.base, "QUERY_USERS"));
 	}
 	
 	@Override
 	public User getUserLike(String account) throws Exception {
-		return template.selectOne(getNameSpace("QUERY_BY_ACCOUNT_LIKE"), account);
+		return template.selectOne(getNameSpace(this.base, "QUERY_BY_ACCOUNT_LIKE"), account);
 	}
 	
-	@Override
-	protected String getNameSpace(String space) {
-		return base + space;
-	}
-
 }

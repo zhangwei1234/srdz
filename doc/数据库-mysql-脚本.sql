@@ -1,102 +1,102 @@
 ======================================================
-ĞãÃÀÀöÍøÕ¾Êı¾İ¿â½Å±¾
+ç§€ç¾ä¸½ç½‘ç«™æ•°æ®åº“è„šæœ¬
 ======================================================
-##¹ã¸æÏµÍ³
+##å¹¿å‘Šç³»ç»Ÿ
 create table web_advertising(
 	id int(11) not null AUTO_INCREMENT,
-	name		varchar(100)	not null 			comment '¹ã¸æÃû³Æ',
-	image_url	varchar(1000)	not null			comment '¹ã¸æÍ¼Æ¬µØÖ·',
-	link_url	varchar(1000)	not null			comment '¹ã¸æÁ´½ÓµØÖ·',
-	location	int(2)			not null default 1	comment	'¹ã¸æÕ¹Ê¾Î»ÖÃ(1:Ö÷Ò³)',
-	display		int(2)			not null default 1	comment '¹ã¸æÕ¹Ê¾·½Ê½(1:banner Í¼)',
-	start_time	datetime		not null			comment '¹ã¸æÉúĞ§¿ªÊ¼Ê±¼ä',
-	end_time	datetime		not null			comment '¹ã¸æÉúĞ§½áÊøÊ±¼ä',
-	status		int(1)			not null default 1	comment '¹ã¸æ×´Ì¬(1:ÉúĞ§,-1:½ûÓÃ)',
-	create_user	int(11)			not null			comment '¹ã¸æÂ¼ÈëÓÃ»§',
-	create_time	datetime		not null			comment '´´½¨Ê±¼ä',
+	name		varchar(100)	not null 			comment 'å¹¿å‘Šåç§°',
+	image_url	varchar(1000)	not null			comment 'å¹¿å‘Šå›¾ç‰‡åœ°å€',
+	link_url	varchar(1000)	not null			comment 'å¹¿å‘Šé“¾æ¥åœ°å€',
+	location	int(2)			not null default 1	comment	'å¹¿å‘Šå±•ç¤ºä½ç½®(1:ä¸»é¡µ)',
+	display		int(2)			not null default 1	comment 'å¹¿å‘Šå±•ç¤ºæ–¹å¼(1:banner å›¾)',
+	start_time	datetime		not null			comment 'å¹¿å‘Šç”Ÿæ•ˆå¼€å§‹æ—¶é—´',
+	end_time	datetime		not null			comment 'å¹¿å‘Šç”Ÿæ•ˆç»“æŸæ—¶é—´',
+	status		int(1)			not null default 1	comment 'å¹¿å‘ŠçŠ¶æ€(1:ç”Ÿæ•ˆ,-1:ç¦ç”¨)',
+	create_user	int(11)			not null			comment 'å¹¿å‘Šå½•å…¥ç”¨æˆ·',
+	create_time	datetime		not null			comment 'åˆ›å»ºæ—¶é—´',
 	primary key(id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE INDEX ik_advertising_location ON web_advertising(location);
 
-### ÓÃ»§±í
+### ç”¨æˆ·è¡¨
 create table web_user (
 	id		int(11) not null AUTO_INCREMENT,
-	user_name	varchar(40)	 null comment 'ÓÃ»§Ãû³Æ',
-	account		varchar(50)	not null comment 'µÇÂ½ÕËºÅ',
-	passwd		varchar(32)	not null comment 'µÇÂ½ÃÜÂë',
-	sex			int(1)		null	comment	 'ĞÔ±ğ(1:ÄĞ,-1:Å®)',
-	type		int(2)		not null	comment 'ÓÃ»§ÀàĞÍ(1:¹ÜÀíÀàÓÃ»§,2:ÆÕÍ¨ÓÃ»§)',
-	email		varchar(40)	null	comment	 'ÓÊÏä',
-	mobile_phone	varchar(20)	null	comment 'ÒÆ¶¯µç»°',
-	create_time		datetime	not null	comment '×¢²áÊ±¼ä',
-	update_time		datetime	null		comment	'ĞŞ¸ÄÊ±¼ä',
+	user_name	varchar(40)	 null comment 'ç”¨æˆ·åç§°',
+	account		varchar(50)	not null comment 'ç™»é™†è´¦å·',
+	passwd		varchar(32)	not null comment 'ç™»é™†å¯†ç ',
+	sex			int(1)		null	comment	 'æ€§åˆ«(1:ç”·,-1:å¥³)',
+	type		int(2)		not null	comment 'ç”¨æˆ·ç±»å‹(1:ç®¡ç†ç±»ç”¨æˆ·,2:æ™®é€šç”¨æˆ·)',
+	email		varchar(40)	null	comment	 'é‚®ç®±',
+	mobile_phone	varchar(20)	null	comment 'ç§»åŠ¨ç”µè¯',
+	create_time		datetime	not null	comment 'æ³¨å†Œæ—¶é—´',
+	update_time		datetime	null		comment	'ä¿®æ”¹æ—¶é—´',
 	primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE INDEX ik_user_account ON web_user(account);
 
-### ·Ö×é±í
+### åˆ†ç»„è¡¨
 create table web_group (
 	id			int(11)		not null	AUTO_INCREMENT,
-	name		varchar(10)	not null	comment '·Ö×éÃû³Æ',
-	remark		varchar(50)	not null	comment	'·Ö×éÃèÊö',
-	order_no	int(2)		not null	comment 'ÅÅĞòºÅ',
-	icon_url	varchar(1000) not null	comment	'iconµØÖ·',
-	label		varchar(5)	 not null	default '' comment '·Ö×é±êÇ©,Èç¹ûÎª¿ÕÔò²»ÏÔÊ¾',
-	create_time	datetime	not null	comment '´´½¨Ê±¼ä',
-	update_time	datetime	null		comment 'ĞŞ¸ÄÊ±¼ä',
+	name		varchar(10)	not null	comment 'åˆ†ç»„åç§°',
+	remark		varchar(50)	not null	comment	'åˆ†ç»„æè¿°',
+	order_no	int(2)		not null	comment 'æ’åºå·',
+	icon_url	varchar(1000) not null	comment	'iconåœ°å€',
+	label		varchar(5)	 not null	default '' comment 'åˆ†ç»„æ ‡ç­¾,å¦‚æœä¸ºç©ºåˆ™ä¸æ˜¾ç¤º',
+	create_time	datetime	not null	comment 'åˆ›å»ºæ—¶é—´',
+	update_time	datetime	null		comment 'ä¿®æ”¹æ—¶é—´',
 	primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-###	·ÖÀà±í
+###	åˆ†ç±»è¡¨
 create table web_type (
 	id			int(11) 	not null AUTO_INCREMENT,
-	name		varchar(10)	not null	comment '·ÖÀàÃû³Æ',
-	remark		varchar(50) not null	comment '·ÖÀàÃèÊö',
-	group_id	int(11)		not null	comment	'ËùÊôÖ÷',
-	order_no	int(2)		not null	comment 'ÅÅĞòºÅ',
-	display_type	int(1)	not null	comment 'ÏÔÊ¾·½Ê½(1:Í¼±ê,2:ÁĞ±í)',
-	order_type	int(1)      not null	comment 'ÉÌÆ·ÅÅĞò·½Ê½(1:°´ÕÕ´´½¨Ê±¼äµ¹Ğò,2:°´ÕÕµã»÷Á¿µ¹Ğò)',
-	icon_url	varchar(1000) not null	comment	'iconµØÖ·',
-	create_time	datetime	not null	comment '´´½¨Ê±¼ä',
-	update_time	datetime	null		comment 'ĞŞ¸ÄÊ±¼ä',
+	name		varchar(10)	not null	comment 'åˆ†ç±»åç§°',
+	remark		varchar(50) not null	comment 'åˆ†ç±»æè¿°',
+	group_id	int(11)		not null	comment	'æ‰€å±ä¸»',
+	order_no	int(2)		not null	comment 'æ’åºå·',
+	display_type	int(1)	not null	comment 'æ˜¾ç¤ºæ–¹å¼(1:å›¾æ ‡,2:åˆ—è¡¨)',
+	order_type	int(1)      not null	comment 'å•†å“æ’åºæ–¹å¼(1:æŒ‰ç…§åˆ›å»ºæ—¶é—´å€’åº,2:æŒ‰ç…§ç‚¹å‡»é‡å€’åº)',
+	icon_url	varchar(1000) not null	comment	'iconåœ°å€',
+	create_time	datetime	not null	comment 'åˆ›å»ºæ—¶é—´',
+	update_time	datetime	null		comment 'ä¿®æ”¹æ—¶é—´',
 	primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE INDEX ik_type_groupid ON web_type(group_id);
 
-### ÉÌÆ·ĞÅÏ¢±í
+### å•†å“ä¿¡æ¯è¡¨
 create table web_product(
 	id 		int(11)		not null	AUTO_INCREMENT,
 	title	varchar(50)	not null	comment 'title',
-	remark	varchar(100)	not null	comment 'ÃèÊö',
-	price	double			not null	comment	'¼Û¸ñ',
-	image_url	varchar(1000)	not null	comment 'Í¼Æ¬µØÖ·',
-	image_width	double		not null	comment 'Í¼Æ¬¿í¶È',
-	image_height	double		not null	comment	'Í¼Æ¬¸ß¶È',
-	product_url	varchar(1000)	not null	comment 'ÉÌÆ·Á´½Ó',
-	click_count	int(11)			not null default 0		comment 'µã»÷´ÎÊı',
-	praise_count int(11)		not null default 0		comment 'µãÔŞ´ÎÊı',
-	create_time		datetime	not null	comment '´´½¨Ê±¼ä',
-	update_time		datetime	null		comment	'ĞŞ¸ÄÊ±¼ä',
+	remark	varchar(100)	not null	comment 'æè¿°',
+	price	double			not null	comment	'ä»·æ ¼',
+	image_url	varchar(1000)	not null	comment 'å›¾ç‰‡åœ°å€',
+	image_width	double		not null	comment 'å›¾ç‰‡å®½åº¦',
+	image_height	double		not null	comment	'å›¾ç‰‡é«˜åº¦',
+	product_url	varchar(1000)	not null	comment 'å•†å“é“¾æ¥',
+	click_count	int(11)			not null default 0		comment 'ç‚¹å‡»æ¬¡æ•°',
+	praise_count int(11)		not null default 0		comment 'ç‚¹èµæ¬¡æ•°',
+	create_time		datetime	not null	comment 'åˆ›å»ºæ—¶é—´',
+	update_time		datetime	null		comment	'ä¿®æ”¹æ—¶é—´',
 	primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE INDEX ik_product_click ON web_product(click_count);
 CREATE INDEX ik_product_praise ON web_product(praise_count);
 CREATE INDEX ik_product_createtime ON web_product(create_time);
 
-### ÉÌÆ·ÊôĞÔ±í(ÉÌÆ··ÖÀàÊôĞÔ)
+### å•†å“å±æ€§è¡¨(å•†å“åˆ†ç±»å±æ€§)
 create table web_product_type(
 	id		int(11)		not null	AUTO_INCREMENT,
-	product_id	int(11)	not null	comment 'ÉÌÆ·ID',
-	type_id		int(11)	not null	comment	'ÉÌÆ·ËùÊô·ÖÀà',
+	product_id	int(11)	not null	comment 'å•†å“ID',
+	type_id		int(11)	not null	comment	'å•†å“æ‰€å±åˆ†ç±»',
 	primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE INDEX ik_product_type_pctid ON web_product_type(product_id);
 CREATE INDEX ik_product_type_typeid ON web_product_type(type_id);
 
-####³õÊ¼»¯¹ÜÀíÓÃ»§Êı¾İ
-insert into web_user(user_name,account,passwd,sex,type,email,mobile_phone,create_time) values('³¬¼¶¹ÜÀíÔ±','zhangwei_2943@163.com','686aeb560c684f3f07c45e4089153a24',1,1,'zhangwei_2943@163.com','15328007301',now());
+####åˆå§‹åŒ–ç®¡ç†ç”¨æˆ·æ•°æ®
+insert into web_user(user_name,account,passwd,sex,type,email,mobile_phone,create_time) values('è¶…çº§ç®¡ç†å‘˜','zhangwei_2943@163.com','686aeb560c684f3f07c45e4089153a24',1,1,'zhangwei_2943@163.com','15328007301',now());
 
-##ĞŞ¸ÄÓÃ»§±í½á¹¹,Ôö¼ÓÎ¨Ò»Ë÷Òı
+##ä¿®æ”¹ç”¨æˆ·è¡¨ç»“æ„,å¢åŠ å”¯ä¸€ç´¢å¼•
 ALTER TABLE `web_user`
  
 ADD UNIQUE INDEX `account_UNIQUE` (`account` ASC),
@@ -105,4 +105,35 @@ ADD UNIQUE INDEX `account_UNIQUE` (`account` ASC),
  
 ADD UNIQUE INDEX `mobile_phone_UNIQUE` (`mobile_phone` ASC);
 
+##=============================2015-03-02 å¢åŠ (æœªä¸Šçº¿)================================================
+##ç”¨æˆ·åé¦ˆè¡¨
+
+create table web_user_feedback(
+	id		int(11)		not null	AUTO_INCREMENT,
+	userAccount	varchar(50)	not null	comment	'ç”¨æˆ·è´¦å·',
+	comment		varchar(400)    not null	comment 'åé¦ˆå†…å®¹',
+	status		int(1)		not null	default -1 comment 'çŠ¶æ€(-1:æœªå¤„ç†,1:å·²ç»å¤„ç†)',
+	createTime	datetime	not null	comment 'åˆ›å»ºæ—¶é—´',
+	operate_user varchar(50) 	null		comment 'å¤„ç†äººè´¦å·',
+	updateTime	datetime	null		comment 'å¤„ç†æ—¶é—´',
+    operateComment	varchar(500) null  comment 'å¤„ç†å†…å®¹',
+	primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE INDEX ik_user_feedback_status ON web_user_feedback(status);
+CREATE INDEX ik_user_feedback_createTime ON web_user_feedback(createTime);
+CREATE INDEX ik_user_feedback_account ON web_user_feedback(userAccount);
+
+## ç”¨æˆ·ä¿¡æ¶ˆæ¯è¡¨
+
+create table web_user_message(
+	id		int(11)		not null	AUTO_INCREMENT,
+	userAccount	varchar(50)	not null	comment	'ç”¨æˆ·è´¦å·',
+	comment		varchar(400)    not null	comment 'æ¶ˆæ¯å†…å®¹',
+	status		int(1)		not null	default -1 comment 'çŠ¶æ€(-1:æœªå¤„ç†,1:å·²ç»å¤„ç†)',
+	createTime	datetime	not null	comment 'åˆ›å»ºæ—¶é—´',
+	updateTime	datetime	null		comment 'å¤„ç†æ—¶é—´',
+	primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE INDEX ik_user_message_status ON web_user_message(status);
+CREATE INDEX ik_user_message_account ON web_user_message(userAccount);
 

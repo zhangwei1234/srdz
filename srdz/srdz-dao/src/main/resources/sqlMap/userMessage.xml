@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.zw.srdz.dao.UserMessageDao">
+	<!-- 定义实体映射 -->
+	<resultMap type="userMessage" id="userMessageM">
+		<result property="id" column="id"/>
+		<result property="account" column="userAccount"/>
+		<result property="comment" column="comment"/>
+		<result property="status" column="status"/>
+		<result property="createTime" column="createTime"/>
+		<result property="updateTime" column="updateTime"/>
+	</resultMap>
+	
+	<sql id="QUERY_ALL">
+		a.id,
+		a.account,
+		a.comment,
+		a.status,
+		a.createTime,
+		a.updateTime
+	</sql>
+	
+	<!-- 插入一条用户消息 -->
+	<insert id="ADD" parameterType="userMessage"  useGeneratedKeys="true" keyProperty="id">
+		insert into web_user_message(account,comment,status,createTime)
+		values(#{account},#{comment},#{status},#{createTime})
+	</insert>
+	
+	<!-- 分页查询用户消息 -->
+	<select id="QUERY_MSG_ALL_PAGE" parameterType="java.util.Map" resultMap="userMessageM">
+		select <include refid="QUERY_ALL"/> from web_user_message 
+		limit #{start},#{length}
+	</select>
+	
+	<select id="QUERY_MSG_ACCOUNT_PAGE" parameterType="java.util.Map" resultMap="userMessageM">
+		select <include refid="QUERY_ALL"/> from web_user_message where account=#{account}
+		limit #{start},#{length}
+	</select>
+	
+	<select id="QUERY_MSG_ALL_COUNT" resultType="int">
+		select count(id) from web_user_message 
+	</select>
+	
+	<select id="QUERY_MSG_ACCOUNT_PAGE" parameterType="java.lang.String" resultType="int">
+		select count(id) from web_user_message where account=#{val}
+	</select>
+	
+	<!-- 获取一个账号的所有未读消息,按照创建时间倒序 -->
+	<select id="QUERY_MSG_ACCOUNT_ALL" parameterType="java.lang.String" resultMap="userMessageM">
+		select <include refid="QUERY_ALL"/> from web_user_message where account=#{account}
+		and status = -1
+		order by createTime desc
+	</select>
+	
+	<select id="QUERY_MSG_ACCOUNT_COUNT_ALL" parameterType="java.lang.String" resultType="int">
+		select count(id) from web_user_message where account=#{account}
+		and status = -1
+	</select>
+	
+	<!-- 将一条消息改成已读 -->
+	<update id="READ_MSG" parameterType="java.util.Map">
+		update web_user_message set status=1, updateTime=#{updateTime} where id =#{id}
+	</update>
+</mapper>

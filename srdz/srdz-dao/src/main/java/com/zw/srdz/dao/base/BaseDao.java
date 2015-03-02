@@ -14,5 +14,7 @@ public abstract class BaseDao {
 	 * @param space
 	 * @return
 	 */
-	protected abstract String getNameSpace(String space);
+	protected  String getNameSpace(String base, String space){
+		return base + space;
+	}
 }
