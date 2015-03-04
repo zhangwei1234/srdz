@@ -194,11 +194,10 @@ Namespace.register("Topic.Console");
 		try{
 			$("<img/>").attr("src", $("#product_image").val()).load(function() {
 				var height = parseInt(this.height);
-				if(height > 230){
-					height = 230+Math.round(Math.random()*50);
-				}
+				var width = parseInt(this.width);
+				height= (height/(width/200))+Math.round(Math.random()*20);
 				$("#product_image_height").val(height);
-				$("#product_image_width").val(this.width);
+				$("#product_image_width").val(width);
 			});
 		}catch(e){
 			alert("获取图片尺寸失败");
