@@ -43,7 +43,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">
-						<a class="accordion-toggle" href="#">
+						<a class="accordion-toggle" href="$!{base_url}cus/info" data-ajax="false">
 							<i class="icon-chevron-right icon-user-md"></i>
 							用户信息
 							<i class="icon-chevron-right icon-on-right" style="float:right;"></i>

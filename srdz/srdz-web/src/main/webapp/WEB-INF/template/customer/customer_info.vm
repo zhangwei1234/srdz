@@ -1,0 +1,55 @@
+##用户基本信息修改界面
+##百度统计代码
+#jsCount()
+<div data-role="page" id="index" data-fullscreen="true" style="background:#fff!important;">
+	##head
+	<div data-role="header" data-theme="b" data-position="fixed" data-backbtn="false" data-tap-toggle="false">
+		<a title="返回" class="ui-btn-left ui-btn ui-shadow ui-btn-icon-left ui-icon-back" data-rel="back" data-transition="slideup" >返回</a>
+		<span class="ui-title" style="height:40px;">用户信息</span>
+		
+	</div>
+	##content
+	<div data-role="content" style="margin-right:auto;margin-left:auto;padding:0px;" class="container-fluid " >
+		<form action="$!{base_url}cus/doUpdateCustomer" method="post" id="CUSTOMER_DO_UPDATE_INFO" class="form-horizontal" data-ajax="false" style="margin-top: 5px;">
+			<div class="form-group" data-role="none">
+				<label class="col-xs-2 control-label no-padding-right" data-role="none">昵称</label>
+				<div class="col-xs-10" data-role="none">
+					<input type="text"  placeholder="Username" name="" value="" class="col-xs-12" data-role="none"/>
+				</div>
+			</div>
+			<div class="form-group" data-role="none">
+				<label class="col-xs-2 control-label no-padding-right" data-role="none">昵称</label>
+				<div class="col-xs-10" data-role="none">
+					<input type="text"  placeholder="Username" name="" value="" class="col-xs-12" data-role="none"/>
+				</div>
+			</div>
+			<div class="form-group" data-role="none">
+				<label class="col-xs-2 control-label no-padding-right" data-role="none">昵称</label>
+				<div class="col-xs-10" data-role="none">
+					<input type="text"  placeholder="Username" name="" value="" class="col-xs-12" data-role="none"/>
+				</div>
+			</div>
+			<div class="form-group" data-role="none">
+				<label class="col-xs-2 control-label no-padding-right" data-role="none">昵称</label>
+				<div class="col-xs-10" data-role="none">
+					<input type="text"  placeholder="Username" name="" value="" class="col-xs-12" data-role="none"/>
+				</div>
+			</div>
+			<div class="form-group" data-role="none">
+				<label class="col-xs-2 control-label no-padding-right" data-role="none">昵称</label>
+				<div class="col-xs-10" data-role="none">
+					<input type="text"  placeholder="Username" name="" value="" class="col-xs-12" data-role="none"/>
+				</div>
+			</div>
+			<div class="form-group" data-role="none">
+				<label class="col-xs-2 control-label no-padding-right" data-role="none">昵称</label>
+				<div class="col-xs-10" data-role="none">
+					<input type="text"  placeholder="Username" name="" value="" class="col-xs-12" data-role="none"/>
+				</div>
+			</div>
+		</form>
+		##保存修改信息
+		<button class="btn btn-success btn-block" onclick="window.location.href='$!{base_url}cus/logout'" data-ajax="false">保&nbsp;存</button>
+	</div>
+	
+</div>

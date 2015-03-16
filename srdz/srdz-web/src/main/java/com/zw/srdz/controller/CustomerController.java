@@ -8,10 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.common.collect.Maps;
 import com.zw.srdz.author.Author;
 import com.zw.srdz.author.AuthorType;
 import com.zw.srdz.base.BaseController;
@@ -20,6 +22,7 @@ import com.zw.srdz.domain.User;
 import com.zw.srdz.domain.author.LoginContext;
 import com.zw.srdz.domain.author.LoginContextEncrypt;
 import com.zw.srdz.service.CustomerService;
+import com.zw.srdz.service.UserService;
 
 /**
 * 项目名称：srdz-web   
@@ -46,6 +49,10 @@ public class CustomerController extends BaseController{
 	@Resource
 	private CustomerService customerService;
 	
+	@Resource 
+	private UserService userService;
+	
+	@Author(type={AuthorType.LOGIN_CUSTOMER_NOT, AuthorType.LOGIN_CUSTOMER_COOKIE})
 	@RequestMapping(value="/center", method={RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView center(HttpServletRequest req, HttpServletResponse res) throws Exception{
 		return toVmIndex("customer/customer", customerService.center());
@@ -106,6 +113,28 @@ public class CustomerController extends BaseController{
 		
 		//返回控制台首页
 		res.sendRedirect(base_url+"cus/center");
+		return null;
+	}
+	
+	@RequestMapping(value="/info",method={RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView loadUpdateCustomer(HttpServletRequest req, HttpServletResponse res) throws Exception{
+		
+		User user = userService.getCurrentUser();
+		Map<String, Object> data = Maps.newHashMap();
+		data.put("customer", user);
+		
+		return toVmIndex("customer/customer_info", data);
+	}
+	
+	@RequestMapping(value="/doUpdateCustomer", method={RequestMethod.POST})
+	public ModelAndView doUpdateCustomer(HttpServletRequest req, HttpServletResponse res, @ModelAttribute User user) throws Exception{
+		
+		boolean flag = userService.update(user);
+		if(flag){
+			res.sendRedirect(base_url+"cus/center");
+			return null;
+		}
+		res.sendRedirect(base_url+"cus/info");
 		return null;
 	}
 }

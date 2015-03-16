@@ -30,4 +30,27 @@ public interface UserService {
 	 * @throws Exception
 	 */
 	public boolean addUser(User user) throws Exception;
+	
+	/**
+	 * 根据用户账号获取用户信息
+	 * @param account
+	 * @return
+	 * @throws Exception
+	 */
+	public User getUser(String account) throws Exception;
+	
+	/**
+	 * 获取当前登录用户信息
+	 * @return
+	 * @throws Exception
+	 */
+	public User getCurrentUser() throws Exception;
+	
+	/**
+	 * 修改用户信息
+	 * @param user
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean update(User user) throws Exception;
 }

@@ -57,8 +57,8 @@
 			<if test="remark != null and remark != '' "> a.remark = #{remark},</if>
 			<if test="orderNo != null and orderNo != 0 "> a.order_no = #{orderNo},</if>
 			<if test="iconUrl != null and iconUrl != '' "> a.icon_url = #{iconUrl},</if>
-			<if test="label != null and label != '' "> a.label = #{label},</if>
 			<if test="updateTime != null"> a.update_time = #{updateTime},</if>
+			a.label = #{label},
 		</set>
 		where a.id = #{id}
 	</update>

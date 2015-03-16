@@ -61,4 +61,18 @@ public class UserServiceImpl extends BaseService implements UserService{
 		return userDao.addUser(user);
 	}
 	
+	@Override
+	public User getUser(String account) throws Exception {
+		return userDao.getUser(account);
+	}
+	
+	@Override
+	public User getCurrentUser() throws Exception {
+		return userDao.getUser(getAccount());
+	}
+	
+	@Override
+	public boolean update(User user) throws Exception {
+		return userDao.updateUser(user);
+	}
 }

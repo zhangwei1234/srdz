@@ -26,7 +26,12 @@ public enum AuthorType {
 	/**
 	 * 客户端不需要登陆
 	 */
-	LOGIN_CUSTOMER_NOT(4);
+	LOGIN_CUSTOMER_NOT(4),
+	
+	/**
+	 * 检查cookie
+	 */
+	LOGIN_CUSTOMER_COOKIE(5);
 	
 	private int val;
 	AuthorType(int val){

@@ -43,7 +43,7 @@
 		select count(id) from web_user_message 
 	</select>
 	
-	<select id="QUERY_MSG_ACCOUNT_PAGE" parameterType="java.lang.String" resultType="int">
+	<select id="QUERY_MSG_ACCOUNT_COUNT_PAGE" parameterType="java.lang.String" resultType="int">
 		select count(id) from web_user_message where account=#{val}
 	</select>
 	

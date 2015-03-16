@@ -33,6 +33,9 @@ public class AuthorIntercept extends HandlerInterceptorAdapter{
 	@Value(value="${login_url}")
 	private String login_url;
 	
+	@Value(value="${base_url}")
+	protected String base_url;
+	
 	@Value(value="${cookie.name}")
 	private String cookie_name;
 	
@@ -68,6 +71,16 @@ public class AuthorIntercept extends HandlerInterceptorAdapter{
 			classTypes = classAuthor.type();
 		}
 		
+		//判断是否需要设置cookie
+		if(isAuthorType(methodTypes, AuthorType.LOGIN_CUSTOMER_COOKIE) || isAuthorType(classTypes, AuthorType.LOGIN_CUSTOMER_COOKIE)){
+			String cookie_value = CookieUtil.getCookie(request, cookie_name);
+			if(!StringUtils.isEmpty(cookie_value)){
+				LoginContext context = LoginContextEncrypt.decodeContext(cookie_value);
+				CookieUtil.addCookie(response, cookie_name, LoginContextEncrypt.encodingContext(context));
+				authorLocal.getLocal().set(context);
+			}
+		}
+		
 		//检查普通用户是否登陆
 		if((isAuthorType(methodTypes, AuthorType.LOGIN_CUSTOMER) || isAuthorType(classTypes, AuthorType.LOGIN_CUSTOMER)) && !isAuthorType(methodTypes, AuthorType.LOGIN_CUSTOMER_NOT)){
 			String cookie_value = CookieUtil.getCookie(request, cookie_name);
@@ -76,6 +89,9 @@ public class AuthorIntercept extends HandlerInterceptorAdapter{
 				LoginContext context = LoginContextEncrypt.decodeContext(cookie_value);
 				CookieUtil.addCookie(response, cookie_name, LoginContextEncrypt.encodingContext(context));
 				authorLocal.getLocal().set(context);
+			}else{
+				response.sendRedirect(base_url+"cus/center");
+				return false;
 			}
 			
 		}

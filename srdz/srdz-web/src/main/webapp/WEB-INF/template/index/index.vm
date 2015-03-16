@@ -9,7 +9,7 @@
 	</div>
 	
 	##content
-	<div data-role="content" style="max-width:800px;min-width:240px;margin-right:auto;margin-left:auto;padding:5px;" class="container-fluid " >
+	<div data-role="content" style="max-width:800px;min-width:240px;margin-right:auto;margin-left:auto;padding:0px;" class="container-fluid " >
 		##广告轮播图
 		<div class="row" style="margin-bottom:10px;">
 			<div id="hone-carousel" class="carousel slide" data-ride="carousel" data-interval="2000" style="height:120px;">
